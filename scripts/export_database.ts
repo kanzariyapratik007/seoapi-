@@ -30,7 +30,17 @@ SET row_security = off;
 
 `;
 
-    const tables = ['cities', 'localities', 'property_types', 'keywords', 'blogs'];
+    const tables = [
+      'states',
+      'cities',
+      'localities',
+      'property_types',
+      'keywords',
+      'seo_templates',
+      'schema_templates',
+      'faqs',
+      'blogs'
+    ];
 
     for (const table of tables) {
       const res = await client.query(`SELECT * FROM ${table}`);
