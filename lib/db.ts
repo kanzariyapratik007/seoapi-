@@ -7,11 +7,25 @@ if (!connectionString) {
   logger.error('DATABASE_URL environment variable is missing!');
 }
 
-const isLocalDb = !connectionString || connectionString.includes('localhost') || connectionString.includes('127.0.0.1');
+const isSslDisabled =
+  process.env.DB_SSL === 'false' ||
+  connectionString?.includes('sslmode=disable') ||
+  !connectionString ||
+  connectionString.includes('localhost') ||
+  connectionString.includes('127.0.0.1') ||
+  connectionString.includes('@postgres:') ||
+  connectionString.includes('@postgres/');
+
+const ssl =
+  process.env.DB_SSL === 'true'
+    ? { rejectUnauthorized: false }
+    : isSslDisabled
+    ? false
+    : { rejectUnauthorized: false };
 
 export const pool = new Pool({
   connectionString,
-  ssl: isLocalDb ? false : { rejectUnauthorized: false },
+  ssl,
   max: process.env.NODE_ENV === 'production' ? 20 : 5, // Production size pool
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
@@ -28,7 +42,7 @@ pool.on('connect', () => {
 /**
  * Execute a query with parameters against the database pool.
  */
-export async function query<T = unknown>(
+export async function query<T = any>(
   text: string,
   params?: unknown[]
 ): Promise<QueryResult<T>> {
