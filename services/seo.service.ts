@@ -5125,6 +5125,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         { name: "Ambli", slug: "property-in-ambli", distance_km: "3.5 km", avg_price_sqft: "₹9,800/sq.ft" },
         { name: "SG Highway", slug: "flat-for-sale-in-sg-highway", distance_km: "2.0 km", avg_price_sqft: "₹8,500/sq.ft" },
         { name: "Thaltej", slug: "property-in-thaltej", distance_km: "4.0 km", avg_price_sqft: "₹8,900/sq.ft" }
+      );
     }
 
     // Explicit Part 3 & 4 metadata override for 'plot-for-sale-in-thaltej'
