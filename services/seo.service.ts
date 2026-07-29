@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v42:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v43:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -229,10 +229,7 @@ export class SeoService implements ISeoService {
       'property-rates-in-bopal-2026'
     ];
 
-    if (red11Slugs.includes(slug.toLowerCase().trim())) {
-      parsedDetails.blog = null;
-      parsedDetails.category = 'LONG_TAIL';
-    }
+    const isTargetRed11 = red11Slugs.includes(slug.toLowerCase().trim());
 
     if (parsedDetails.blog) {
       const blog = parsedDetails.blog as any;
@@ -5247,7 +5244,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
       reading_time_minutes,
       content: (content_html && content_html.length > 0) ? content_html : content,
       content_html,
-      is_blog: parsedDetails.category === 'BLOG',
+      is_blog: isTargetRed11 ? false : (parsedDetails.category === 'BLOG'),
 
       // 27 New High-Grade SEO & Analytics Payload Fields
       ai_summary,
