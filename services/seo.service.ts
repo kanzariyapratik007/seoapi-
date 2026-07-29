@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v41:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v42:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -5245,7 +5245,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
       table_of_contents,
       word_count,
       reading_time_minutes,
-      content,
+      content: (content_html && content_html.length > 0) ? content_html : content,
       content_html,
       is_blog: parsedDetails.category === 'BLOG',
 
