@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v40:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v41:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -231,6 +231,7 @@ export class SeoService implements ISeoService {
 
     if (red11Slugs.includes(slug.toLowerCase().trim())) {
       parsedDetails.blog = null;
+      parsedDetails.category = 'LONG_TAIL';
     }
 
     if (parsedDetails.blog) {
