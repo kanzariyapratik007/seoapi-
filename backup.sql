@@ -1,5 +1,5 @@
--- PropertysDeal SEO Engine PostgreSQL Database Backup (Fixed Newlines)
--- Generated: 2026-07-29T04:09:58.117Z
+-- PropertysDeal SEO Engine PostgreSQL Full Database Backup (Schema + Data)
+-- Generated: 2026-07-29T04:37:44.438Z
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -10,10 +10,152 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
--- Data for Name: states; Type: TABLE DATA;
+-- ============================================================================
+-- 1. DATABASE SCHEMA CREATION (TABLES & ENUMS)
+-- ============================================================================
+-- 1. Create custom enum type for Keyword Categories
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'keyword_category') THEN
+        CREATE TYPE keyword_category AS ENUM (
+            'HOMEPAGE',
+            'CITY_PAGE',
+            'LOCALITY_PAGE',
+            'PROPERTY_TYPE',
+            'LONG_TAIL',
+            'BLOG'
+        );
+    END IF;
+END $$;
+
+-- 2. States Table
+CREATE TABLE IF NOT EXISTS states (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    slug VARCHAR(150) UNIQUE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_states_slug ON states(slug);
+
+-- 3. Cities Table
+CREATE TABLE IF NOT EXISTS cities (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    slug VARCHAR(150) UNIQUE NOT NULL,
+    state_id INTEGER NOT NULL REFERENCES states(id) ON DELETE CASCADE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_cities_slug ON cities(slug);
+CREATE INDEX IF NOT EXISTS idx_cities_state ON cities(state_id);
+
+-- 4. Localities Table
+CREATE TABLE IF NOT EXISTS localities (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    slug VARCHAR(150) UNIQUE NOT NULL,
+    city_id INTEGER NOT NULL REFERENCES cities(id) ON DELETE CASCADE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_localities_slug ON localities(slug);
+CREATE INDEX IF NOT EXISTS idx_localities_city ON localities(city_id);
+
+-- 5. Property Types Table
+CREATE TABLE IF NOT EXISTS property_types (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE NOT NULL,
+    slug VARCHAR(150) UNIQUE NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_property_types_slug ON property_types(slug);
+
+-- 6. Keywords Table
+CREATE TABLE IF NOT EXISTS keywords (
+    id SERIAL PRIMARY KEY,
+    phrase VARCHAR(255) NOT NULL,
+    slug VARCHAR(200) UNIQUE NOT NULL,
+    category keyword_category NOT NULL,
+    city_id INTEGER REFERENCES cities(id) ON DELETE SET NULL,
+    locality_id INTEGER REFERENCES localities(id) ON DELETE SET NULL,
+    property_type_id INTEGER REFERENCES property_types(id) ON DELETE SET NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_keywords_slug ON keywords(slug);
+CREATE INDEX IF NOT EXISTS idx_keywords_category ON keywords(category);
+CREATE INDEX IF NOT EXISTS idx_keywords_city ON keywords(city_id);
+CREATE INDEX IF NOT EXISTS idx_keywords_locality ON keywords(locality_id);
+
+-- 7. SEO Templates Table
+CREATE TABLE IF NOT EXISTS seo_templates (
+    id SERIAL PRIMARY KEY,
+    category keyword_category UNIQUE NOT NULL,
+    title_template VARCHAR(255) NOT NULL,
+    meta_title_template VARCHAR(255) NOT NULL,
+    meta_description_template TEXT NOT NULL,
+    h1_template VARCHAR(255) NOT NULL,
+    h2_template TEXT NOT NULL, -- JSON string array
+    introduction_template TEXT NOT NULL,
+    benefits_template TEXT NOT NULL,
+    content_template TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_seo_templates_category ON seo_templates(category);
+
+-- 8. Schema Templates Table
+CREATE TABLE IF NOT EXISTS schema_templates (
+    id SERIAL PRIMARY KEY,
+    category keyword_category NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    template_json TEXT NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(category, type)
+);
+CREATE INDEX IF NOT EXISTS idx_schema_templates_category ON schema_templates(category);
+
+-- 9. FAQs Table
+CREATE TABLE IF NOT EXISTS faqs (
+    id SERIAL PRIMARY KEY,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL,
+    category keyword_category NOT NULL,
+    city_id INTEGER REFERENCES cities(id) ON DELETE SET NULL,
+    locality_id INTEGER REFERENCES localities(id) ON DELETE SET NULL,
+    property_type_id INTEGER REFERENCES property_types(id) ON DELETE SET NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_faqs_category ON faqs(category);
+CREATE INDEX IF NOT EXISTS idx_faqs_city ON faqs(city_id);
+CREATE INDEX IF NOT EXISTS idx_faqs_locality ON faqs(locality_id);
+
+-- 10. Blogs Table
+CREATE TABLE IF NOT EXISTS blogs (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(200) UNIQUE NOT NULL,
+    content TEXT NOT NULL,
+    meta_title VARCHAR(255),
+    meta_description TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX IF NOT EXISTS idx_blogs_slug ON blogs(slug);
+
+
+-- ============================================================================
+-- 2. DATA INSERTIONS
+-- ============================================================================
+-- Data for Table: states
 INSERT INTO states (id, name, slug, created_at, updated_at) VALUES (1, 'Gujarat', 'gujarat', '2026-07-27T03:22:51.771Z', '2026-07-27T03:22:51.771Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: cities; Type: TABLE DATA;
+-- Data for Table: cities
 INSERT INTO cities (id, name, slug, state_id, created_at, updated_at) VALUES (1, 'Ahmedabad', 'ahmedabad', 1, '2026-07-27T03:22:52.026Z', '2026-07-27T03:22:52.026Z') ON CONFLICT DO NOTHING;
 INSERT INTO cities (id, name, slug, state_id, created_at, updated_at) VALUES (2, 'Surat', 'surat', 1, '2026-07-27T03:22:52.280Z', '2026-07-27T03:22:52.280Z') ON CONFLICT DO NOTHING;
 INSERT INTO cities (id, name, slug, state_id, created_at, updated_at) VALUES (3, 'Vadodara', 'vadodara', 1, '2026-07-27T03:22:52.536Z', '2026-07-27T03:22:52.536Z') ON CONFLICT DO NOTHING;
@@ -21,7 +163,7 @@ INSERT INTO cities (id, name, slug, state_id, created_at, updated_at) VALUES (4,
 INSERT INTO cities (id, name, slug, state_id, created_at, updated_at) VALUES (5, 'Gandhinagar', 'gandhinagar', 1, '2026-07-27T03:22:53.045Z', '2026-07-27T03:22:53.045Z') ON CONFLICT DO NOTHING;
 INSERT INTO cities (id, name, slug, state_id, created_at, updated_at) VALUES (6, 'Anand', 'anand', 1, '2026-07-27T03:22:53.298Z', '2026-07-27T03:22:53.298Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: localities; Type: TABLE DATA;
+-- Data for Table: localities
 INSERT INTO localities (id, name, slug, city_id, created_at, updated_at) VALUES (1, 'SG Highway', 'sg-highway', 1, '2026-07-27T03:22:53.550Z', '2026-07-27T03:22:53.550Z') ON CONFLICT DO NOTHING;
 INSERT INTO localities (id, name, slug, city_id, created_at, updated_at) VALUES (2, 'Satellite', 'satellite', 1, '2026-07-27T03:22:53.805Z', '2026-07-27T03:22:53.805Z') ON CONFLICT DO NOTHING;
 INSERT INTO localities (id, name, slug, city_id, created_at, updated_at) VALUES (3, 'Prahlad Nagar', 'prahlad-nagar', 1, '2026-07-27T03:22:54.058Z', '2026-07-27T03:22:54.058Z') ON CONFLICT DO NOTHING;
@@ -38,7 +180,7 @@ INSERT INTO localities (id, name, slug, city_id, created_at, updated_at) VALUES 
 INSERT INTO localities (id, name, slug, city_id, created_at, updated_at) VALUES (14, 'Gift City', 'gift-city', 5, '2026-07-27T03:22:57.166Z', '2026-07-27T03:22:57.166Z') ON CONFLICT DO NOTHING;
 INSERT INTO localities (id, name, slug, city_id, created_at, updated_at) VALUES (15, 'Vallabh Vidyanagar', 'vallabh-vidyanagar', 6, '2026-07-27T03:22:57.420Z', '2026-07-27T03:22:57.420Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: property_types; Type: TABLE DATA;
+-- Data for Table: property_types
 INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (1, 'Flat', 'flat', '2026-07-27T03:22:57.672Z', '2026-07-27T03:22:57.672Z') ON CONFLICT DO NOTHING;
 INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (2, 'Apartment', 'apartment', '2026-07-27T03:22:57.930Z', '2026-07-27T03:22:57.930Z') ON CONFLICT DO NOTHING;
 INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (3, 'Villa', 'villa', '2026-07-27T03:22:58.182Z', '2026-07-27T03:22:58.182Z') ON CONFLICT DO NOTHING;
@@ -52,7 +194,7 @@ INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (10, 
 INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (11, 'Warehouse', 'warehouse', '2026-07-27T03:23:00.542Z', '2026-07-27T03:23:00.542Z') ON CONFLICT DO NOTHING;
 INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (12, 'GIDC Shed', 'gidc-shed', '2026-07-27T03:23:00.799Z', '2026-07-27T03:23:00.799Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: keywords; Type: TABLE DATA;
+-- Data for Table: keywords
 INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (3, 'Property in Ahmedabad', 'property-in-ahmedabad', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T03:23:05.481Z', '2026-07-27T03:23:05.481Z') ON CONFLICT DO NOTHING;
 INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (4, 'Property in Surat', 'property-in-surat', 'CITY_PAGE', 2, NULL, NULL, true, '2026-07-27T03:23:06.197Z', '2026-07-27T03:23:06.197Z') ON CONFLICT DO NOTHING;
 INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (5, 'Property in Vadodara', 'property-in-vadodara', 'CITY_PAGE', 3, NULL, NULL, true, '2026-07-27T03:23:06.749Z', '2026-07-27T03:23:06.749Z') ON CONFLICT DO NOTHING;
@@ -355,7 +497,7 @@ INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property
 INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (430, 'Industrial Land for Sale Gujarat', 'industrial-land-for-sale-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:04.169Z', '2026-07-28T07:16:04.169Z') ON CONFLICT DO NOTHING;
 INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (435, 'Industrial Land for Sale in Gujarat', 'industrial-land-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:17:17.256Z', '2026-07-28T07:17:17.256Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: seo_templates; Type: TABLE DATA;
+-- Data for Table: seo_templates
 INSERT INTO seo_templates (id, category, title_template, meta_title_template, meta_description_template, h1_template, h2_template, introduction_template, benefits_template, content_template, created_at, updated_at) VALUES (3, 'LOCALITY_PAGE', 'Properties in {{locality}}, {{city}} | Buy Properties in {{locality}}', 'Real Estate in {{locality}}, {{city}} | Flats & Plots for Sale', 'Check properties in {{locality}}, {{city}}. Compare 2BHK/3BHK flats, ready-to-move projects, residential plots, and shop prices from top developers in {{locality}}.', 'Properties in {{locality}}, {{city}}', '["Why {{locality}} is the Hottest Investment Sector","Current Real Estate Rates in {{locality}}","Amenities and Transit Access in {{locality}}"]', 'Welcome to {{locality}}, one of the most prominent and high-growth neighborhoods in {{city}}. Known for its superior lifestyle quality and connectivity.', 'Properties in {{locality}} are highly valued due to proximity to shopping complexes, corporate business hubs, prestigious schools, and major expressways.', 'Whether you are seeking an affordable apartment or a premium commercial office, {{locality}} in {{city}} provides options configured to all requirements.', '2026-07-27T03:23:01.589Z', '2026-07-27T03:23:01.589Z') ON CONFLICT DO NOTHING;
 INSERT INTO seo_templates (id, category, title_template, meta_title_template, meta_description_template, h1_template, h2_template, introduction_template, benefits_template, content_template, created_at, updated_at) VALUES (4, 'PROPERTY_TYPE', '{{propertyTypePlural}} in {{city}} | Verified {{propertyType}} in {{city}}', '{{propertyTypePlural}} for Sale in {{city}} | Developer Listings', 'Looking for a {{propertyType}} in {{city}}? Browse through ready-to-move and under-construction {{propertyTypePlural}} from verified sellers.', '{{propertyTypePlural}} in {{city}}', '["Key Considerations Before Buying a {{propertyType}} in {{city}}","Popular Locations offering {{propertyTypePlural}} in {{city}}"]', 'Find the widest selection of premium {{propertyTypePlural}} in {{city}}. Each project is chosen for structural reliability, layout planning, and prime location.', 'Purchasing a {{propertyType}} in {{city}} ensures long-term asset value, reliable builder support, and access to standard safety and luxury features.', 'Check RERA registration certificates, building approval plans, and tax compliance documents for all {{propertyTypePlural}} in {{city}}.', '2026-07-27T03:23:01.841Z', '2026-07-27T03:23:01.841Z') ON CONFLICT DO NOTHING;
 INSERT INTO seo_templates (id, category, title_template, meta_title_template, meta_description_template, h1_template, h2_template, introduction_template, benefits_template, content_template, created_at, updated_at) VALUES (5, 'LONG_TAIL', '{{bhk}} {{propertyType}} {{budget}} in {{locality}} {{city}}', 'Buy {{bhk}} {{propertyType}} {{budget}} in {{locality}} {{city}}', 'Verified listings for {{bhk}} {{propertyType}} {{budget}} in {{locality}}, {{city}}. Discover ready-to-move properties, amenities, and builder details.', '{{bhk}} {{propertyType}} {{budget}} in {{locality}}, {{city}}', '["Overview of {{bhk}} {{propertyTypePlural}} under {{budget}} in {{locality}}","Smart Living and ROI Potential in {{locality}}"]', 'Searching for a {{bhk}} {{propertyType}} in {{locality}}, {{city}} under the budget of {{budget}}? You have landed on the most accurate property resource.', 'This configuration offers the optimal balance of space, affordability, and modern community amenities inside {{locality}}.', 'Each {{bhk}} {{propertyType}} listing in {{locality}}, {{city}} has been thoroughly verified against RERA database records for clear documentation.', '2026-07-27T03:23:02.097Z', '2026-07-27T03:23:02.097Z') ON CONFLICT DO NOTHING;
@@ -363,11 +505,11 @@ INSERT INTO seo_templates (id, category, title_template, meta_title_template, me
 INSERT INTO seo_templates (id, category, title_template, meta_title_template, meta_description_template, h1_template, h2_template, introduction_template, benefits_template, content_template, created_at, updated_at) VALUES (2, 'CITY_PAGE', 'Properties in {{city}} | Real Estate Listings in {{city}}', 'Properties for Sale in {{city}} | Buy Real Estate in {{city}}', 'Find flats, plots, commercial office space, and luxury villas for sale in {{city}}, Gujarat. Read about current market rates and prime residential localities.', 'Real Estate & Properties in {{city}}', '["Top Localities to Buy Property in {{city}}","Property Rates and Price Trends in {{city}}","Connectivity and Infrastructure in {{city}}"]', 'Explore verified residential and commercial properties in {{city}}. With modern skyscrapers, active GIDC hubs, and premium residential layouts, {{city}} is the ultimate investment choice.', 'Buying a home in {{city}} offers access to rapid metro networks, premium educational institutions, modern healthcare, and bustling commercial corridors.', 'Compare market rates, builder profiles, and property tax guidelines in {{city}} to find your ideal workspace or residential dwelling.', '2026-07-27T03:23:01.318Z', '2026-07-27T04:34:32.013Z') ON CONFLICT DO NOTHING;
 INSERT INTO seo_templates (id, category, title_template, meta_title_template, meta_description_template, h1_template, h2_template, introduction_template, benefits_template, content_template, created_at, updated_at) VALUES (1, 'HOMEPAGE', 'Property in Gujarat | Buy Residential & Commercial Properties', 'Property in Gujarat | Buy Flats, Plots & Real Estate', 'Explore verified property in Gujarat including flats, apartments, plots, villas, commercial spaces, and industrial properties in Ahmedabad, Surat, Vadodara, Rajkot, and Gandhinagar.', 'Property in Gujarat', '["Explore Property in Gujarat","Best Cities to Buy Property in Gujarat","Types of Properties Available in Gujarat","Residential Properties in Gujarat","Commercial and Industrial Properties in Gujarat","Why Buy Property in Gujarat?","Legal Checks Before Buying Property in Gujarat","Find the Right Property in Gujarat"]', 'Looking for property in Gujarat? Gujarat offers a wide range of residential, commercial, industrial, and land investment opportunities across major cities and rapidly developing locations. Buyers can explore apartments, flats, villas, residential plots, commercial offices, shops, agricultural land, NA plots, and industrial properties based on their budget and investment goals.', 'Gujarat offers several factors that make its real estate market attractive to buyers and investors: 1. Strong industrial and business ecosystem. 2. Growing infrastructure and transportation connectivity. 3. Expanding residential and commercial development. 4. Major economic hubs such as Ahmedabad, Surat, Vadodara, and Gandhinagar. 5. Growing financial and commercial importance of GIFT City.', 'Finding the right property requires comparing location, price, property type, amenities, legal documentation, connectivity, and future development potential. Explore available property opportunities across Gujarat and compare suitable residential, commercial, land, and industrial options based on your requirements.', '2026-07-27T03:23:01.052Z', '2026-07-27T04:40:54.832Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: schema_templates; Type: TABLE DATA;
+-- Data for Table: schema_templates
 INSERT INTO schema_templates (id, category, type, template_json, created_at, updated_at) VALUES (1, 'CITY_PAGE', 'LocalBusiness', '{"@context":"https://schema.org","@type":"LocalBusiness","name":"Propertysdeal {{city}}","description":"Premium real estate services and properties for sale in {{city}}.","telephone":"+919999999999","address":{"@type":"PostalAddress","addressLocality":"{{city}}","addressRegion":"Gujarat","addressCountry":"IN"}}', '2026-07-27T03:23:02.930Z', '2026-07-27T03:23:02.930Z') ON CONFLICT DO NOTHING;
 INSERT INTO schema_templates (id, category, type, template_json, created_at, updated_at) VALUES (2, 'LOCALITY_PAGE', 'LocalBusiness', '{"@context":"https://schema.org","@type":"LocalBusiness","name":"Propertysdeal Real Estate {{locality}}","description":"Find premium properties, apartments, and land listings in {{locality}}, {{city}}.","telephone":"+919999999999","address":{"@type":"PostalAddress","addressLocality":"{{city}}","addressRegion":"{{locality}}","addressCountry":"IN"}}', '2026-07-27T03:23:03.185Z', '2026-07-27T03:23:03.185Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: faqs; Type: TABLE DATA;
+-- Data for Table: faqs
 INSERT INTO faqs (id, question, answer, category, city_id, locality_id, property_type_id, created_at, updated_at) VALUES (1, 'What is RERA Gujarat, and why is it important?', 'RERA (Real Estate Regulatory Authority) Gujarat protects home buyers by ensuring timely project delivery, transparency, and standard pricing rules. Always check the RERA registration number of a project before buying.', 'HOMEPAGE', NULL, NULL, NULL, '2026-07-27T03:23:03.440Z', '2026-07-27T03:23:03.440Z') ON CONFLICT DO NOTHING;
 INSERT INTO faqs (id, question, answer, category, city_id, locality_id, property_type_id, created_at, updated_at) VALUES (2, 'Is it a good time to buy property in {{city}}?', 'Yes, {{city}} is experiencing high infrastructure growth with the expansion of highways, metro connectivity, and corporate hubs, making it an excellent long-term real estate investment.', 'CITY_PAGE', 1, NULL, NULL, '2026-07-27T03:23:03.696Z', '2026-07-27T03:23:03.696Z') ON CONFLICT DO NOTHING;
 INSERT INTO faqs (id, question, answer, category, city_id, locality_id, property_type_id, created_at, updated_at) VALUES (3, 'What are the average property rates in {{locality}}?', 'Property rates in {{locality}} range widely depending on the project type, builder brand, and ready-to-move status. Standard flats range from ₹5,000 to ₹12,000 per sq. ft.', 'LOCALITY_PAGE', NULL, 4, NULL, '2026-07-27T03:23:03.949Z', '2026-07-27T03:23:03.949Z') ON CONFLICT DO NOTHING;
@@ -383,7 +525,7 @@ INSERT INTO faqs (id, question, answer, category, city_id, locality_id, property
 INSERT INTO faqs (id, question, answer, category, city_id, locality_id, property_type_id, created_at, updated_at) VALUES (13, 'Can NRIs buy property in Gujarat?', 'Yes. NRIs can purchase residential and commercial properties in India subject to FEMA and RBI regulations.', 'HOMEPAGE', NULL, NULL, NULL, '2026-07-27T04:53:56.899Z', '2026-07-27T04:53:56.899Z') ON CONFLICT DO NOTHING;
 INSERT INTO faqs (id, question, answer, category, city_id, locality_id, property_type_id, created_at, updated_at) VALUES (14, 'Which documents should be verified before buying property?', 'Verify ownership documents, title deed, RERA registration (if applicable), approved plans, tax receipts, and encumbrance certificate.', 'HOMEPAGE', NULL, NULL, NULL, '2026-07-27T04:53:57.147Z', '2026-07-27T04:53:57.147Z') ON CONFLICT DO NOTHING;
 
--- Data for Name: blogs; Type: TABLE DATA;
+-- Data for Table: blogs
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (172, 'Rental Flats in Vesu Surat', '3bhk-flat-for-rent-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
