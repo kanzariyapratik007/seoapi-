@@ -1,5 +1,5 @@
--- PropertysDeal SEO Engine PostgreSQL Full Database Backup (Schema + Data)
--- Generated: 2026-07-29T04:37:44.438Z
+-- PropertysDeal SEO Engine PostgreSQL Full Database Backup
+-- Generated: 2026-07-29T05:04:34.518Z
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
