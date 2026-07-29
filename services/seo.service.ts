@@ -213,6 +213,8 @@ export class SeoService implements ISeoService {
     let blogFaqs: { question: string; answer: string }[] = [];
 
     const variables = this.templateService.getVariables(parsedDetails);
+    let focusKwPhrase = parsedDetails.keyword?.phrase || slug.replace(/-/g, ' ');
+
     const red11Slugs = [
       'flat-gift-city-gandhinagar',
       'property-in-vallabh-vidyanagar',
