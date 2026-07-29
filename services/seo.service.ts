@@ -4065,7 +4065,17 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
       { lang: 'x-default', url: canonical },
     ];
 
-    const content_html = parseMarkdownToHtml(content);
+    let cleanContentForHtml = (content || '')
+      .replace(/\\r\\n/g, '\n')
+      .replace(/\\n/g, '\n')
+      .replace(/\\r/g, '\n')
+      .replace(/\r\n/g, '\n')
+      .replace(/\r/g, '\n');
+    while (cleanContentForHtml.includes('\\n') || cleanContentForHtml.includes('\\r')) {
+      cleanContentForHtml = cleanContentForHtml.replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+    }
+
+    const content_html = parseMarkdownToHtml(cleanContentForHtml);
 
     const seo_performance_hints: SeoPerformanceHints = {
       preload_assets: [
