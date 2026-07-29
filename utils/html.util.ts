@@ -33,7 +33,8 @@ export function sanitizeHtml(html: string): string {
 export function parseMarkdownToHtml(markdown: string): string {
   if (!markdown) return '';
 
-  const lines = markdown.split('\n');
+  const normalized = markdown.replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+  const lines = normalized.split('\n');
   const result: string[] = [];
   let inList = false;
   let inTable = false;
