@@ -1,5 +1,5 @@
 -- PropertysDeal SEO Engine PostgreSQL Full Database Backup
--- Generated: 2026-07-29T07:00:58.173Z
+-- Generated: 2026-07-29T07:45:36.489Z
 
 -- 1. Create custom enum type for Keyword Categories
 DO $$ 
@@ -137,6 +137,9 @@ CREATE TABLE IF NOT EXISTS blogs (
 CREATE INDEX IF NOT EXISTS idx_blogs_slug ON blogs(slug);
 
 
+-- Truncate blogs table before insert
+TRUNCATE TABLE blogs CASCADE;
+
 -- Data for Table: states
 INSERT INTO states (id, name, slug, created_at, updated_at) VALUES (1, 'Gujarat', 'gujarat', '2026-07-27T03:22:51.771Z', '2026-07-27T03:22:51.771Z') ON CONFLICT DO NOTHING;
 
@@ -180,307 +183,307 @@ INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (11, 
 INSERT INTO property_types (id, name, slug, created_at, updated_at) VALUES (12, 'GIDC Shed', 'gidc-shed', '2026-07-27T03:23:00.799Z', '2026-07-27T03:23:00.799Z') ON CONFLICT DO NOTHING;
 
 -- Data for Table: keywords
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (3, 'Property in Ahmedabad', 'property-in-ahmedabad', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T03:23:05.481Z', '2026-07-27T03:23:05.481Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (4, 'Property in Surat', 'property-in-surat', 'CITY_PAGE', 2, NULL, NULL, true, '2026-07-27T03:23:06.197Z', '2026-07-27T03:23:06.197Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (5, 'Property in Vadodara', 'property-in-vadodara', 'CITY_PAGE', 3, NULL, NULL, true, '2026-07-27T03:23:06.749Z', '2026-07-27T03:23:06.749Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (2, 'Real Estate Gujarat', 'real-estate-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T03:23:05.227Z', '2026-07-27T04:53:55.858Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (24, '2BHK Bopal Ahmedabad', '2bhk-bopal-ahmedabad', 'LONG_TAIL', 1, 4, 1, true, '2026-07-27T04:10:30.476Z', '2026-07-27T04:10:30.476Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (7, 'Property in Prahlad Nagar Ahmedabad', 'property-in-prahlad-nagar-ahmedabad', 'LOCALITY_PAGE', 1, 3, NULL, true, '2026-07-27T03:23:07.267Z', '2026-07-27T04:10:30.996Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (45, 'Rental Flats Vesu Surat', 'rental-flats-vesu-surat', 'LOCALITY_PAGE', 2, 6, 1, true, '2026-07-27T04:10:35.996Z', '2026-07-27T04:10:35.996Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (15, 'Flats for Sale in Ahmedabad', 'flats-for-sale-in-ahmedabad', 'CITY_PAGE', 1, NULL, 1, true, '2026-07-27T04:10:28.119Z', '2026-07-27T04:10:28.119Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (55, '2BHK Flat in Ahmedabad', '2bhk-flat-in-ahmedabad', 'PROPERTY_TYPE', NULL, NULL, NULL, true, '2026-07-27T05:50:37.880Z', '2026-07-27T05:50:37.880Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (56, '3BHK Flat in Surat', '3bhk-flat-in-surat', 'PROPERTY_TYPE', NULL, NULL, NULL, true, '2026-07-27T05:53:28.596Z', '2026-07-27T05:53:28.596Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (57, 'Plot for Sale in Vadodara', 'plot-for-sale-in-vadodara', 'PROPERTY_TYPE', NULL, NULL, NULL, true, '2026-07-27T05:54:58.112Z', '2026-07-27T05:54:58.112Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (58, 'Property Dealer in Gujarat', 'property-dealer-in-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T06:00:46.676Z', '2026-07-27T06:00:46.676Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (59, 'Buy Property in Gujarat', 'buy-property-in-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T06:03:22.554Z', '2026-07-27T06:03:22.554Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (8, 'Flat for sale in Vesu', 'flat-for-sale-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-27T03:23:07.520Z', '2026-07-27T04:10:31.779Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (155, 'Flat for sale in Vesu Surat', 'flat-for-sale-in-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:33.396Z', '2026-07-28T03:13:33.396Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (156, 'Flat for sale in Vesu Surat', 'flat-for-sale-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:34.630Z', '2026-07-28T03:13:34.630Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (157, 'Flat for sale in Vesu Surat', '2bhk-flat-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:35.865Z', '2026-07-28T03:13:35.865Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (158, 'Flat for sale in Vesu Surat', '3bhk-flat-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:37.103Z', '2026-07-28T03:13:37.103Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (159, 'Flat for sale in Vesu Surat', 'property-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:38.337Z', '2026-07-28T03:13:38.337Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (164, 'Property in Adajan Surat', '2bhk-flat-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:15.122Z', '2026-07-28T03:33:15.122Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (165, 'Property in Adajan Surat', '3bhk-flat-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:16.106Z', '2026-07-28T03:33:16.106Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (31, '2BHK Pal Surat', '2bhk-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-27T04:10:32.303Z', '2026-07-27T04:10:32.303Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (167, '2BHK Pal Surat', '2bhk-flat-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:08.329Z', '2026-07-28T03:36:08.329Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (168, '2BHK Pal Surat', 'flat-for-sale-in-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:09.628Z', '2026-07-28T03:36:09.628Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (169, '2BHK Pal Surat', 'flat-for-sale-in-pal', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:10.923Z', '2026-07-28T03:36:10.923Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (170, '2BHK Pal Surat', 'property-in-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:12.181Z', '2026-07-28T03:36:12.181Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (171, '2BHK Pal Surat', 'property-in-pal', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:13.423Z', '2026-07-28T03:36:13.423Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (32, 'Plot for sale in Althan', 'plot-for-sale-in-althan', 'BLOG', 2, 9, 4, true, '2026-07-27T04:10:32.562Z', '2026-07-27T04:10:32.562Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (173, 'Plot for sale in Althan', 'plot-for-sale-in-althan-surat', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:02.360Z', '2026-07-28T03:37:02.360Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (174, 'Plot for sale in Althan', 'plot-for-sale-althan', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:03.648Z', '2026-07-28T03:37:03.648Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (33, 'Flat for sale in Alkapuri', 'flat-for-sale-in-alkapuri', 'BLOG', 3, 11, 1, true, '2026-07-27T04:10:32.823Z', '2026-07-27T04:10:32.823Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (34, 'Property in Gotri Vadodara', 'property-in-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-27T04:10:33.093Z', '2026-07-27T04:10:33.093Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (30, 'Property in Adajan Surat', 'property-in-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-27T04:10:32.041Z', '2026-07-27T04:10:32.041Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (161, 'Property in Adajan Surat', 'property-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:12.155Z', '2026-07-28T03:33:12.155Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (162, 'Property in Adajan Surat', 'flat-for-sale-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:13.144Z', '2026-07-28T03:33:13.144Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (163, 'Property in Adajan Surat', 'flat-for-sale-in-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:14.139Z', '2026-07-28T03:33:14.139Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (36, 'Property in Kalawad Road Rajkot', 'property-in-kalawad-road-rajkot', 'BLOG', 4, 13, NULL, true, '2026-07-27T04:10:33.649Z', '2026-07-27T04:10:33.649Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (37, 'Flat GIFT City Gandhinagar', 'flat-gift-city-gandhinagar', 'BLOG', 5, 14, 1, true, '2026-07-27T04:10:33.908Z', '2026-07-27T04:10:33.908Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (38, 'Property in Vallabh Vidyanagar', 'property-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-27T04:10:34.168Z', '2026-07-27T04:10:34.168Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (11, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-flat-under-50-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-27T03:23:08.278Z', '2026-07-27T04:10:34.430Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (40, 'Ready to Move Flats Surat', 'ready-to-move-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-27T04:10:34.687Z', '2026-07-27T04:10:34.687Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (41, 'New Projects in Bopal', 'new-projects-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-27T04:10:34.949Z', '2026-07-27T04:10:34.949Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (60, '2 BHK Flat in Bopal', '2bhk-flat-in-bopal', 'BLOG', NULL, NULL, NULL, true, '2026-07-27T06:45:10.690Z', '2026-07-27T06:45:10.690Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (48, 'GIDC Shed for Sale', 'gidc-shed-for-sale', 'BLOG', NULL, NULL, 12, true, '2026-07-27T04:10:36.773Z', '2026-07-27T04:10:36.773Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (49, 'Agricultural Land for Sale Gujarat', 'agricultural-land-for-sale-gujarat', 'BLOG', NULL, NULL, 9, true, '2026-07-27T04:10:37.034Z', '2026-07-27T04:10:37.034Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (50, 'NA Plot Gujarat', 'na-plot-gujarat', 'BLOG', NULL, NULL, 10, true, '2026-07-27T04:10:37.295Z', '2026-07-27T04:10:37.295Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (51, 'Industrial Land Gujarat', 'industrial-land-gujarat', 'BLOG', NULL, NULL, 8, true, '2026-07-27T04:10:37.553Z', '2026-07-27T04:10:37.553Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (12, 'Property rates in Bopal 2026', 'property-rates-in-bopal-2026', 'BLOG', 1, 4, NULL, true, '2026-07-27T03:23:08.540Z', '2026-07-27T03:23:08.540Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (1, 'Property in Gujarat', 'property-in-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T03:23:04.968Z', '2026-07-27T04:10:27.589Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (16, 'Property for Sale in Ahmedabad', 'property-for-sale-in-ahmedabad', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T04:10:28.384Z', '2026-07-27T04:10:28.384Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (17, '2BHK Flat Ahmedabad', '2bhk-flat-ahmedabad', 'LONG_TAIL', 1, NULL, 1, true, '2026-07-27T04:10:28.645Z', '2026-07-27T04:10:28.645Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (18, '3BHK Flat Surat', '3bhk-flat-surat', 'LONG_TAIL', 2, NULL, 1, true, '2026-07-27T04:10:28.904Z', '2026-07-27T04:10:28.904Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (19, 'Plot for Sale Vadodara', 'plot-for-sale-vadodara', 'PROPERTY_TYPE', 3, NULL, 4, true, '2026-07-27T04:10:29.167Z', '2026-07-27T04:10:29.167Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (20, 'Property Dealer Gujarat', 'property-dealer-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T04:10:29.428Z', '2026-07-27T04:10:29.428Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (21, 'Buy Property Gujarat', 'buy-property-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T04:10:29.691Z', '2026-07-27T04:10:29.691Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (22, 'Ahmedabad Real Estate', 'ahmedabad-real-estate', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T04:10:29.951Z', '2026-07-27T04:10:29.951Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (6, 'Flat for sale in SG Highway', 'flat-for-sale-in-sg-highway', 'LOCALITY_PAGE', 1, 1, 1, true, '2026-07-27T03:23:07.017Z', '2026-07-27T04:10:30.216Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (25, 'Property in Prahlad Nagar', 'property-in-prahlad-nagar', 'LOCALITY_PAGE', 1, 3, NULL, true, '2026-07-27T04:10:30.737Z', '2026-07-27T04:10:30.737Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (27, 'Flat for sale in Satellite Ahmedabad', 'flat-for-sale-in-satellite-ahmedabad', 'LOCALITY_PAGE', 1, 2, 1, true, '2026-07-27T04:10:31.256Z', '2026-07-27T04:10:31.256Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (28, 'Plot for sale in Thaltej', 'plot-for-sale-in-thaltej', 'LOCALITY_PAGE', 1, 5, 4, true, '2026-07-27T04:10:31.519Z', '2026-07-27T04:10:31.519Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (35, '2BHK Manjalpur', '2bhk-manjalpur', 'LONG_TAIL', 3, 12, 1, true, '2026-07-27T04:10:33.381Z', '2026-07-27T04:10:33.381Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (43, 'Residential Plot for Sale Gujarat', 'residential-plot-for-sale-gujarat', 'PROPERTY_TYPE', NULL, NULL, 4, true, '2026-07-27T04:10:35.472Z', '2026-07-27T04:10:35.472Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (9, 'Villa for Sale Vadodara', 'villa-for-sale-vadodara', 'PROPERTY_TYPE', 3, NULL, 3, true, '2026-07-27T03:23:07.773Z', '2026-07-27T04:10:35.732Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (46, 'Office Space for Rent Ahmedabad', 'office-space-for-rent-ahmedabad', 'PROPERTY_TYPE', 1, NULL, 6, true, '2026-07-27T04:10:36.257Z', '2026-07-27T04:10:36.257Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (10, 'Shop for Sale Surat', 'shop-for-sale-surat', 'PROPERTY_TYPE', 2, NULL, 7, true, '2026-07-27T03:23:08.025Z', '2026-07-27T04:10:36.514Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (175, 'Plot for sale in Althan', 'property-in-althan-surat', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:04.938Z', '2026-07-28T03:37:04.938Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (176, 'Plot for sale in Althan', 'property-in-althan', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:06.227Z', '2026-07-28T03:37:06.227Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (177, 'Plot for sale in Althan', 'residential-plot-althan-surat', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:07.517Z', '2026-07-28T03:37:07.517Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (179, 'Flat for sale in Alkapuri', 'flat-for-sale-in-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:25.389Z', '2026-07-28T03:42:25.389Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (180, 'Flat for sale in Alkapuri', 'flat-for-sale-alkapuri', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:27.019Z', '2026-07-28T03:42:27.019Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (181, 'Flat for sale in Alkapuri', 'property-in-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:28.319Z', '2026-07-28T03:42:28.319Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (182, 'Flat for sale in Alkapuri', 'property-in-alkapuri', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:29.619Z', '2026-07-28T03:42:29.619Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (183, 'Flat for sale in Alkapuri', '2bhk-flat-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:30.917Z', '2026-07-28T03:42:30.917Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (184, 'Flat for sale in Alkapuri', '3bhk-flat-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:32.219Z', '2026-07-28T03:42:32.219Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (186, 'Property in Gotri Vadodara', 'property-in-gotri', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:29.980Z', '2026-07-28T03:45:29.980Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (187, 'Property in Gotri Vadodara', 'flat-for-sale-in-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:30.973Z', '2026-07-28T03:45:30.973Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (188, 'Property in Gotri Vadodara', 'flat-for-sale-in-gotri', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:31.977Z', '2026-07-28T03:45:31.977Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (189, 'Property in Gotri Vadodara', '2bhk-flat-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:32.970Z', '2026-07-28T03:45:32.970Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (190, 'Property in Gotri Vadodara', '3bhk-flat-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:33.970Z', '2026-07-28T03:45:33.970Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (195, 'Property in Adajan Surat', 'flats-in-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:42.558Z', '2026-07-28T04:02:42.558Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (196, 'Property in Adajan Surat', '2bhk-flat-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:43.563Z', '2026-07-28T04:02:43.563Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (197, 'Property in Adajan Surat', '3bhk-flat-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:44.560Z', '2026-07-28T04:02:44.560Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (198, 'Property in Adajan Surat', 'villa-for-sale-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:45.555Z', '2026-07-28T04:02:45.555Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (199, 'Property in Adajan Surat', 'independent-house-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:46.556Z', '2026-07-28T04:02:46.556Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (200, 'Property in Adajan Surat', 'residential-plot-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:47.555Z', '2026-07-28T04:02:47.555Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (201, 'Property in Adajan Surat', 'luxury-property-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:48.554Z', '2026-07-28T04:02:48.554Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (202, 'Property in Adajan Surat', 'new-residential-projects-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:49.550Z', '2026-07-28T04:02:49.550Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (204, 'Property in Kalawad Road Rajkot', 'property-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:05.923Z', '2026-07-28T04:15:05.923Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (205, 'Property in Kalawad Road Rajkot', 'flat-for-sale-in-kalawad-road-rajkot', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:06.920Z', '2026-07-28T04:15:06.920Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (206, 'Property in Kalawad Road Rajkot', 'flat-for-sale-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:07.909Z', '2026-07-28T04:15:07.909Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (207, 'Property in Kalawad Road Rajkot', 'flats-in-kalawad-road-rajkot', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:08.903Z', '2026-07-28T04:15:08.903Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (208, 'Property in Kalawad Road Rajkot', '2bhk-flat-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:09.903Z', '2026-07-28T04:15:09.903Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (209, 'Property in Kalawad Road Rajkot', '3bhk-flat-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:10.895Z', '2026-07-28T04:15:10.895Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (210, 'Property in Kalawad Road Rajkot', 'villa-for-sale-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:11.889Z', '2026-07-28T04:15:11.889Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (211, 'Property in Kalawad Road Rajkot', 'independent-house-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:12.903Z', '2026-07-28T04:15:12.903Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (212, 'Property in Kalawad Road Rajkot', 'residential-plot-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:13.900Z', '2026-07-28T04:15:13.900Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (213, 'Property in Kalawad Road Rajkot', 'luxury-property-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:14.901Z', '2026-07-28T04:15:14.901Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (214, 'Property in Kalawad Road Rajkot', 'new-residential-projects-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:15.889Z', '2026-07-28T04:15:15.889Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (215, 'Flat GIFT City Gandhinagar', 'flat-for-sale-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:16:57.860Z', '2026-07-28T04:16:57.860Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (216, 'Flat GIFT City Gandhinagar', 'flat-for-sale-in-gift-city-gandhinagar', 'BLOG', 5, 14, 1, true, '2026-07-28T04:16:59.114Z', '2026-07-28T04:16:59.114Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (218, 'Flat GIFT City Gandhinagar', 'property-in-gift-city-gandhinagar', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:01.587Z', '2026-07-28T04:17:01.587Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (219, 'Flat GIFT City Gandhinagar', 'property-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:02.825Z', '2026-07-28T04:17:02.825Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (220, 'Flat GIFT City Gandhinagar', '2bhk-flat-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:04.067Z', '2026-07-28T04:17:04.067Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (221, 'Flat GIFT City Gandhinagar', '3bhk-flat-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:05.310Z', '2026-07-28T04:17:05.310Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (222, 'Flat GIFT City Gandhinagar', 'luxury-flats-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:06.555Z', '2026-07-28T04:17:06.555Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (223, 'Flat GIFT City Gandhinagar', 'ready-to-move-flats-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:07.795Z', '2026-07-28T04:17:07.795Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (224, 'Flat GIFT City Gandhinagar', 'smart-apartments-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:09.047Z', '2026-07-28T04:17:09.047Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (225, 'Flat GIFT City Gandhinagar', 'residential-property-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:10.293Z', '2026-07-28T04:17:10.293Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (226, 'Flat GIFT City Gandhinagar', 'new-residential-projects-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:11.533Z', '2026-07-28T04:17:11.533Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (228, 'Property in Vallabh Vidyanagar', 'property-in-vallabh-vidyanagar-anand', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:40.486Z', '2026-07-28T04:18:40.486Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (229, 'Property in Vallabh Vidyanagar', 'flat-for-sale-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:41.531Z', '2026-07-28T04:18:41.531Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (230, 'Property in Vallabh Vidyanagar', 'flat-for-sale-in-vallabh-vidyanagar-anand', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:42.565Z', '2026-07-28T04:18:42.565Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (231, 'Property in Vallabh Vidyanagar', 'flats-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:43.597Z', '2026-07-28T04:18:43.597Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (232, 'Property in Vallabh Vidyanagar', '2bhk-flat-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:44.631Z', '2026-07-28T04:18:44.631Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (233, 'Property in Vallabh Vidyanagar', '3bhk-flat-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:45.673Z', '2026-07-28T04:18:45.673Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (234, 'Property in Vallabh Vidyanagar', 'villa-for-sale-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:46.705Z', '2026-07-28T04:18:46.705Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (235, 'Property in Vallabh Vidyanagar', 'independent-house-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:47.734Z', '2026-07-28T04:18:47.734Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (236, 'Property in Vallabh Vidyanagar', 'residential-plot-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:48.764Z', '2026-07-28T04:18:48.764Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (237, 'Property in Vallabh Vidyanagar', 'luxury-property-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:49.795Z', '2026-07-28T04:18:49.795Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (238, 'Property in Vallabh Vidyanagar', 'new-residential-projects-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:50.824Z', '2026-07-28T04:18:50.824Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (240, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-under-50-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:06.901Z', '2026-07-28T04:22:06.901Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (241, '2BHK Flat under 50 Lakh Ahmedabad', 'flat-under-50-lakh-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:07.894Z', '2026-07-28T04:22:07.894Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (242, '2BHK Flat under 50 Lakh Ahmedabad', 'flats-under-50-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:08.884Z', '2026-07-28T04:22:08.884Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (243, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-flat-under-40-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:09.876Z', '2026-07-28T04:22:09.876Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (244, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-flat-under-60-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:10.863Z', '2026-07-28T04:22:10.863Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (247, '2BHK Flat under 50 Lakh Ahmedabad', 'ready-to-move-2bhk-flats-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:13.851Z', '2026-07-28T04:22:13.851Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (248, '2BHK Flat under 50 Lakh Ahmedabad', 'rera-approved-2bhk-flats-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:14.839Z', '2026-07-28T04:22:14.839Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (250, 'Ready to move flats Surat', 'ready-to-move-flats-in-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:50.905Z', '2026-07-28T04:25:50.905Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (251, 'Ready to move flats Surat', 'ready-possession-flats-in-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:51.900Z', '2026-07-28T04:25:51.900Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (252, 'Ready to move flats Surat', 'ready-to-move-2bhk-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:52.889Z', '2026-07-28T04:25:52.889Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (253, 'Ready to move flats Surat', 'ready-to-move-3bhk-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:53.880Z', '2026-07-28T04:25:53.880Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (254, 'Ready to move flats Surat', 'luxury-ready-possession-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:54.872Z', '2026-07-28T04:25:54.872Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (255, 'Ready to move flats Surat', 'immediate-possession-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:55.871Z', '2026-07-28T04:25:55.871Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (257, 'New Projects in Bopal Ahmedabad', 'new-projects-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:11.315Z', '2026-07-28T04:32:11.315Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (258, 'New Projects in Bopal Ahmedabad', 'property-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:12.305Z', '2026-07-28T04:32:12.305Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (259, 'New Projects in Bopal Ahmedabad', 'property-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:13.289Z', '2026-07-28T04:32:13.289Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (260, 'New Projects in Bopal Ahmedabad', 'flat-for-sale-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:14.277Z', '2026-07-28T04:32:14.277Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (261, 'New Projects in Bopal Ahmedabad', 'flats-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:15.267Z', '2026-07-28T04:32:15.267Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (263, 'New Projects in Bopal Ahmedabad', '3bhk-flat-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:17.243Z', '2026-07-28T04:32:17.243Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (265, 'New Projects in Bopal Ahmedabad', 'new-projects-in-south-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:19.221Z', '2026-07-28T04:32:19.221Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (266, 'New Projects in Bopal Ahmedabad', 'rera-projects-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:20.207Z', '2026-07-28T04:32:20.207Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (267, 'New Projects in Bopal Ahmedabad', 'under-construction-flats-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:21.197Z', '2026-07-28T04:32:21.197Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (42, 'Affordable Flats Ahmedabad', 'affordable-flats-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-27T04:10:35.212Z', '2026-07-27T04:10:35.212Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (270, 'Affordable flats Ahmedabad', 'budget-flats-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:19.965Z', '2026-07-28T04:34:19.965Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (246, '2BHK Flat under 50 Lakh Ahmedabad', 'budget-apartments-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:12.858Z', '2026-07-28T04:22:12.858Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (272, 'Affordable flats Ahmedabad', 'affordable-2bhk-flats-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:22.000Z', '2026-07-28T04:34:22.000Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (273, 'Affordable flats Ahmedabad', 'affordable-3bhk-apartments-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:23.005Z', '2026-07-28T04:34:23.005Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (274, 'Affordable flats Ahmedabad', 'budget-flats-in-gota', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:24.039Z', '2026-07-28T04:34:24.039Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (275, 'Affordable flats Ahmedabad', 'budget-flats-in-chandkheda', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:25.041Z', '2026-07-28T04:34:25.041Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (276, 'Affordable flats Ahmedabad', 'affordable-flats-in-south-bopal', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:26.042Z', '2026-07-28T04:34:26.042Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (277, 'Affordable flats Ahmedabad', 'affordable-flats-in-shela', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:27.044Z', '2026-07-28T04:34:27.044Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (278, 'Plot for Sale Gujarat', 'residential-plot-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:20.171Z', '2026-07-28T04:36:20.171Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (279, 'Plot for Sale Gujarat', 'residential-plots-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:20.911Z', '2026-07-28T04:36:20.911Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (280, 'Plot for Sale Gujarat', 'plots-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:21.647Z', '2026-07-28T04:36:21.647Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (281, 'Plot for Sale Gujarat', 'na-plots-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:22.394Z', '2026-07-28T04:36:22.394Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (282, 'Plot for Sale Gujarat', 'gated-plotting-projects-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:23.140Z', '2026-07-28T04:36:23.140Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (283, 'Plot for Sale Gujarat', 'villa-plots-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:23.888Z', '2026-07-28T04:36:23.888Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (284, 'Plot for Sale Gujarat', 'residential-plots-in-ahmedabad', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:24.624Z', '2026-07-28T04:36:24.624Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (285, 'Plot for Sale Gujarat', 'residential-plots-in-surat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:25.361Z', '2026-07-28T04:36:25.361Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (286, 'Plot for Sale Gujarat', 'plots-near-gift-city', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:26.097Z', '2026-07-28T04:36:26.097Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (287, 'Plot for Sale Gujarat', 'plots-near-dholera-sir', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:26.834Z', '2026-07-28T04:36:26.834Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (288, 'Villa for Sale Vadodara', 'villa-for-sale-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:48.237Z', '2026-07-28T04:38:48.237Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (289, 'Villa for Sale Vadodara', 'villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:49.239Z', '2026-07-28T04:38:49.239Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (290, 'Villa for Sale Vadodara', 'luxury-villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:50.242Z', '2026-07-28T04:38:50.242Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (291, 'Villa for Sale Vadodara', '3bhk-villa-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:51.252Z', '2026-07-28T04:38:51.252Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (292, 'Villa for Sale Vadodara', '4bhk-villa-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:52.261Z', '2026-07-28T04:38:52.261Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (293, 'Villa for Sale Vadodara', 'independent-house-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:53.272Z', '2026-07-28T04:38:53.272Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (294, 'Villa for Sale Vadodara', 'ready-to-move-villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:54.284Z', '2026-07-28T04:38:54.284Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (295, 'Villa for Sale Vadodara', 'gated-community-villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:55.295Z', '2026-07-28T04:38:55.295Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (296, 'Villa for Sale Vadodara', 'villas-in-bhayli-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:56.316Z', '2026-07-28T04:38:56.316Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (297, 'Villa for Sale Vadodara', 'villas-in-sevasi-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:57.318Z', '2026-07-28T04:38:57.318Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (298, 'Rental Flats in Vesu Surat', 'rental-flats-in-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:00.224Z', '2026-07-28T04:41:00.224Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (299, 'Rental Flats in Vesu Surat', 'flat-for-rent-in-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:01.505Z', '2026-07-28T04:41:01.505Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (300, 'Rental Flats in Vesu Surat', 'flats-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:02.786Z', '2026-07-28T04:41:02.786Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (301, 'Rental Flats in Vesu Surat', '2bhk-flat-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:04.058Z', '2026-07-28T04:41:04.058Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (302, 'Rental Flats in Vesu Surat', '3bhk-flat-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:05.336Z', '2026-07-28T04:41:05.336Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (303, 'Rental Flats in Vesu Surat', 'luxury-rental-flats-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:06.635Z', '2026-07-28T04:41:06.635Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (304, 'Rental Flats in Vesu Surat', 'fully-furnished-flats-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:07.923Z', '2026-07-28T04:41:07.923Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (305, 'Rental Flats in Vesu Surat', 'semi-furnished-flats-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:09.216Z', '2026-07-28T04:41:09.216Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (306, 'Rental Flats in Vesu Surat', 'rental-apartments-near-vip-road', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:10.505Z', '2026-07-28T04:41:10.505Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (307, 'Rental Flats in Vesu Surat', 'flat-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:11.786Z', '2026-07-28T04:41:11.786Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (308, 'Office Space for Rent Ahmedabad', 'office-space-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:24.720Z', '2026-07-28T04:43:24.720Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (309, 'Office Space for Rent Ahmedabad', 'commercial-office-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:25.720Z', '2026-07-28T04:43:25.720Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (310, 'Office Space for Rent Ahmedabad', 'office-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:26.710Z', '2026-07-28T04:43:26.710Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (311, 'Office Space for Rent Ahmedabad', 'office-space-on-sg-highway', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:27.712Z', '2026-07-28T04:43:27.712Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (312, 'Office Space for Rent Ahmedabad', 'office-space-in-prahlad-nagar', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:28.705Z', '2026-07-28T04:43:28.705Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (264, 'New Projects in Bopal Ahmedabad', 'luxury-apartments-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:18.235Z', '2026-07-28T04:32:18.235Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (313, 'Office Space for Rent Ahmedabad', 'office-space-on-sindhu-bhavan-road', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:29.706Z', '2026-07-28T04:43:29.706Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (314, 'Office Space for Rent Ahmedabad', 'coworking-space-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:30.691Z', '2026-07-28T04:43:30.691Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (315, 'Office Space for Rent Ahmedabad', 'managed-office-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:31.679Z', '2026-07-28T04:43:31.679Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (316, 'Office Space for Rent Ahmedabad', 'furnished-office-space-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:32.664Z', '2026-07-28T04:43:32.664Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (317, 'Office Space for Rent Ahmedabad', 'commercial-property-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:33.651Z', '2026-07-28T04:43:33.651Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (318, 'Shop for Sale Surat', 'shop-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:19.725Z', '2026-07-28T04:45:19.725Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (319, 'Shop for Sale Surat', 'commercial-shop-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:20.731Z', '2026-07-28T04:45:20.731Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (320, 'Shop for Sale Surat', 'shops-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:21.733Z', '2026-07-28T04:45:21.733Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (321, 'Shop for Sale Surat', 'retail-shop-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:22.735Z', '2026-07-28T04:45:22.735Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (322, 'Shop for Sale Surat', 'showroom-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:23.740Z', '2026-07-28T04:45:23.740Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (323, 'Shop for Sale Surat', 'investment-shops-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:24.746Z', '2026-07-28T04:45:24.746Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (324, 'Shop for Sale Surat', 'shop-for-sale-in-vesu', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:25.747Z', '2026-07-28T04:45:25.747Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (325, 'Shop for Sale Surat', 'commercial-shops-in-adajan', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:26.748Z', '2026-07-28T04:45:26.748Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (326, 'Shop for Sale Surat', 'retail-shop-for-sale-in-pal', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:27.749Z', '2026-07-28T04:45:27.749Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (327, 'Shop for Sale Surat', 'commercial-property-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:28.751Z', '2026-07-28T04:45:28.751Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (329, 'GIDC Shed for Sale', 'gidc-industrial-shed-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:44.659Z', '2026-07-28T04:49:44.659Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (330, 'GIDC Shed for Sale', 'factory-shed-for-sale-in-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:45.408Z', '2026-07-28T04:49:45.408Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (331, 'GIDC Shed for Sale', 'industrial-shed-in-sanand-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:46.149Z', '2026-07-28T04:49:46.149Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (332, 'GIDC Shed for Sale', 'industrial-shed-in-vatva-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:46.888Z', '2026-07-28T04:49:46.888Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (333, 'GIDC Shed for Sale', 'industrial-shed-in-naroda-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:47.632Z', '2026-07-28T04:49:47.632Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (334, 'GIDC Shed for Sale', 'factory-for-sale-in-ankleshwar-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:48.376Z', '2026-07-28T04:49:48.376Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (335, 'GIDC Shed for Sale', 'industrial-shed-in-vapi-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:49.115Z', '2026-07-28T04:49:49.115Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (336, 'GIDC Shed for Sale', 'manufacturing-unit-for-sale-in-sachin-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:50.170Z', '2026-07-28T04:49:50.170Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (337, 'GIDC Shed for Sale', 'industrial-property-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:50.920Z', '2026-07-28T04:49:50.920Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (339, 'Agricultural Land Gujarat', 'agricultural-land-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:55.388Z', '2026-07-28T04:51:55.388Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (340, 'Agricultural Land Gujarat', 'farm-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:56.151Z', '2026-07-28T04:51:56.151Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (341, 'Agricultural Land Gujarat', 'cultivable-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:56.920Z', '2026-07-28T04:51:56.920Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (342, 'Agricultural Land Gujarat', 'irrigated-farm-land-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:58.012Z', '2026-07-28T04:51:58.012Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (343, 'Agricultural Land Gujarat', 'orchard-land-for-sale-in-anand', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:58.773Z', '2026-07-28T04:51:58.773Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (344, 'Agricultural Land Gujarat', 'agricultural-land-for-sale-in-ahmedabad', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:59.536Z', '2026-07-28T04:51:59.536Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (345, 'Agricultural Land Gujarat', 'farm-land-for-sale-in-rajkot', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:52:00.620Z', '2026-07-28T04:52:00.620Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (346, 'Agricultural Land Gujarat', 'agricultural-land-for-sale-in-surat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:52:01.385Z', '2026-07-28T04:52:01.385Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (347, 'Agricultural Land Gujarat', 'organic-farming-land-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:52:02.144Z', '2026-07-28T04:52:02.144Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (349, 'NA Plot Gujarat', 'na-plot-for-sale-ahmedabad', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:17.688Z', '2026-07-28T04:54:17.688Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (350, 'NA Plot Gujarat', 'na-plot-gandhinagar', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:18.468Z', '2026-07-28T04:54:18.468Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (351, 'NA Plot Gujarat', 'residential-plot-surat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:19.245Z', '2026-07-28T04:54:19.245Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (352, 'NA Plot Gujarat', 'commercial-na-plot-vadodara', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:20.020Z', '2026-07-28T04:54:20.020Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (353, 'NA Plot Gujarat', 'na-plot-rajkot', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:21.057Z', '2026-07-28T04:54:21.057Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (354, 'NA Plot Gujarat', 'villa-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:21.827Z', '2026-07-28T04:54:21.827Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (355, 'NA Plot Gujarat', 'gated-community-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:22.602Z', '2026-07-28T04:54:22.602Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (356, 'NA Plot Gujarat', 'investment-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:23.381Z', '2026-07-28T04:54:23.381Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (357, 'NA Plot Gujarat', 'approved-na-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:24.156Z', '2026-07-28T04:54:24.156Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (359, 'Industrial Land Gujarat', 'industrial-land-for-sale-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:24.339Z', '2026-07-28T04:56:24.339Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (360, 'Industrial Land Gujarat', 'industrial-plot-sanand', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:25.088Z', '2026-07-28T04:56:25.088Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (361, 'Industrial Land Gujarat', 'factory-land-vatva', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:25.837Z', '2026-07-28T04:56:25.837Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (362, 'Industrial Land Gujarat', 'industrial-land-ankleshwar', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:27.136Z', '2026-07-28T04:56:27.136Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (363, 'Industrial Land Gujarat', 'warehouse-land-vapi', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:27.879Z', '2026-07-28T04:56:27.879Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (364, 'Industrial Land Gujarat', 'industrial-plot-dahej', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:28.626Z', '2026-07-28T04:56:28.626Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (365, 'Industrial Land Gujarat', 'industrial-land-hazira', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:29.375Z', '2026-07-28T04:56:29.375Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (366, 'Industrial Land Gujarat', 'manufacturing-land-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:30.120Z', '2026-07-28T04:56:30.120Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (367, 'Industrial Land Gujarat', 'warehouse-land-for-sale-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:30.867Z', '2026-07-28T04:56:30.867Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (368, 'How to Buy Property in Gujarat', 'how-to-buy-property-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:23.872Z', '2026-07-28T04:58:23.872Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (369, 'How to Buy Property in Gujarat', 'how-to-buy-a-house-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:24.376Z', '2026-07-28T04:58:24.376Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (370, 'How to Buy Property in Gujarat', 'how-to-buy-a-flat-in-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:24.875Z', '2026-07-28T04:58:24.875Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (371, 'How to Buy Property in Gujarat', 'property-registration-process-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:25.380Z', '2026-07-28T04:58:25.380Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (372, 'How to Buy Property in Gujarat', 'first-time-home-buyer-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:25.877Z', '2026-07-28T04:58:25.877Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (373, 'How to Buy Property in Gujarat', 'how-to-buy-land-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:26.376Z', '2026-07-28T04:58:26.376Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (374, 'How to Buy Property in Gujarat', 'property-investment-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:26.876Z', '2026-07-28T04:58:26.876Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (375, 'How to Buy Property in Gujarat', 'home-loan-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:27.383Z', '2026-07-28T04:58:27.383Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (376, 'How to Buy Property in Gujarat', 'residential-property-buying-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:27.882Z', '2026-07-28T04:58:27.882Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (377, 'How to Buy Property in Gujarat', 'real-estate-buying-checklist-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:28.379Z', '2026-07-28T04:58:28.379Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (378, 'Stamp Duty in Gujarat', 'stamp-duty-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:00:59.735Z', '2026-07-28T05:00:59.735Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (379, 'Stamp Duty in Gujarat', 'stamp-duty-calculator-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:00.257Z', '2026-07-28T05:01:00.257Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (380, 'Stamp Duty in Gujarat', 'jantri-rate-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:00.781Z', '2026-07-28T05:01:00.781Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (381, 'Stamp Duty in Gujarat', 'property-registration-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:01.305Z', '2026-07-28T05:01:01.305Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (382, 'Stamp Duty in Gujarat', 'registration-charges-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:01.825Z', '2026-07-28T05:01:01.825Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (383, 'Stamp Duty in Gujarat', 'stamp-duty-on-flat-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:02.346Z', '2026-07-28T05:01:02.346Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (384, 'Stamp Duty in Gujarat', 'stamp-duty-on-plot-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:02.864Z', '2026-07-28T05:01:02.864Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (385, 'Stamp Duty in Gujarat', 'commercial-property-stamp-duty-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:03.383Z', '2026-07-28T05:01:03.383Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (386, 'Stamp Duty in Gujarat', 'industrial-property-registration-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:03.904Z', '2026-07-28T05:01:03.904Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (387, 'Stamp Duty in Gujarat', 'property-registration-cost-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:04.430Z', '2026-07-28T05:01:04.430Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (388, 'RERA Registered Properties Gujarat', 'rera-registered-properties-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:50.040Z', '2026-07-28T05:02:50.040Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (389, 'RERA Registered Properties Gujarat', 'rera-approved-projects-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:50.541Z', '2026-07-28T05:02:50.541Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (390, 'RERA Registered Properties Gujarat', 'rera-registered-flats-surat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:51.045Z', '2026-07-28T05:02:51.045Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (391, 'RERA Registered Properties Gujarat', 'gujrera-property-search', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:51.550Z', '2026-07-28T05:02:51.550Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (392, 'RERA Registered Properties Gujarat', 'rera-projects-vadodara', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:52.052Z', '2026-07-28T05:02:52.052Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (393, 'RERA Registered Properties Gujarat', 'rera-registered-villas-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:52.551Z', '2026-07-28T05:02:52.551Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (394, 'RERA Registered Properties Gujarat', 'commercial-rera-projects-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:53.297Z', '2026-07-28T05:02:53.297Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (395, 'RERA Registered Properties Gujarat', 'luxury-rera-projects-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:53.799Z', '2026-07-28T05:02:53.799Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (396, 'RERA Registered Properties Gujarat', 'under-construction-rera-projects-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:54.299Z', '2026-07-28T05:02:54.299Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (398, 'Best Areas to Buy Flat in Ahmedabad', 'best-areas-to-buy-flat-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:48.767Z', '2026-07-28T05:05:48.767Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (399, 'Best Areas to Buy Flat in Ahmedabad', 'best-areas-to-buy-villa-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:49.779Z', '2026-07-28T05:05:49.779Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (268, 'Affordable flats Ahmedabad', 'affordable-flats-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:17.915Z', '2026-07-28T04:34:17.915Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (401, 'Best Areas to Buy Flat in Ahmedabad', 'luxury-apartments-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:51.807Z', '2026-07-28T05:05:51.807Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (402, 'Best Areas to Buy Flat in Ahmedabad', 'best-investment-areas-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:52.816Z', '2026-07-28T05:05:52.816Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (403, 'Best Areas to Buy Flat in Ahmedabad', '2bhk-flats-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:53.821Z', '2026-07-28T05:05:53.821Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (404, 'Best Areas to Buy Flat in Ahmedabad', '3bhk-flats-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:54.831Z', '2026-07-28T05:05:54.831Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (405, 'Best Areas to Buy Flat in Ahmedabad', 'ready-to-move-flats-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:55.832Z', '2026-07-28T05:05:55.832Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (406, 'Best Areas to Buy Flat in Ahmedabad', 'new-residential-projects-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:56.839Z', '2026-07-28T05:05:56.839Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (407, 'Best Areas to Buy Flat in Ahmedabad', 'family-friendly-areas-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:57.846Z', '2026-07-28T05:05:57.846Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (409, 'Property Rates Bopal 2026', 'property-rates-in-south-bopal-2026', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:39.802Z', '2026-07-28T05:09:39.802Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (410, 'Property Rates Bopal 2026', 'property-rates-in-shela-2026', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:41.086Z', '2026-07-28T05:09:41.086Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (411, 'Property Rates Bopal 2026', 'flats-for-sale-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:42.350Z', '2026-07-28T05:09:42.350Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (412, 'Property Rates Bopal 2026', '2bhk-flats-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:43.611Z', '2026-07-28T05:09:43.611Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (413, 'Property Rates Bopal 2026', '3bhk-flats-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:44.886Z', '2026-07-28T05:09:44.886Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (415, 'Property Rates Bopal 2026', 'villas-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:47.424Z', '2026-07-28T05:09:47.424Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (416, 'Property Rates Bopal 2026', 'residential-plots-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:48.691Z', '2026-07-28T05:09:48.691Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (417, 'Property Rates Bopal 2026', 'bopal-real-estate-market-report', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:49.963Z', '2026-07-28T05:09:49.963Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (418, 'How to Verify Property in Gujarat', 'how-to-verify-property-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:11:59.016Z', '2026-07-28T05:11:59.016Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (419, 'How to Verify Property in Gujarat', 'property-verification-in-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:11:59.528Z', '2026-07-28T05:11:59.528Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (420, 'How to Verify Property in Gujarat', 'property-verification-in-surat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:00.034Z', '2026-07-28T05:12:00.034Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (421, 'How to Verify Property in Gujarat', 'land-record-verification-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:00.544Z', '2026-07-28T05:12:00.544Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (397, 'RERA Registered Properties Gujarat', 'rera-property-verification-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:54.801Z', '2026-07-28T05:02:54.801Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (423, 'How to Verify Property in Gujarat', 'title-search-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:01.553Z', '2026-07-28T05:12:01.553Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (424, 'How to Verify Property in Gujarat', 'apartment-verification-checklist', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:02.050Z', '2026-07-28T05:12:02.050Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (425, 'How to Verify Property in Gujarat', 'plot-verification-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:02.551Z', '2026-07-28T05:12:02.551Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (426, 'How to Verify Property in Gujarat', 'commercial-property-verification', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:03.051Z', '2026-07-28T05:12:03.051Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (427, 'How to Verify Property in Gujarat', 'property-legal-checklist-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:03.552Z', '2026-07-28T05:12:03.552Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (428, 'Agricultural Land for Sale in Gujarat', 'agricultural-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:14:53.515Z', '2026-07-28T07:14:53.515Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (431, 'NA Plot for Sale in Gujarat', 'na-plot-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:04.915Z', '2026-07-28T07:16:04.915Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (432, 'GIDC Shed for Sale in Gujarat', 'gidc-shed-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:05.666Z', '2026-07-28T07:16:05.666Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (429, 'Industrial Land for Sale in Gujarat', 'industrial-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:03.391Z', '2026-07-28T07:16:03.391Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (430, 'Industrial Land for Sale Gujarat', 'industrial-land-for-sale-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:04.169Z', '2026-07-28T07:16:04.169Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
-INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (435, 'Industrial Land for Sale in Gujarat', 'industrial-land-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:17:17.256Z', '2026-07-28T07:17:17.256Z') ON CONFLICT (id) DO UPDATE SET phrase = EXCLUDED.phrase, is_active = EXCLUDED.is_active;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (3, 'Property in Ahmedabad', 'property-in-ahmedabad', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T03:23:05.481Z', '2026-07-27T03:23:05.481Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (4, 'Property in Surat', 'property-in-surat', 'CITY_PAGE', 2, NULL, NULL, true, '2026-07-27T03:23:06.197Z', '2026-07-27T03:23:06.197Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (5, 'Property in Vadodara', 'property-in-vadodara', 'CITY_PAGE', 3, NULL, NULL, true, '2026-07-27T03:23:06.749Z', '2026-07-27T03:23:06.749Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (2, 'Real Estate Gujarat', 'real-estate-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T03:23:05.227Z', '2026-07-27T04:53:55.858Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (24, '2BHK Bopal Ahmedabad', '2bhk-bopal-ahmedabad', 'LONG_TAIL', 1, 4, 1, true, '2026-07-27T04:10:30.476Z', '2026-07-27T04:10:30.476Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (7, 'Property in Prahlad Nagar Ahmedabad', 'property-in-prahlad-nagar-ahmedabad', 'LOCALITY_PAGE', 1, 3, NULL, true, '2026-07-27T03:23:07.267Z', '2026-07-27T04:10:30.996Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (45, 'Rental Flats Vesu Surat', 'rental-flats-vesu-surat', 'LOCALITY_PAGE', 2, 6, 1, true, '2026-07-27T04:10:35.996Z', '2026-07-27T04:10:35.996Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (15, 'Flats for Sale in Ahmedabad', 'flats-for-sale-in-ahmedabad', 'CITY_PAGE', 1, NULL, 1, true, '2026-07-27T04:10:28.119Z', '2026-07-27T04:10:28.119Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (55, '2BHK Flat in Ahmedabad', '2bhk-flat-in-ahmedabad', 'PROPERTY_TYPE', NULL, NULL, NULL, true, '2026-07-27T05:50:37.880Z', '2026-07-27T05:50:37.880Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (56, '3BHK Flat in Surat', '3bhk-flat-in-surat', 'PROPERTY_TYPE', NULL, NULL, NULL, true, '2026-07-27T05:53:28.596Z', '2026-07-27T05:53:28.596Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (57, 'Plot for Sale in Vadodara', 'plot-for-sale-in-vadodara', 'PROPERTY_TYPE', NULL, NULL, NULL, true, '2026-07-27T05:54:58.112Z', '2026-07-27T05:54:58.112Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (58, 'Property Dealer in Gujarat', 'property-dealer-in-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T06:00:46.676Z', '2026-07-27T06:00:46.676Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (59, 'Buy Property in Gujarat', 'buy-property-in-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T06:03:22.554Z', '2026-07-27T06:03:22.554Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (8, 'Flat for sale in Vesu', 'flat-for-sale-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-27T03:23:07.520Z', '2026-07-27T04:10:31.779Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (155, 'Flat for sale in Vesu Surat', 'flat-for-sale-in-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:33.396Z', '2026-07-28T03:13:33.396Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (156, 'Flat for sale in Vesu Surat', 'flat-for-sale-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:34.630Z', '2026-07-28T03:13:34.630Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (157, 'Flat for sale in Vesu Surat', '2bhk-flat-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:35.865Z', '2026-07-28T03:13:35.865Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (158, 'Flat for sale in Vesu Surat', '3bhk-flat-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:37.103Z', '2026-07-28T03:13:37.103Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (159, 'Flat for sale in Vesu Surat', 'property-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T03:13:38.337Z', '2026-07-28T03:13:38.337Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (164, 'Property in Adajan Surat', '2bhk-flat-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:15.122Z', '2026-07-28T03:33:15.122Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (165, 'Property in Adajan Surat', '3bhk-flat-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:16.106Z', '2026-07-28T03:33:16.106Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (31, '2BHK Pal Surat', '2bhk-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-27T04:10:32.303Z', '2026-07-27T04:10:32.303Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (167, '2BHK Pal Surat', '2bhk-flat-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:08.329Z', '2026-07-28T03:36:08.329Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (168, '2BHK Pal Surat', 'flat-for-sale-in-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:09.628Z', '2026-07-28T03:36:09.628Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (169, '2BHK Pal Surat', 'flat-for-sale-in-pal', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:10.923Z', '2026-07-28T03:36:10.923Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (170, '2BHK Pal Surat', 'property-in-pal-surat', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:12.181Z', '2026-07-28T03:36:12.181Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (171, '2BHK Pal Surat', 'property-in-pal', 'BLOG', 2, 8, 1, true, '2026-07-28T03:36:13.423Z', '2026-07-28T03:36:13.423Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (32, 'Plot for sale in Althan', 'plot-for-sale-in-althan', 'BLOG', 2, 9, 4, true, '2026-07-27T04:10:32.562Z', '2026-07-27T04:10:32.562Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (173, 'Plot for sale in Althan', 'plot-for-sale-in-althan-surat', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:02.360Z', '2026-07-28T03:37:02.360Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (174, 'Plot for sale in Althan', 'plot-for-sale-althan', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:03.648Z', '2026-07-28T03:37:03.648Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (33, 'Flat for sale in Alkapuri', 'flat-for-sale-in-alkapuri', 'BLOG', 3, 11, 1, true, '2026-07-27T04:10:32.823Z', '2026-07-27T04:10:32.823Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (34, 'Property in Gotri Vadodara', 'property-in-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-27T04:10:33.093Z', '2026-07-27T04:10:33.093Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (30, 'Property in Adajan Surat', 'property-in-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-27T04:10:32.041Z', '2026-07-27T04:10:32.041Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (161, 'Property in Adajan Surat', 'property-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:12.155Z', '2026-07-28T03:33:12.155Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (162, 'Property in Adajan Surat', 'flat-for-sale-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:13.144Z', '2026-07-28T03:33:13.144Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (163, 'Property in Adajan Surat', 'flat-for-sale-in-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T03:33:14.139Z', '2026-07-28T03:33:14.139Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (36, 'Property in Kalawad Road Rajkot', 'property-in-kalawad-road-rajkot', 'BLOG', 4, 13, NULL, true, '2026-07-27T04:10:33.649Z', '2026-07-27T04:10:33.649Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (37, 'Flat GIFT City Gandhinagar', 'flat-gift-city-gandhinagar', 'BLOG', 5, 14, 1, true, '2026-07-27T04:10:33.908Z', '2026-07-27T04:10:33.908Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (38, 'Property in Vallabh Vidyanagar', 'property-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-27T04:10:34.168Z', '2026-07-27T04:10:34.168Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (11, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-flat-under-50-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-27T03:23:08.278Z', '2026-07-27T04:10:34.430Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (40, 'Ready to Move Flats Surat', 'ready-to-move-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-27T04:10:34.687Z', '2026-07-27T04:10:34.687Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (41, 'New Projects in Bopal', 'new-projects-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-27T04:10:34.949Z', '2026-07-27T04:10:34.949Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (60, '2 BHK Flat in Bopal', '2bhk-flat-in-bopal', 'BLOG', NULL, NULL, NULL, true, '2026-07-27T06:45:10.690Z', '2026-07-27T06:45:10.690Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (48, 'GIDC Shed for Sale', 'gidc-shed-for-sale', 'BLOG', NULL, NULL, 12, true, '2026-07-27T04:10:36.773Z', '2026-07-27T04:10:36.773Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (49, 'Agricultural Land for Sale Gujarat', 'agricultural-land-for-sale-gujarat', 'BLOG', NULL, NULL, 9, true, '2026-07-27T04:10:37.034Z', '2026-07-27T04:10:37.034Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (50, 'NA Plot Gujarat', 'na-plot-gujarat', 'BLOG', NULL, NULL, 10, true, '2026-07-27T04:10:37.295Z', '2026-07-27T04:10:37.295Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (51, 'Industrial Land Gujarat', 'industrial-land-gujarat', 'BLOG', NULL, NULL, 8, true, '2026-07-27T04:10:37.553Z', '2026-07-27T04:10:37.553Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (12, 'Property rates in Bopal 2026', 'property-rates-in-bopal-2026', 'BLOG', 1, 4, NULL, true, '2026-07-27T03:23:08.540Z', '2026-07-27T03:23:08.540Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (1, 'Property in Gujarat', 'property-in-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T03:23:04.968Z', '2026-07-27T04:10:27.589Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (16, 'Property for Sale in Ahmedabad', 'property-for-sale-in-ahmedabad', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T04:10:28.384Z', '2026-07-27T04:10:28.384Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (17, '2BHK Flat Ahmedabad', '2bhk-flat-ahmedabad', 'LONG_TAIL', 1, NULL, 1, true, '2026-07-27T04:10:28.645Z', '2026-07-27T04:10:28.645Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (18, '3BHK Flat Surat', '3bhk-flat-surat', 'LONG_TAIL', 2, NULL, 1, true, '2026-07-27T04:10:28.904Z', '2026-07-27T04:10:28.904Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (19, 'Plot for Sale Vadodara', 'plot-for-sale-vadodara', 'PROPERTY_TYPE', 3, NULL, 4, true, '2026-07-27T04:10:29.167Z', '2026-07-27T04:10:29.167Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (20, 'Property Dealer Gujarat', 'property-dealer-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T04:10:29.428Z', '2026-07-27T04:10:29.428Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (21, 'Buy Property Gujarat', 'buy-property-gujarat', 'HOMEPAGE', NULL, NULL, NULL, true, '2026-07-27T04:10:29.691Z', '2026-07-27T04:10:29.691Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (22, 'Ahmedabad Real Estate', 'ahmedabad-real-estate', 'CITY_PAGE', 1, NULL, NULL, true, '2026-07-27T04:10:29.951Z', '2026-07-27T04:10:29.951Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (6, 'Flat for sale in SG Highway', 'flat-for-sale-in-sg-highway', 'LOCALITY_PAGE', 1, 1, 1, true, '2026-07-27T03:23:07.017Z', '2026-07-27T04:10:30.216Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (25, 'Property in Prahlad Nagar', 'property-in-prahlad-nagar', 'LOCALITY_PAGE', 1, 3, NULL, true, '2026-07-27T04:10:30.737Z', '2026-07-27T04:10:30.737Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (27, 'Flat for sale in Satellite Ahmedabad', 'flat-for-sale-in-satellite-ahmedabad', 'LOCALITY_PAGE', 1, 2, 1, true, '2026-07-27T04:10:31.256Z', '2026-07-27T04:10:31.256Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (28, 'Plot for sale in Thaltej', 'plot-for-sale-in-thaltej', 'LOCALITY_PAGE', 1, 5, 4, true, '2026-07-27T04:10:31.519Z', '2026-07-27T04:10:31.519Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (35, '2BHK Manjalpur', '2bhk-manjalpur', 'LONG_TAIL', 3, 12, 1, true, '2026-07-27T04:10:33.381Z', '2026-07-27T04:10:33.381Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (43, 'Residential Plot for Sale Gujarat', 'residential-plot-for-sale-gujarat', 'PROPERTY_TYPE', NULL, NULL, 4, true, '2026-07-27T04:10:35.472Z', '2026-07-27T04:10:35.472Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (9, 'Villa for Sale Vadodara', 'villa-for-sale-vadodara', 'PROPERTY_TYPE', 3, NULL, 3, true, '2026-07-27T03:23:07.773Z', '2026-07-27T04:10:35.732Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (46, 'Office Space for Rent Ahmedabad', 'office-space-for-rent-ahmedabad', 'PROPERTY_TYPE', 1, NULL, 6, true, '2026-07-27T04:10:36.257Z', '2026-07-27T04:10:36.257Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (10, 'Shop for Sale Surat', 'shop-for-sale-surat', 'PROPERTY_TYPE', 2, NULL, 7, true, '2026-07-27T03:23:08.025Z', '2026-07-27T04:10:36.514Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (175, 'Plot for sale in Althan', 'property-in-althan-surat', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:04.938Z', '2026-07-28T03:37:04.938Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (176, 'Plot for sale in Althan', 'property-in-althan', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:06.227Z', '2026-07-28T03:37:06.227Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (177, 'Plot for sale in Althan', 'residential-plot-althan-surat', 'BLOG', 2, 9, 4, true, '2026-07-28T03:37:07.517Z', '2026-07-28T03:37:07.517Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (179, 'Flat for sale in Alkapuri', 'flat-for-sale-in-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:25.389Z', '2026-07-28T03:42:25.389Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (180, 'Flat for sale in Alkapuri', 'flat-for-sale-alkapuri', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:27.019Z', '2026-07-28T03:42:27.019Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (181, 'Flat for sale in Alkapuri', 'property-in-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:28.319Z', '2026-07-28T03:42:28.319Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (182, 'Flat for sale in Alkapuri', 'property-in-alkapuri', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:29.619Z', '2026-07-28T03:42:29.619Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (183, 'Flat for sale in Alkapuri', '2bhk-flat-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:30.917Z', '2026-07-28T03:42:30.917Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (184, 'Flat for sale in Alkapuri', '3bhk-flat-alkapuri-vadodara', 'BLOG', 3, 11, 1, true, '2026-07-28T03:42:32.219Z', '2026-07-28T03:42:32.219Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (186, 'Property in Gotri Vadodara', 'property-in-gotri', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:29.980Z', '2026-07-28T03:45:29.980Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (187, 'Property in Gotri Vadodara', 'flat-for-sale-in-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:30.973Z', '2026-07-28T03:45:30.973Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (188, 'Property in Gotri Vadodara', 'flat-for-sale-in-gotri', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:31.977Z', '2026-07-28T03:45:31.977Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (189, 'Property in Gotri Vadodara', '2bhk-flat-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:32.970Z', '2026-07-28T03:45:32.970Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (190, 'Property in Gotri Vadodara', '3bhk-flat-gotri-vadodara', 'BLOG', 3, 10, NULL, true, '2026-07-28T03:45:33.970Z', '2026-07-28T03:45:33.970Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (195, 'Property in Adajan Surat', 'flats-in-adajan-surat', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:42.558Z', '2026-07-28T04:02:42.558Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (196, 'Property in Adajan Surat', '2bhk-flat-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:43.563Z', '2026-07-28T04:02:43.563Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (197, 'Property in Adajan Surat', '3bhk-flat-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:44.560Z', '2026-07-28T04:02:44.560Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (198, 'Property in Adajan Surat', 'villa-for-sale-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:45.555Z', '2026-07-28T04:02:45.555Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (199, 'Property in Adajan Surat', 'independent-house-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:46.556Z', '2026-07-28T04:02:46.556Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (200, 'Property in Adajan Surat', 'residential-plot-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:47.555Z', '2026-07-28T04:02:47.555Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (201, 'Property in Adajan Surat', 'luxury-property-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:48.554Z', '2026-07-28T04:02:48.554Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (202, 'Property in Adajan Surat', 'new-residential-projects-in-adajan', 'BLOG', 2, 7, NULL, true, '2026-07-28T04:02:49.550Z', '2026-07-28T04:02:49.550Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (204, 'Property in Kalawad Road Rajkot', 'property-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:05.923Z', '2026-07-28T04:15:05.923Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (205, 'Property in Kalawad Road Rajkot', 'flat-for-sale-in-kalawad-road-rajkot', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:06.920Z', '2026-07-28T04:15:06.920Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (206, 'Property in Kalawad Road Rajkot', 'flat-for-sale-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:07.909Z', '2026-07-28T04:15:07.909Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (207, 'Property in Kalawad Road Rajkot', 'flats-in-kalawad-road-rajkot', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:08.903Z', '2026-07-28T04:15:08.903Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (208, 'Property in Kalawad Road Rajkot', '2bhk-flat-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:09.903Z', '2026-07-28T04:15:09.903Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (209, 'Property in Kalawad Road Rajkot', '3bhk-flat-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:10.895Z', '2026-07-28T04:15:10.895Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (210, 'Property in Kalawad Road Rajkot', 'villa-for-sale-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:11.889Z', '2026-07-28T04:15:11.889Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (211, 'Property in Kalawad Road Rajkot', 'independent-house-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:12.903Z', '2026-07-28T04:15:12.903Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (212, 'Property in Kalawad Road Rajkot', 'residential-plot-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:13.900Z', '2026-07-28T04:15:13.900Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (213, 'Property in Kalawad Road Rajkot', 'luxury-property-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:14.901Z', '2026-07-28T04:15:14.901Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (214, 'Property in Kalawad Road Rajkot', 'new-residential-projects-in-kalawad-road', 'BLOG', 4, 13, NULL, true, '2026-07-28T04:15:15.889Z', '2026-07-28T04:15:15.889Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (215, 'Flat GIFT City Gandhinagar', 'flat-for-sale-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:16:57.860Z', '2026-07-28T04:16:57.860Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (216, 'Flat GIFT City Gandhinagar', 'flat-for-sale-in-gift-city-gandhinagar', 'BLOG', 5, 14, 1, true, '2026-07-28T04:16:59.114Z', '2026-07-28T04:16:59.114Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (218, 'Flat GIFT City Gandhinagar', 'property-in-gift-city-gandhinagar', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:01.587Z', '2026-07-28T04:17:01.587Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (219, 'Flat GIFT City Gandhinagar', 'property-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:02.825Z', '2026-07-28T04:17:02.825Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (220, 'Flat GIFT City Gandhinagar', '2bhk-flat-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:04.067Z', '2026-07-28T04:17:04.067Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (221, 'Flat GIFT City Gandhinagar', '3bhk-flat-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:05.310Z', '2026-07-28T04:17:05.310Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (222, 'Flat GIFT City Gandhinagar', 'luxury-flats-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:06.555Z', '2026-07-28T04:17:06.555Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (223, 'Flat GIFT City Gandhinagar', 'ready-to-move-flats-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:07.795Z', '2026-07-28T04:17:07.795Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (224, 'Flat GIFT City Gandhinagar', 'smart-apartments-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:09.047Z', '2026-07-28T04:17:09.047Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (225, 'Flat GIFT City Gandhinagar', 'residential-property-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:10.293Z', '2026-07-28T04:17:10.293Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (226, 'Flat GIFT City Gandhinagar', 'new-residential-projects-in-gift-city', 'BLOG', 5, 14, 1, true, '2026-07-28T04:17:11.533Z', '2026-07-28T04:17:11.533Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (228, 'Property in Vallabh Vidyanagar', 'property-in-vallabh-vidyanagar-anand', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:40.486Z', '2026-07-28T04:18:40.486Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (229, 'Property in Vallabh Vidyanagar', 'flat-for-sale-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:41.531Z', '2026-07-28T04:18:41.531Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (230, 'Property in Vallabh Vidyanagar', 'flat-for-sale-in-vallabh-vidyanagar-anand', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:42.565Z', '2026-07-28T04:18:42.565Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (231, 'Property in Vallabh Vidyanagar', 'flats-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:43.597Z', '2026-07-28T04:18:43.597Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (232, 'Property in Vallabh Vidyanagar', '2bhk-flat-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:44.631Z', '2026-07-28T04:18:44.631Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (233, 'Property in Vallabh Vidyanagar', '3bhk-flat-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:45.673Z', '2026-07-28T04:18:45.673Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (234, 'Property in Vallabh Vidyanagar', 'villa-for-sale-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:46.705Z', '2026-07-28T04:18:46.705Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (235, 'Property in Vallabh Vidyanagar', 'independent-house-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:47.734Z', '2026-07-28T04:18:47.734Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (236, 'Property in Vallabh Vidyanagar', 'residential-plot-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:48.764Z', '2026-07-28T04:18:48.764Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (237, 'Property in Vallabh Vidyanagar', 'luxury-property-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:49.795Z', '2026-07-28T04:18:49.795Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (238, 'Property in Vallabh Vidyanagar', 'new-residential-projects-in-vallabh-vidyanagar', 'BLOG', 6, 15, NULL, true, '2026-07-28T04:18:50.824Z', '2026-07-28T04:18:50.824Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (240, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-under-50-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:06.901Z', '2026-07-28T04:22:06.901Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (241, '2BHK Flat under 50 Lakh Ahmedabad', 'flat-under-50-lakh-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:07.894Z', '2026-07-28T04:22:07.894Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (242, '2BHK Flat under 50 Lakh Ahmedabad', 'flats-under-50-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:08.884Z', '2026-07-28T04:22:08.884Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (243, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-flat-under-40-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:09.876Z', '2026-07-28T04:22:09.876Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (244, '2BHK Flat under 50 Lakh Ahmedabad', '2bhk-flat-under-60-lakh-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:10.863Z', '2026-07-28T04:22:10.863Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (247, '2BHK Flat under 50 Lakh Ahmedabad', 'ready-to-move-2bhk-flats-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:13.851Z', '2026-07-28T04:22:13.851Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (248, '2BHK Flat under 50 Lakh Ahmedabad', 'rera-approved-2bhk-flats-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:14.839Z', '2026-07-28T04:22:14.839Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (250, 'Ready to move flats Surat', 'ready-to-move-flats-in-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:50.905Z', '2026-07-28T04:25:50.905Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (251, 'Ready to move flats Surat', 'ready-possession-flats-in-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:51.900Z', '2026-07-28T04:25:51.900Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (252, 'Ready to move flats Surat', 'ready-to-move-2bhk-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:52.889Z', '2026-07-28T04:25:52.889Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (253, 'Ready to move flats Surat', 'ready-to-move-3bhk-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:53.880Z', '2026-07-28T04:25:53.880Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (254, 'Ready to move flats Surat', 'luxury-ready-possession-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:54.872Z', '2026-07-28T04:25:54.872Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (255, 'Ready to move flats Surat', 'immediate-possession-flats-surat', 'BLOG', 2, NULL, 1, true, '2026-07-28T04:25:55.871Z', '2026-07-28T04:25:55.871Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (257, 'New Projects in Bopal Ahmedabad', 'new-projects-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:11.315Z', '2026-07-28T04:32:11.315Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (258, 'New Projects in Bopal Ahmedabad', 'property-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:12.305Z', '2026-07-28T04:32:12.305Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (259, 'New Projects in Bopal Ahmedabad', 'property-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:13.289Z', '2026-07-28T04:32:13.289Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (260, 'New Projects in Bopal Ahmedabad', 'flat-for-sale-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:14.277Z', '2026-07-28T04:32:14.277Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (261, 'New Projects in Bopal Ahmedabad', 'flats-in-bopal-ahmedabad', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:15.267Z', '2026-07-28T04:32:15.267Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (263, 'New Projects in Bopal Ahmedabad', '3bhk-flat-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:17.243Z', '2026-07-28T04:32:17.243Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (265, 'New Projects in Bopal Ahmedabad', 'new-projects-in-south-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:19.221Z', '2026-07-28T04:32:19.221Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (266, 'New Projects in Bopal Ahmedabad', 'rera-projects-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:20.207Z', '2026-07-28T04:32:20.207Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (267, 'New Projects in Bopal Ahmedabad', 'under-construction-flats-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:21.197Z', '2026-07-28T04:32:21.197Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (42, 'Affordable Flats Ahmedabad', 'affordable-flats-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-27T04:10:35.212Z', '2026-07-27T04:10:35.212Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (270, 'Affordable flats Ahmedabad', 'budget-flats-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:19.965Z', '2026-07-28T04:34:19.965Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (246, '2BHK Flat under 50 Lakh Ahmedabad', 'budget-apartments-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:22:12.858Z', '2026-07-28T04:22:12.858Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (272, 'Affordable flats Ahmedabad', 'affordable-2bhk-flats-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:22.000Z', '2026-07-28T04:34:22.000Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (273, 'Affordable flats Ahmedabad', 'affordable-3bhk-apartments-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:23.005Z', '2026-07-28T04:34:23.005Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (274, 'Affordable flats Ahmedabad', 'budget-flats-in-gota', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:24.039Z', '2026-07-28T04:34:24.039Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (275, 'Affordable flats Ahmedabad', 'budget-flats-in-chandkheda', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:25.041Z', '2026-07-28T04:34:25.041Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (276, 'Affordable flats Ahmedabad', 'affordable-flats-in-south-bopal', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:26.042Z', '2026-07-28T04:34:26.042Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (277, 'Affordable flats Ahmedabad', 'affordable-flats-in-shela', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:27.044Z', '2026-07-28T04:34:27.044Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (278, 'Plot for Sale Gujarat', 'residential-plot-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:20.171Z', '2026-07-28T04:36:20.171Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (279, 'Plot for Sale Gujarat', 'residential-plots-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:20.911Z', '2026-07-28T04:36:20.911Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (280, 'Plot for Sale Gujarat', 'plots-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:21.647Z', '2026-07-28T04:36:21.647Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (281, 'Plot for Sale Gujarat', 'na-plots-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:22.394Z', '2026-07-28T04:36:22.394Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (282, 'Plot for Sale Gujarat', 'gated-plotting-projects-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:23.140Z', '2026-07-28T04:36:23.140Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (283, 'Plot for Sale Gujarat', 'villa-plots-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:23.888Z', '2026-07-28T04:36:23.888Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (284, 'Plot for Sale Gujarat', 'residential-plots-in-ahmedabad', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:24.624Z', '2026-07-28T04:36:24.624Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (285, 'Plot for Sale Gujarat', 'residential-plots-in-surat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:25.361Z', '2026-07-28T04:36:25.361Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (286, 'Plot for Sale Gujarat', 'plots-near-gift-city', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:26.097Z', '2026-07-28T04:36:26.097Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (287, 'Plot for Sale Gujarat', 'plots-near-dholera-sir', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:36:26.834Z', '2026-07-28T04:36:26.834Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (288, 'Villa for Sale Vadodara', 'villa-for-sale-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:48.237Z', '2026-07-28T04:38:48.237Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (289, 'Villa for Sale Vadodara', 'villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:49.239Z', '2026-07-28T04:38:49.239Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (290, 'Villa for Sale Vadodara', 'luxury-villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:50.242Z', '2026-07-28T04:38:50.242Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (291, 'Villa for Sale Vadodara', '3bhk-villa-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:51.252Z', '2026-07-28T04:38:51.252Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (292, 'Villa for Sale Vadodara', '4bhk-villa-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:52.261Z', '2026-07-28T04:38:52.261Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (293, 'Villa for Sale Vadodara', 'independent-house-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:53.272Z', '2026-07-28T04:38:53.272Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (294, 'Villa for Sale Vadodara', 'ready-to-move-villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:54.284Z', '2026-07-28T04:38:54.284Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (295, 'Villa for Sale Vadodara', 'gated-community-villas-in-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:55.295Z', '2026-07-28T04:38:55.295Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (296, 'Villa for Sale Vadodara', 'villas-in-bhayli-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:56.316Z', '2026-07-28T04:38:56.316Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (297, 'Villa for Sale Vadodara', 'villas-in-sevasi-vadodara', 'BLOG', 3, NULL, 3, true, '2026-07-28T04:38:57.318Z', '2026-07-28T04:38:57.318Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (298, 'Rental Flats in Vesu Surat', 'rental-flats-in-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:00.224Z', '2026-07-28T04:41:00.224Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (299, 'Rental Flats in Vesu Surat', 'flat-for-rent-in-vesu-surat', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:01.505Z', '2026-07-28T04:41:01.505Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (300, 'Rental Flats in Vesu Surat', 'flats-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:02.786Z', '2026-07-28T04:41:02.786Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (301, 'Rental Flats in Vesu Surat', '2bhk-flat-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:04.058Z', '2026-07-28T04:41:04.058Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (302, 'Rental Flats in Vesu Surat', '3bhk-flat-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:05.336Z', '2026-07-28T04:41:05.336Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (303, 'Rental Flats in Vesu Surat', 'luxury-rental-flats-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:06.635Z', '2026-07-28T04:41:06.635Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (304, 'Rental Flats in Vesu Surat', 'fully-furnished-flats-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:07.923Z', '2026-07-28T04:41:07.923Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (305, 'Rental Flats in Vesu Surat', 'semi-furnished-flats-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:09.216Z', '2026-07-28T04:41:09.216Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (306, 'Rental Flats in Vesu Surat', 'rental-apartments-near-vip-road', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:10.505Z', '2026-07-28T04:41:10.505Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (307, 'Rental Flats in Vesu Surat', 'flat-for-rent-in-vesu', 'BLOG', 2, 6, 1, true, '2026-07-28T04:41:11.786Z', '2026-07-28T04:41:11.786Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (308, 'Office Space for Rent Ahmedabad', 'office-space-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:24.720Z', '2026-07-28T04:43:24.720Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (309, 'Office Space for Rent Ahmedabad', 'commercial-office-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:25.720Z', '2026-07-28T04:43:25.720Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (310, 'Office Space for Rent Ahmedabad', 'office-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:26.710Z', '2026-07-28T04:43:26.710Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (311, 'Office Space for Rent Ahmedabad', 'office-space-on-sg-highway', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:27.712Z', '2026-07-28T04:43:27.712Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (312, 'Office Space for Rent Ahmedabad', 'office-space-in-prahlad-nagar', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:28.705Z', '2026-07-28T04:43:28.705Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (264, 'New Projects in Bopal Ahmedabad', 'luxury-apartments-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T04:32:18.235Z', '2026-07-28T04:32:18.235Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (313, 'Office Space for Rent Ahmedabad', 'office-space-on-sindhu-bhavan-road', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:29.706Z', '2026-07-28T04:43:29.706Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (314, 'Office Space for Rent Ahmedabad', 'coworking-space-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:30.691Z', '2026-07-28T04:43:30.691Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (315, 'Office Space for Rent Ahmedabad', 'managed-office-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:31.679Z', '2026-07-28T04:43:31.679Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (316, 'Office Space for Rent Ahmedabad', 'furnished-office-space-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:32.664Z', '2026-07-28T04:43:32.664Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (317, 'Office Space for Rent Ahmedabad', 'commercial-property-for-rent-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T04:43:33.651Z', '2026-07-28T04:43:33.651Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (318, 'Shop for Sale Surat', 'shop-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:19.725Z', '2026-07-28T04:45:19.725Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (319, 'Shop for Sale Surat', 'commercial-shop-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:20.731Z', '2026-07-28T04:45:20.731Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (320, 'Shop for Sale Surat', 'shops-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:21.733Z', '2026-07-28T04:45:21.733Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (321, 'Shop for Sale Surat', 'retail-shop-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:22.735Z', '2026-07-28T04:45:22.735Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (322, 'Shop for Sale Surat', 'showroom-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:23.740Z', '2026-07-28T04:45:23.740Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (323, 'Shop for Sale Surat', 'investment-shops-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:24.746Z', '2026-07-28T04:45:24.746Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (324, 'Shop for Sale Surat', 'shop-for-sale-in-vesu', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:25.747Z', '2026-07-28T04:45:25.747Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (325, 'Shop for Sale Surat', 'commercial-shops-in-adajan', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:26.748Z', '2026-07-28T04:45:26.748Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (326, 'Shop for Sale Surat', 'retail-shop-for-sale-in-pal', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:27.749Z', '2026-07-28T04:45:27.749Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (327, 'Shop for Sale Surat', 'commercial-property-for-sale-in-surat', 'BLOG', 2, NULL, NULL, true, '2026-07-28T04:45:28.751Z', '2026-07-28T04:45:28.751Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (329, 'GIDC Shed for Sale', 'gidc-industrial-shed-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:44.659Z', '2026-07-28T04:49:44.659Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (330, 'GIDC Shed for Sale', 'factory-shed-for-sale-in-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:45.408Z', '2026-07-28T04:49:45.408Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (331, 'GIDC Shed for Sale', 'industrial-shed-in-sanand-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:46.149Z', '2026-07-28T04:49:46.149Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (332, 'GIDC Shed for Sale', 'industrial-shed-in-vatva-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:46.888Z', '2026-07-28T04:49:46.888Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (333, 'GIDC Shed for Sale', 'industrial-shed-in-naroda-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:47.632Z', '2026-07-28T04:49:47.632Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (334, 'GIDC Shed for Sale', 'factory-for-sale-in-ankleshwar-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:48.376Z', '2026-07-28T04:49:48.376Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (335, 'GIDC Shed for Sale', 'industrial-shed-in-vapi-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:49.115Z', '2026-07-28T04:49:49.115Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (336, 'GIDC Shed for Sale', 'manufacturing-unit-for-sale-in-sachin-gidc', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:50.170Z', '2026-07-28T04:49:50.170Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (337, 'GIDC Shed for Sale', 'industrial-property-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:49:50.920Z', '2026-07-28T04:49:50.920Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (339, 'Agricultural Land Gujarat', 'agricultural-land-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:55.388Z', '2026-07-28T04:51:55.388Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (340, 'Agricultural Land Gujarat', 'farm-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:56.151Z', '2026-07-28T04:51:56.151Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (341, 'Agricultural Land Gujarat', 'cultivable-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:56.920Z', '2026-07-28T04:51:56.920Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (342, 'Agricultural Land Gujarat', 'irrigated-farm-land-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:58.012Z', '2026-07-28T04:51:58.012Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (343, 'Agricultural Land Gujarat', 'orchard-land-for-sale-in-anand', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:58.773Z', '2026-07-28T04:51:58.773Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (344, 'Agricultural Land Gujarat', 'agricultural-land-for-sale-in-ahmedabad', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:51:59.536Z', '2026-07-28T04:51:59.536Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (345, 'Agricultural Land Gujarat', 'farm-land-for-sale-in-rajkot', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:52:00.620Z', '2026-07-28T04:52:00.620Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (346, 'Agricultural Land Gujarat', 'agricultural-land-for-sale-in-surat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:52:01.385Z', '2026-07-28T04:52:01.385Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (347, 'Agricultural Land Gujarat', 'organic-farming-land-in-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:52:02.144Z', '2026-07-28T04:52:02.144Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (349, 'NA Plot Gujarat', 'na-plot-for-sale-ahmedabad', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:17.688Z', '2026-07-28T04:54:17.688Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (350, 'NA Plot Gujarat', 'na-plot-gandhinagar', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:18.468Z', '2026-07-28T04:54:18.468Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (351, 'NA Plot Gujarat', 'residential-plot-surat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:19.245Z', '2026-07-28T04:54:19.245Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (352, 'NA Plot Gujarat', 'commercial-na-plot-vadodara', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:20.020Z', '2026-07-28T04:54:20.020Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (353, 'NA Plot Gujarat', 'na-plot-rajkot', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:21.057Z', '2026-07-28T04:54:21.057Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (354, 'NA Plot Gujarat', 'villa-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:21.827Z', '2026-07-28T04:54:21.827Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (355, 'NA Plot Gujarat', 'gated-community-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:22.602Z', '2026-07-28T04:54:22.602Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (356, 'NA Plot Gujarat', 'investment-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:23.381Z', '2026-07-28T04:54:23.381Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (357, 'NA Plot Gujarat', 'approved-na-plot-gujarat', 'BLOG', NULL, NULL, 4, true, '2026-07-28T04:54:24.156Z', '2026-07-28T04:54:24.156Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (359, 'Industrial Land Gujarat', 'industrial-land-for-sale-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:24.339Z', '2026-07-28T04:56:24.339Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (360, 'Industrial Land Gujarat', 'industrial-plot-sanand', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:25.088Z', '2026-07-28T04:56:25.088Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (361, 'Industrial Land Gujarat', 'factory-land-vatva', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:25.837Z', '2026-07-28T04:56:25.837Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (362, 'Industrial Land Gujarat', 'industrial-land-ankleshwar', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:27.136Z', '2026-07-28T04:56:27.136Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (363, 'Industrial Land Gujarat', 'warehouse-land-vapi', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:27.879Z', '2026-07-28T04:56:27.879Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (364, 'Industrial Land Gujarat', 'industrial-plot-dahej', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:28.626Z', '2026-07-28T04:56:28.626Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (365, 'Industrial Land Gujarat', 'industrial-land-hazira', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:29.375Z', '2026-07-28T04:56:29.375Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (366, 'Industrial Land Gujarat', 'manufacturing-land-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:30.120Z', '2026-07-28T04:56:30.120Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (367, 'Industrial Land Gujarat', 'warehouse-land-for-sale-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:56:30.867Z', '2026-07-28T04:56:30.867Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (368, 'How to Buy Property in Gujarat', 'how-to-buy-property-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:23.872Z', '2026-07-28T04:58:23.872Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (369, 'How to Buy Property in Gujarat', 'how-to-buy-a-house-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:24.376Z', '2026-07-28T04:58:24.376Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (370, 'How to Buy Property in Gujarat', 'how-to-buy-a-flat-in-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:24.875Z', '2026-07-28T04:58:24.875Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (371, 'How to Buy Property in Gujarat', 'property-registration-process-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:25.380Z', '2026-07-28T04:58:25.380Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (372, 'How to Buy Property in Gujarat', 'first-time-home-buyer-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:25.877Z', '2026-07-28T04:58:25.877Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (373, 'How to Buy Property in Gujarat', 'how-to-buy-land-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:26.376Z', '2026-07-28T04:58:26.376Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (374, 'How to Buy Property in Gujarat', 'property-investment-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:26.876Z', '2026-07-28T04:58:26.876Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (375, 'How to Buy Property in Gujarat', 'home-loan-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:27.383Z', '2026-07-28T04:58:27.383Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (376, 'How to Buy Property in Gujarat', 'residential-property-buying-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:27.882Z', '2026-07-28T04:58:27.882Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (377, 'How to Buy Property in Gujarat', 'real-estate-buying-checklist-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T04:58:28.379Z', '2026-07-28T04:58:28.379Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (378, 'Stamp Duty in Gujarat', 'stamp-duty-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:00:59.735Z', '2026-07-28T05:00:59.735Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (379, 'Stamp Duty in Gujarat', 'stamp-duty-calculator-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:00.257Z', '2026-07-28T05:01:00.257Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (380, 'Stamp Duty in Gujarat', 'jantri-rate-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:00.781Z', '2026-07-28T05:01:00.781Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (381, 'Stamp Duty in Gujarat', 'property-registration-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:01.305Z', '2026-07-28T05:01:01.305Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (382, 'Stamp Duty in Gujarat', 'registration-charges-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:01.825Z', '2026-07-28T05:01:01.825Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (383, 'Stamp Duty in Gujarat', 'stamp-duty-on-flat-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:02.346Z', '2026-07-28T05:01:02.346Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (384, 'Stamp Duty in Gujarat', 'stamp-duty-on-plot-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:02.864Z', '2026-07-28T05:01:02.864Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (385, 'Stamp Duty in Gujarat', 'commercial-property-stamp-duty-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:03.383Z', '2026-07-28T05:01:03.383Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (386, 'Stamp Duty in Gujarat', 'industrial-property-registration-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:03.904Z', '2026-07-28T05:01:03.904Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (387, 'Stamp Duty in Gujarat', 'property-registration-cost-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:01:04.430Z', '2026-07-28T05:01:04.430Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (388, 'RERA Registered Properties Gujarat', 'rera-registered-properties-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:50.040Z', '2026-07-28T05:02:50.040Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (389, 'RERA Registered Properties Gujarat', 'rera-approved-projects-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:50.541Z', '2026-07-28T05:02:50.541Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (390, 'RERA Registered Properties Gujarat', 'rera-registered-flats-surat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:51.045Z', '2026-07-28T05:02:51.045Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (391, 'RERA Registered Properties Gujarat', 'gujrera-property-search', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:51.550Z', '2026-07-28T05:02:51.550Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (392, 'RERA Registered Properties Gujarat', 'rera-projects-vadodara', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:52.052Z', '2026-07-28T05:02:52.052Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (393, 'RERA Registered Properties Gujarat', 'rera-registered-villas-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:52.551Z', '2026-07-28T05:02:52.551Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (394, 'RERA Registered Properties Gujarat', 'commercial-rera-projects-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:53.297Z', '2026-07-28T05:02:53.297Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (395, 'RERA Registered Properties Gujarat', 'luxury-rera-projects-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:53.799Z', '2026-07-28T05:02:53.799Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (396, 'RERA Registered Properties Gujarat', 'under-construction-rera-projects-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:54.299Z', '2026-07-28T05:02:54.299Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (398, 'Best Areas to Buy Flat in Ahmedabad', 'best-areas-to-buy-flat-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:48.767Z', '2026-07-28T05:05:48.767Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (399, 'Best Areas to Buy Flat in Ahmedabad', 'best-areas-to-buy-villa-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:49.779Z', '2026-07-28T05:05:49.779Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (268, 'Affordable flats Ahmedabad', 'affordable-flats-in-ahmedabad', 'BLOG', 1, NULL, 1, true, '2026-07-28T04:34:17.915Z', '2026-07-28T04:34:17.915Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (401, 'Best Areas to Buy Flat in Ahmedabad', 'luxury-apartments-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:51.807Z', '2026-07-28T05:05:51.807Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (402, 'Best Areas to Buy Flat in Ahmedabad', 'best-investment-areas-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:52.816Z', '2026-07-28T05:05:52.816Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (403, 'Best Areas to Buy Flat in Ahmedabad', '2bhk-flats-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:53.821Z', '2026-07-28T05:05:53.821Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (404, 'Best Areas to Buy Flat in Ahmedabad', '3bhk-flats-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:54.831Z', '2026-07-28T05:05:54.831Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (405, 'Best Areas to Buy Flat in Ahmedabad', 'ready-to-move-flats-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:55.832Z', '2026-07-28T05:05:55.832Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (406, 'Best Areas to Buy Flat in Ahmedabad', 'new-residential-projects-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:56.839Z', '2026-07-28T05:05:56.839Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (407, 'Best Areas to Buy Flat in Ahmedabad', 'family-friendly-areas-in-ahmedabad', 'BLOG', 1, NULL, NULL, true, '2026-07-28T05:05:57.846Z', '2026-07-28T05:05:57.846Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (409, 'Property Rates Bopal 2026', 'property-rates-in-south-bopal-2026', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:39.802Z', '2026-07-28T05:09:39.802Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (410, 'Property Rates Bopal 2026', 'property-rates-in-shela-2026', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:41.086Z', '2026-07-28T05:09:41.086Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (411, 'Property Rates Bopal 2026', 'flats-for-sale-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:42.350Z', '2026-07-28T05:09:42.350Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (412, 'Property Rates Bopal 2026', '2bhk-flats-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:43.611Z', '2026-07-28T05:09:43.611Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (413, 'Property Rates Bopal 2026', '3bhk-flats-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:44.886Z', '2026-07-28T05:09:44.886Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (415, 'Property Rates Bopal 2026', 'villas-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:47.424Z', '2026-07-28T05:09:47.424Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (416, 'Property Rates Bopal 2026', 'residential-plots-in-bopal', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:48.691Z', '2026-07-28T05:09:48.691Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (417, 'Property Rates Bopal 2026', 'bopal-real-estate-market-report', 'BLOG', 1, 4, NULL, true, '2026-07-28T05:09:49.963Z', '2026-07-28T05:09:49.963Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (418, 'How to Verify Property in Gujarat', 'how-to-verify-property-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:11:59.016Z', '2026-07-28T05:11:59.016Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (419, 'How to Verify Property in Gujarat', 'property-verification-in-ahmedabad', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:11:59.528Z', '2026-07-28T05:11:59.528Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (420, 'How to Verify Property in Gujarat', 'property-verification-in-surat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:00.034Z', '2026-07-28T05:12:00.034Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (421, 'How to Verify Property in Gujarat', 'land-record-verification-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:00.544Z', '2026-07-28T05:12:00.544Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (397, 'RERA Registered Properties Gujarat', 'rera-property-verification-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:02:54.801Z', '2026-07-28T05:02:54.801Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (423, 'How to Verify Property in Gujarat', 'title-search-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:01.553Z', '2026-07-28T05:12:01.553Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (424, 'How to Verify Property in Gujarat', 'apartment-verification-checklist', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:02.050Z', '2026-07-28T05:12:02.050Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (425, 'How to Verify Property in Gujarat', 'plot-verification-guide-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:02.551Z', '2026-07-28T05:12:02.551Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (426, 'How to Verify Property in Gujarat', 'commercial-property-verification', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:03.051Z', '2026-07-28T05:12:03.051Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (427, 'How to Verify Property in Gujarat', 'property-legal-checklist-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T05:12:03.552Z', '2026-07-28T05:12:03.552Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (428, 'Agricultural Land for Sale in Gujarat', 'agricultural-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:14:53.515Z', '2026-07-28T07:14:53.515Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (431, 'NA Plot for Sale in Gujarat', 'na-plot-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:04.915Z', '2026-07-28T07:16:04.915Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (432, 'GIDC Shed for Sale in Gujarat', 'gidc-shed-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:05.666Z', '2026-07-28T07:16:05.666Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (429, 'Industrial Land for Sale in Gujarat', 'industrial-land-for-sale-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:03.391Z', '2026-07-28T07:16:03.391Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (430, 'Industrial Land for Sale Gujarat', 'industrial-land-for-sale-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:16:04.169Z', '2026-07-28T07:16:04.169Z') ON CONFLICT DO NOTHING;
+INSERT INTO keywords (id, phrase, slug, category, city_id, locality_id, property_type_id, is_active, created_at, updated_at) VALUES (435, 'Industrial Land for Sale in Gujarat', 'industrial-land-in-gujarat', 'BLOG', NULL, NULL, NULL, true, '2026-07-28T07:17:17.256Z', '2026-07-28T07:17:17.256Z') ON CONFLICT DO NOTHING;
 
 -- Data for Table: seo_templates
 INSERT INTO seo_templates (id, category, title_template, meta_title_template, meta_description_template, h1_template, h2_template, introduction_template, benefits_template, content_template, created_at, updated_at) VALUES (3, 'LOCALITY_PAGE', 'Properties in {{locality}}, {{city}} | Buy Properties in {{locality}}', 'Real Estate in {{locality}}, {{city}} | Flats & Plots for Sale', 'Check properties in {{locality}}, {{city}}. Compare 2BHK/3BHK flats, ready-to-move projects, residential plots, and shop prices from top developers in {{locality}}.', 'Properties in {{locality}}, {{city}}', '["Why {{locality}} is the Hottest Investment Sector","Current Real Estate Rates in {{locality}}","Amenities and Transit Access in {{locality}}"]', 'Welcome to {{locality}}, one of the most prominent and high-growth neighborhoods in {{city}}. Known for its superior lifestyle quality and connectivity.', 'Properties in {{locality}} are highly valued due to proximity to shopping complexes, corporate business hubs, prestigious schools, and major expressways.', 'Whether you are seeking an affordable apartment or a premium commercial office, {{locality}} in {{city}} provides options configured to all requirements.', '2026-07-27T03:23:01.589Z', '2026-07-27T03:23:01.589Z') ON CONFLICT DO NOTHING;
@@ -658,7 +661,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:04.318Z', '2026-07-28T04:41:04.318Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:04.318Z', '2026-07-28T04:41:04.318Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (199, 'GIDC Shed for Sale | Real Estate Gujarat', 'gidc-industrial-shed-for-sale-in-gujarat', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -795,7 +798,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:44.164Z', '2026-07-28T04:49:44.164Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:44.164Z', '2026-07-28T04:49:44.164Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (212, 'Agricultural Land Gujarat', 'irrigated-farm-land-in-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -928,7 +931,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:57.505Z', '2026-07-28T04:51:57.505Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:57.505Z', '2026-07-28T04:51:57.505Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (232, 'Industrial Land Gujarat', 'industrial-land-ankleshwar', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -1055,7 +1058,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:26.638Z', '2026-07-28T04:56:26.638Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:26.638Z', '2026-07-28T04:56:26.638Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (254, 'Stamp Duty in Gujarat', 'stamp-duty-on-plot-in-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -1158,7 +1161,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:02.606Z', '2026-07-28T05:01:02.606Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:02.606Z', '2026-07-28T05:01:02.606Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (279, 'Property Rates Bopal 2026 | Real Estate Gujarat', 'property-rates-in-south-bopal-2026', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -1253,7 +1256,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:38.784Z', '2026-07-28T05:09:38.784Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:38.784Z', '2026-07-28T05:09:38.784Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (283, 'Property Rates Bopal 2026 | Real Estate Gujarat', '3bhk-flats-in-bopal', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -1348,102 +1351,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:43.867Z', '2026-07-28T05:09:43.867Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (7, 'Property rates in bopal 2026', 'property-rates-in-bopal-2026', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
-
-Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
-
-With modern gated townships, high-rise 2/3 BHK apartments, independent bungalows, and luxury villas, Bopal offers property options across multiple budget segments backed by strong civic infrastructure, top CBSE schools, and multi-specialty hospitals.
-
----
-
-## Bopal Real Estate Market Overview (2026 Price Summary)
-
-| Property Type | Average Price Range (2026) | Market Trend (YoY) | Typical Unit Sizes |
-| --- | --- | --- | --- |
-| **Residential Apartments** | **₹5,270 – ₹6,639 / sq.ft** | 5.5% – 7.2% ▲ | 1,150 – 2,200 sq.ft |
-| **Luxury Apartments / Penthouses** | **₹7,500 – ₹10,500 / sq.ft** | 6.0% – 8.0% ▲ | 2,400 – 4,200 sq.ft |
-| **Independent Houses / Villas** | **₹10,600 – ₹10,700 / sq.ft** | Steady Appreciation | 3,000 – 6,000 sq.ft |
-| **Residential Plots** | **₹82,000+ / sq.yard** | High Capital Demand | 200 – 600 sq.yards |
-
----
-
-## Bopal vs Nearby Micro-Markets: Price & Rental Yield Comparison
-
-| Locality Name | Avg Apartment Price (sq.ft) | Gross Rental Yield | Key Advantage |
-| --- | --- | --- | --- |
-| **Central Bopal** | ₹5,270 – ₹6,639 | 4.8% – 5.2% | Established markets, schools & bus connectivity |
-| **South Bopal** | ₹5,800 – ₹7,200 | 4.5% – 5.0% | Newer townships, wide roads & DPS school |
-| **Shela** | ₹5,200 – ₹6,500 | 4.2% – 4.8% | Rapid township expansion & luxury clubhouses |
-| **Shilaj / Ambli Road** | ₹9,500 – ₹14,000+ | 3.5% – 4.2% | Ultra-luxury 4 BHK penthouses & high-end villas |
-
----
-
-## Growth Drivers: Infrastructure, Schools & Employment Hubs
-
-1. **Connectivity**: Direct transit via SP Ring Road, Bopal-Ghuma 200ft Road, and S.G. Highway (10-minute drive).
-2. **Employment Hubs**: Proximity to S.G. Highway IT Parks, Prahlad Nagar Business District, Sindhu Bhavan Road (SBR) commercial hubs, and Science City tech parks.
-3. **Social Infrastructure**: Top schools (Delhi Public School Bopal, Ahmedabad International School, Cosmos), multi-specialty hospitals (Zydus, Sterling, Shalby), and shopping centers (TRP Mall Bopal).
-
----
-
-## 2026 Monsoon Infrastructure & Drainage Checklist for Buyers
-
-While Bopal remains a premier residential hub, recent monsoon seasons highlighted specific low-lying waterlogging spots along older Bopal-Ghuma interiors. The Ahmedabad Municipal Corporation (AMC) has implemented new storm-water drainage projects.
-- **Buyer Due Diligence Tip**: Inspect the project during monsoon seasons, check basement storm-water pump capacity, and confirm AMC storm drainage connection before booking.
-
----
-
-## Legal & Statutory Verification Checklist
-
-Before finalizing any apartment purchase in Bopal:
-1. Verify the project''s **GUJRERA Registration Number** on the official Gujarat RERA portal.
-2. Inspect the **Occupancy Certificate (OC) / BU Permission** for ready-to-move-in flats.
-3. Calculate total all-inclusive costs: Agreed Flat Cost + **4.9% Stamp Duty** + **1% Sub-Registrar Fee** + GST (for under-construction) + Society CAM deposit.
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. What is the average apartment price per sq.ft in Bopal, Ahmedabad in 2026?
-The average residential apartment price in Bopal ranges between **₹5,270 and ₹6,639 per sq.ft**, while luxury projects and penthouses range from ₹7,500 to ₹10,500 per sq.ft.
-
-### 2. Is Bopal a good area for real estate investment in Ahmedabad?
-Yes. Bopal offers strong capital appreciation (5-7% annually), high rental demand from corporate staff, top schools, and seamless transit via SP Ring Road and S.G. Highway.
-
-### 3. What is the average rent for a 2 BHK or 3 BHK flat in Bopal?
-- **2 BHK Flat**: ₹16,000 – ₹22,000 / month.
-- **3 BHK Flat**: ₹22,000 – ₹35,000 / month (unfurnished to fully furnished).
-
-### 4. What is the price difference between Bopal and South Bopal?
-Bopal features mature residential societies with average rates of ₹5,270–₹6,639/sq.ft, whereas South Bopal features newer high-rise gated townships averaging ₹5,800–₹7,200/sq.ft.
-
-### 5. What are the land/plot rates in Bopal?
-Residential plots in prime Bopal locations command **₹82,000+ per sq.yard** depending on road width and society permissions.
-
-### 6. Are ready-to-move flats exempt from GST in Bopal?
-Yes. Ready-to-move flats with a valid Occupancy Certificate (OC) / BU Permission do NOT attract 5% GST.
-
-### 7. What is the stamp duty rate in Bopal, Ahmedabad?
-Effective Stamp Duty is **4.9%** (3.5% basic + 1.4% surcharge) plus a **1.0% Sub-Registrar Registration Fee** (total 5.9% statutory charge).
-
-### 8. Which schools are located near Bopal?
-Delhi Public School (DPS) Bopal, The New Tulip International School, Shivashish World School, and Cosmos Castle International School.
-
-### 9. Which hospitals serve the Bopal residential area?
-Shelby Hospital, Krishna Shalby, Saraswati Hospital, and nearby Zydus Hospital on S.G. Highway.
-
-### 10. Why search for properties in Bopal on PropertysDeal?
-PropertysDeal provides 100% verified property listings in Bopal with HD photos, certified GUJRERA details, direct builder/owner contacts, and transparent pricing.
-
----
-
-## Conclusion & Next Steps
-
-Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
-
-Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-27T04:10:38.878Z', '2026-07-29T06:57:47.274Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:43.867Z', '2026-07-28T05:09:43.867Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (8, 'How to verify property in gujarat', 'how-to-verify-property-in-gujarat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -1545,7 +1453,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-27T04:10:39.126Z', '2026-07-27T04:10:39.126Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-27T04:10:39.126Z', '2026-07-27T04:10:39.126Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (24, 'Flat for sale in vesu', 'flat-for-sale-in-vesu', '# Flat for Sale in Vesu, Surat
 
 Vesu has emerged as one of Surat''s most prestigious and rapidly developing residential destinations. Located in the western part of the city, the area is known for wide roads, premium residential projects, excellent infrastructure, and seamless connectivity to VIP Road, Piplod, Althan, City Light, and Surat International Airport. It has become a preferred location for professionals, business owners, NRIs, and families looking for a modern lifestyle.
@@ -1847,7 +1755,7 @@ PropertysDeal offers verified property listings, AI-powered search, trusted buil
 A **Flat for Sale in Vesu, Surat** offers the perfect combination of luxury, comfort, excellent connectivity, and long-term investment potential. With premium residential projects, modern amenities, and a rapidly developing urban landscape, Vesu continues to be one of Surat''s most preferred locations for homebuyers and investors.
 
 Whether you are looking for a ready-to-move apartment, a spacious family home, or a luxury residence, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners—making your property-buying journey simple, transparent, and reliable.
-', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:31.141Z', '2026-07-28T03:13:31.141Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:31.141Z', '2026-07-28T03:13:31.141Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (25, 'Flat for sale in vesu surat', 'flat-for-sale-in-vesu-surat', '# Flat for Sale in Vesu, Surat
 
 Vesu has emerged as one of Surat''s most prestigious and rapidly developing residential destinations. Located in the western part of the city, the area is known for wide roads, premium residential projects, excellent infrastructure, and seamless connectivity to VIP Road, Piplod, Althan, City Light, and Surat International Airport. It has become a preferred location for professionals, business owners, NRIs, and families looking for a modern lifestyle.
@@ -2149,7 +2057,7 @@ PropertysDeal offers verified property listings, AI-powered search, trusted buil
 A **Flat for Sale in Vesu, Surat** offers the perfect combination of luxury, comfort, excellent connectivity, and long-term investment potential. With premium residential projects, modern amenities, and a rapidly developing urban landscape, Vesu continues to be one of Surat''s most preferred locations for homebuyers and investors.
 
 Whether you are looking for a ready-to-move apartment, a spacious family home, or a luxury residence, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners—making your property-buying journey simple, transparent, and reliable.
-', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:32.412Z', '2026-07-28T03:13:32.412Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:32.412Z', '2026-07-28T03:13:32.412Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (298, 'Agricultural Land for Sale Gujarat', 'agricultural-land-for-sale-in-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -2282,7 +2190,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T07:14:53.251Z', '2026-07-28T07:14:53.251Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T07:14:53.251Z', '2026-07-28T07:14:53.251Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (306, 'Property In Gujarat | Verified Real Estate Listings & Price Guide 2026', 'property-in-gujarat', '# Property In Gujarat
 
 Welcome to the ultimate guide for **Property In Gujarat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2349,7 +2257,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Property In Gujarat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Property In Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Property In Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:36.699Z', '2026-07-29T04:03:36.699Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property In Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Property In Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:36.699Z', '2026-07-29T04:03:36.699Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (307, 'Real Estate Gujarat | Verified Real Estate Listings & Price Guide 2026', 'real-estate-gujarat', '# Real Estate Gujarat
 
 Welcome to the ultimate guide for **Real Estate Gujarat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2416,7 +2324,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Real Estate Gujarat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Real Estate Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Real Estate Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:37.233Z', '2026-07-29T04:03:37.233Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Real Estate Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Real Estate Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:37.233Z', '2026-07-29T04:03:37.233Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (308, 'Flats For Sale In Ahmedabad | Verified Real Estate Listings & Price Guide 2026', 'flats-for-sale-in-ahmedabad', '# Flats For Sale In Ahmedabad
 
 Welcome to the ultimate guide for **Flats For Sale In Ahmedabad**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2483,7 +2391,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Flats For Sale In Ahmedabad** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Flats For Sale In Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Flats For Sale In Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:37.750Z', '2026-07-29T04:03:37.750Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flats For Sale In Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Flats For Sale In Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:37.750Z', '2026-07-29T04:03:37.750Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (309, 'Property For Sale In Ahmedabad | Verified Real Estate Listings & Price Guide 2026', 'property-for-sale-in-ahmedabad', '# Property For Sale In Ahmedabad
 
 Welcome to the ultimate guide for **Property For Sale In Ahmedabad**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2550,7 +2458,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Property For Sale In Ahmedabad** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Property For Sale In Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Property For Sale In Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:38.273Z', '2026-07-29T04:03:38.273Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property For Sale In Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Property For Sale In Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:38.273Z', '2026-07-29T04:03:38.273Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (310, '2bhk Flat Ahmedabad | Verified Real Estate Listings & Price Guide 2026', '2bhk-flat-ahmedabad', '# 2bhk Flat Ahmedabad
 
 Welcome to the ultimate guide for **2bhk Flat Ahmedabad**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2617,7 +2525,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **2bhk Flat Ahmedabad** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', '2bhk Flat Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for 2bhk Flat Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:38.791Z', '2026-07-29T04:03:38.791Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2bhk Flat Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for 2bhk Flat Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:38.791Z', '2026-07-29T04:03:38.791Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (311, '3bhk Flat Surat | Verified Real Estate Listings & Price Guide 2026', '3bhk-flat-surat', '# 3bhk Flat Surat
 
 Welcome to the ultimate guide for **3bhk Flat Surat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2684,7 +2592,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **3bhk Flat Surat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', '3bhk Flat Surat | Buy & Rent Properties in Gujarat', 'Explore top properties for 3bhk Flat Surat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:39.308Z', '2026-07-29T04:03:39.308Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '3bhk Flat Surat | Buy & Rent Properties in Gujarat', 'Explore top properties for 3bhk Flat Surat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:39.308Z', '2026-07-29T04:03:39.308Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (312, 'Plot For Sale Vadodara | Verified Real Estate Listings & Price Guide 2026', 'plot-for-sale-vadodara', '# Plot For Sale Vadodara
 
 Welcome to the ultimate guide for **Plot For Sale Vadodara**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2751,7 +2659,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Plot For Sale Vadodara** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Plot For Sale Vadodara | Buy & Rent Properties in Gujarat', 'Explore top properties for Plot For Sale Vadodara. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:39.823Z', '2026-07-29T04:03:39.823Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot For Sale Vadodara | Buy & Rent Properties in Gujarat', 'Explore top properties for Plot For Sale Vadodara. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:39.823Z', '2026-07-29T04:03:39.823Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (313, 'Property Dealer Gujarat | Verified Real Estate Listings & Price Guide 2026', 'property-dealer-gujarat', '# Property Dealer Gujarat
 
 Welcome to the ultimate guide for **Property Dealer Gujarat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2818,7 +2726,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Property Dealer Gujarat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Property Dealer Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Property Dealer Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:40.336Z', '2026-07-29T04:03:40.336Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Dealer Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Property Dealer Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:40.336Z', '2026-07-29T04:03:40.336Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (314, 'Buy Property Gujarat | Verified Real Estate Listings & Price Guide 2026', 'buy-property-gujarat', '# Buy Property Gujarat
 
 Welcome to the ultimate guide for **Buy Property Gujarat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2885,7 +2793,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Buy Property Gujarat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Buy Property Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Buy Property Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:40.860Z', '2026-07-29T04:03:40.860Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Buy Property Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Buy Property Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:40.860Z', '2026-07-29T04:03:40.860Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (315, 'Ahmedabad Real Estate | Verified Real Estate Listings & Price Guide 2026', 'ahmedabad-real-estate', '# Ahmedabad Real Estate
 
 Welcome to the ultimate guide for **Ahmedabad Real Estate**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -2952,7 +2860,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Ahmedabad Real Estate** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Ahmedabad Real Estate | Buy & Rent Properties in Gujarat', 'Explore top properties for Ahmedabad Real Estate. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:41.382Z', '2026-07-29T04:03:41.382Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ahmedabad Real Estate | Buy & Rent Properties in Gujarat', 'Explore top properties for Ahmedabad Real Estate. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:41.382Z', '2026-07-29T04:03:41.382Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (316, 'Flat For Sale In Sg Highway | Verified Real Estate Listings & Price Guide 2026', 'flat-for-sale-in-sg-highway', '# Flat For Sale In Sg Highway
 
 Welcome to the ultimate guide for **Flat For Sale In Sg Highway**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3019,7 +2927,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Flat For Sale In Sg Highway** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Flat For Sale In Sg Highway | Buy & Rent Properties in Gujarat', 'Explore top properties for Flat For Sale In Sg Highway. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:41.898Z', '2026-07-29T04:03:41.898Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat For Sale In Sg Highway | Buy & Rent Properties in Gujarat', 'Explore top properties for Flat For Sale In Sg Highway. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:41.898Z', '2026-07-29T04:03:41.898Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (317, '2bhk Bopal Ahmedabad | Verified Real Estate Listings & Price Guide 2026', '2bhk-bopal-ahmedabad', '# 2bhk Bopal Ahmedabad
 
 Welcome to the ultimate guide for **2bhk Bopal Ahmedabad**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3086,7 +2994,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **2bhk Bopal Ahmedabad** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', '2bhk Bopal Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for 2bhk Bopal Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:42.417Z', '2026-07-29T04:03:42.417Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2bhk Bopal Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for 2bhk Bopal Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:42.417Z', '2026-07-29T04:03:42.417Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (318, 'Property In Prahlad Nagar | Verified Real Estate Listings & Price Guide 2026', 'property-in-prahlad-nagar', '# Property In Prahlad Nagar
 
 Welcome to the ultimate guide for **Property In Prahlad Nagar**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3153,7 +3061,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Property In Prahlad Nagar** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Property In Prahlad Nagar | Buy & Rent Properties in Gujarat', 'Explore top properties for Property In Prahlad Nagar. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:42.936Z', '2026-07-29T04:03:42.936Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property In Prahlad Nagar | Buy & Rent Properties in Gujarat', 'Explore top properties for Property In Prahlad Nagar. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:42.936Z', '2026-07-29T04:03:42.936Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (319, 'Flat For Sale In Satellite Ahmedabad | Verified Real Estate Listings & Price Guide 2026', 'flat-for-sale-in-satellite-ahmedabad', '# Flat For Sale In Satellite Ahmedabad
 
 Welcome to the ultimate guide for **Flat For Sale In Satellite Ahmedabad**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3220,7 +3128,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Flat For Sale In Satellite Ahmedabad** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Flat For Sale In Satellite Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Flat For Sale In Satellite Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:43.455Z', '2026-07-29T04:03:43.455Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat For Sale In Satellite Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Flat For Sale In Satellite Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:43.455Z', '2026-07-29T04:03:43.455Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (320, 'Plot For Sale In Thaltej | Verified Real Estate Listings & Price Guide 2026', 'plot-for-sale-in-thaltej', '# Plot For Sale In Thaltej
 
 Welcome to the ultimate guide for **Plot For Sale In Thaltej**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3287,7 +3195,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Plot For Sale In Thaltej** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Plot For Sale In Thaltej | Buy & Rent Properties in Gujarat', 'Explore top properties for Plot For Sale In Thaltej. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:43.976Z', '2026-07-29T04:03:43.976Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot For Sale In Thaltej | Buy & Rent Properties in Gujarat', 'Explore top properties for Plot For Sale In Thaltej. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:43.976Z', '2026-07-29T04:03:43.976Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (321, '2bhk Manjalpur | Verified Real Estate Listings & Price Guide 2026', '2bhk-manjalpur', '# 2bhk Manjalpur
 
 Welcome to the ultimate guide for **2bhk Manjalpur**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3354,7 +3262,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **2bhk Manjalpur** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', '2bhk Manjalpur | Buy & Rent Properties in Gujarat', 'Explore top properties for 2bhk Manjalpur. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:44.492Z', '2026-07-29T04:03:44.492Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2bhk Manjalpur | Buy & Rent Properties in Gujarat', 'Explore top properties for 2bhk Manjalpur. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:44.492Z', '2026-07-29T04:03:44.492Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (322, 'Residential Plot For Sale Gujarat | Verified Real Estate Listings & Price Guide 2026', 'residential-plot-for-sale-gujarat', '# Residential Plot For Sale Gujarat
 
 Welcome to the ultimate guide for **Residential Plot For Sale Gujarat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -3421,7 +3329,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Residential Plot For Sale Gujarat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Residential Plot For Sale Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Residential Plot For Sale Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:45.015Z', '2026-07-29T04:03:45.015Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot For Sale Gujarat | Buy & Rent Properties in Gujarat', 'Explore top properties for Residential Plot For Sale Gujarat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:45.015Z', '2026-07-29T04:03:45.015Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (33, 'Flat for sale in adajan surat', 'flat-for-sale-in-adajan-surat', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -3667,7 +3575,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:13.399Z', '2026-07-28T03:33:13.399Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:13.399Z', '2026-07-28T03:33:13.399Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (27, '2bhk flat vesu surat', '2bhk-flat-vesu-surat', '# Flat for Sale in Vesu, Surat
 
 Vesu has emerged as one of Surat''s most prestigious and rapidly developing residential destinations. Located in the western part of the city, the area is known for wide roads, premium residential projects, excellent infrastructure, and seamless connectivity to VIP Road, Piplod, Althan, City Light, and Surat International Airport. It has become a preferred location for professionals, business owners, NRIs, and families looking for a modern lifestyle.
@@ -3969,7 +3877,7 @@ PropertysDeal offers verified property listings, AI-powered search, trusted buil
 A **Flat for Sale in Vesu, Surat** offers the perfect combination of luxury, comfort, excellent connectivity, and long-term investment potential. With premium residential projects, modern amenities, and a rapidly developing urban landscape, Vesu continues to be one of Surat''s most preferred locations for homebuyers and investors.
 
 Whether you are looking for a ready-to-move apartment, a spacious family home, or a luxury residence, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners—making your property-buying journey simple, transparent, and reliable.
-', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:34.878Z', '2026-07-28T03:13:34.878Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:34.878Z', '2026-07-28T03:13:34.878Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (301, 'NA Plot Gujarat', 'na-plot-for-sale-in-gujarat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -4095,7 +4003,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T07:16:04.666Z', '2026-07-28T07:16:04.666Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T07:16:04.666Z', '2026-07-28T07:16:04.666Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (302, 'GIDC Shed for Sale | Real Estate Gujarat', 'gidc-shed-for-sale-in-gujarat', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -4232,7 +4140,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T07:16:05.417Z', '2026-07-28T07:16:05.417Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T07:16:05.417Z', '2026-07-28T07:16:05.417Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (299, 'Industrial Land Gujarat', 'industrial-land-for-sale-in-gujarat', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -4359,7 +4267,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T07:16:03.140Z', '2026-07-28T07:17:15.961Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T07:16:03.140Z', '2026-07-28T07:17:15.961Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (300, 'Industrial Land Gujarat', 'industrial-land-for-sale-gujarat', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -4486,7 +4394,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T07:16:03.892Z', '2026-07-28T07:17:16.480Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T07:16:03.892Z', '2026-07-28T07:17:16.480Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (323, 'Villa For Sale Vadodara | Verified Real Estate Listings & Price Guide 2026', 'villa-for-sale-vadodara', '# Villa For Sale Vadodara
 
 Welcome to the ultimate guide for **Villa For Sale Vadodara**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -4553,7 +4461,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Villa For Sale Vadodara** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Villa For Sale Vadodara | Buy & Rent Properties in Gujarat', 'Explore top properties for Villa For Sale Vadodara. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:45.533Z', '2026-07-29T04:03:45.533Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa For Sale Vadodara | Buy & Rent Properties in Gujarat', 'Explore top properties for Villa For Sale Vadodara. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:45.533Z', '2026-07-29T04:03:45.533Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (324, 'Rental Flats Vesu Surat | Verified Real Estate Listings & Price Guide 2026', 'rental-flats-vesu-surat', '# Rental Flats Vesu Surat
 
 Welcome to the ultimate guide for **Rental Flats Vesu Surat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -4620,7 +4528,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Rental Flats Vesu Surat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Rental Flats Vesu Surat | Buy & Rent Properties in Gujarat', 'Explore top properties for Rental Flats Vesu Surat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:46.052Z', '2026-07-29T04:03:46.052Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats Vesu Surat | Buy & Rent Properties in Gujarat', 'Explore top properties for Rental Flats Vesu Surat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:46.052Z', '2026-07-29T04:03:46.052Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (325, 'Office Space For Rent Ahmedabad | Verified Real Estate Listings & Price Guide 2026', 'office-space-for-rent-ahmedabad', '# Office Space For Rent Ahmedabad
 
 Welcome to the ultimate guide for **Office Space For Rent Ahmedabad**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -4687,7 +4595,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Office Space For Rent Ahmedabad** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Office Space For Rent Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Office Space For Rent Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:46.570Z', '2026-07-29T04:03:46.570Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space For Rent Ahmedabad | Buy & Rent Properties in Gujarat', 'Explore top properties for Office Space For Rent Ahmedabad. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:46.570Z', '2026-07-29T04:03:46.570Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (326, 'Shop For Sale Surat | Verified Real Estate Listings & Price Guide 2026', 'shop-for-sale-surat', '# Shop For Sale Surat
 
 Welcome to the ultimate guide for **Shop For Sale Surat**. Whether you are looking for residential properties, commercial spaces, or investment opportunities, this page provides complete details on prices, top localities, builder projects, and market trends in Gujarat.
@@ -4754,7 +4662,7 @@ You can verify index-2 documents and property registration details online via th
 ## Conclusion
 
 Finding the ideal property in **Shop For Sale Surat** is simple with **PropertysDeal**. Explore verified listings, connect directly with owners and builders, and secure the best deals today!
-', 'Shop For Sale Surat | Buy & Rent Properties in Gujarat', 'Explore top properties for Shop For Sale Surat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:47.089Z', '2026-07-29T04:03:47.089Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop For Sale Surat | Buy & Rent Properties in Gujarat', 'Explore top properties for Shop For Sale Surat. Compare verified listings, price trends, location advantages, amenities, and legal checklists on PropertysDeal.', '2026-07-29T04:03:47.089Z', '2026-07-29T04:03:47.089Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (46, 'Property in althan', 'property-in-althan', '# Plot for Sale in Althan, Surat
 
 Althan has emerged as one of Surat''s fastest-growing residential and investment hotspots. Located strategically in the south-western corridor of Surat, Althan offers an ideal balance of peaceful living, rapid urban infrastructure growth, and seamless connectivity to VIP Road, Vesu, City Light, Bhatar, and Surat International Airport. Buying a **plot for sale in Althan, Surat** gives land buyers, homebuilders, and investors the freedom to design custom dream bungalows, luxury villas, or high-yield commercial properties.
@@ -4904,7 +4812,7 @@ PropertysDeal provides 100% verified plot listings in Althan with direct owner/d
 A **Plot for Sale in Althan, Surat** offers the perfect foundation for building your dream home or securing a high-return real estate asset in one of Surat''s most prestigious corridors. With excellent road connectivity, NA clearance transparency, modern infrastructure, and steady long-term appreciation, Althan continues to attract smart homebuyers and investors alike.
 
 Explore verified plot listings, compare project layouts, and connect directly with trusted developers and landowners on PropertysDeal today!
-', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:05.199Z', '2026-07-28T03:37:05.199Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:05.199Z', '2026-07-28T03:37:05.199Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (49, 'Flat for sale in alkapuri vadodara', 'flat-for-sale-in-alkapuri-vadodara', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -5064,7 +4972,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:24.349Z', '2026-07-28T03:42:24.349Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:24.349Z', '2026-07-28T03:42:24.349Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (50, 'Flat for sale alkapuri', 'flat-for-sale-alkapuri', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -5224,7 +5132,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:25.982Z', '2026-07-28T03:42:25.982Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:25.982Z', '2026-07-28T03:42:25.982Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (305, 'Industrial Land Gujarat', 'industrial-land-in-gujarat', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -5351,187 +5259,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T07:17:17.001Z', '2026-07-28T07:17:17.001Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (87, 'Flat gift city gandhinagar', 'flat-gift-city-gandhinagar', '# Flat for Sale in GIFT City, Gandhinagar
-
-GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
-
-Whether you''re looking for a compact 1 BHK, a spacious 2 BHK or 3 BHK apartment, or a luxury penthouse, GIFT City offers residential options that combine modern living with long-term investment potential.
-
----
-
-## Why Buy a Flat in GIFT City?
-
-GIFT City is more than a residential address—it''s an integrated smart city built around financial services, technology, and sustainable urban development.
-
-### Key Advantages
-- India''s first operational Smart Financial City
-- International Financial Services Centre (IFSC)
-- Premium residential environment
-- Smart city infrastructure & underground utility tunnels
-- Excellent road & metro connectivity
-- Growing corporate employment opportunities
-- Modern commercial ecosystem & IFSC campus
-- High rental demand & excellent appreciation potential
-
-With global companies, financial institutions, fintech hubs, and IT firms establishing operations in GIFT City, demand for quality residential housing continues to grow rapidly.
-
----
-
-## Ready-to-Move Flats in GIFT City
-
-Ready-to-move apartments are ideal for buyers who want immediate possession without construction delays.
-
-### Benefits
-- Immediate possession & no waiting period
-- Physical inspection before purchase
-- Faster home loan processing
-- Immediate rental income
-- Established residential communities & existing amenities
-
-Ready homes are especially popular among corporate executives and expatriates relocating to GIFT City for work.
-
----
-
-## New Residential Projects
-
-Several reputed developers are launching premium residential towers in GIFT City.
-
-### Advantages
-- Contemporary architecture & smart layouts
-- Energy-efficient green building designs
-- Smart home provisions & automated access
-- Flexible payment plans & high resale potential
-
-Current developments include luxury high-rise projects with 1 BHK, 2 BHK, 3 BHK, 4 BHK, duplex, and penthouse options.
-
----
-
-## Luxury Apartments in GIFT City
-
-Luxury apartments in GIFT City provide international-standard living with premium specifications.
-
-### Premium Amenities
-- Grand Clubhouse & Infinity Swimming Pool
-- Fully Equipped Gym & Business Lounge
-- Co-working Spaces & Yoga Deck
-- Indoor Games & Landscaped Gardens
-- Smart Home Automation & Video Door Phones
-- Multi-Level Parking & High-Speed Elevators
-- EV Charging Stations & 24×7 Security with CCTV
-
-These residences are designed for executives, entrepreneurs, global professionals, and families seeking a premium lifestyle.
-
----
-
-## Smart Home Features & Sustainable Living
-
-GIFT City emphasizes technology-driven living and environmental sustainability:
-- Smart Tech: Digital Door Locks, App-Based Controls, Voice Assistant Integration, Smart Lighting & Intelligent Parking.
-- Green Features: Rainwater Harvesting, Solar Power for Common Areas, Water Recycling Systems, LED Lighting & Eco-Friendly Building Materials.
-
----
-
-## Best Areas Near GIFT City
-
-- Kudasan: A popular residential locality with apartments, shopping centres, and easy connectivity to GIFT City.
-- Raysan: Known for peaceful surroundings, modern societies, and premium housing.
-- Randesan: Offers residential developments suitable for professionals working in GIFT City.
-- Sargasan: A rapidly growing residential neighbourhood with schools, hospitals, and retail facilities.
-- Koba: Provides quick access to both Ahmedabad and Gandhinagar while remaining close to GIFT City.
-
----
-
-## Property Price Trends in GIFT City
-
-GIFT City has emerged as one of Gujarat''s fastest-growing premium residential markets. Market data indicates average residential prices range around ₹10,000 to ₹12,000 per sq. ft., with premium high-rise towers commanding higher rates based on location and luxury amenities.
-
-### Approximate Property Prices
-
-| Property Type | Typical Price Range |
-| --- | --- |
-| 1 BHK / Studio Flat | ₹45 Lakhs – ₹70 Lakhs |
-| 2 BHK Apartment | ₹75 Lakhs – ₹1.20 Crore |
-| 3 BHK Luxury Flat | ₹1.25 Crore – ₹2.20 Crore |
-| 4 BHK / Penthouse | ₹2.50 Crore – ₹5.00 Crore+ |
-
----
-
-## Home Loan Guide
-
-Purchasing a flat becomes easier with the right home loan from banks or housing finance companies.
-
-### Required Documents
-- Aadhaar Card & PAN Card
-- Passport-size Photographs
-- Address Proof & Income Proof (Salary Slips / ITR)
-- 6-Month Bank Statements
-- Property Title Documents & Approved Layout Plans
-
----
-
-## Legal Verification & RERA Checklist
-
-Before purchasing any apartment in GIFT City, verify:
-- Sale Deed & Title Search Report
-- Encumbrance Certificate & Property Tax Receipts
-- Approved Building Plan & Occupancy Certificate (OC)
-- RERA Project Registration Number & Developer Compliance
-
----
-
-## NRI Investment Guide for GIFT City
-
-GIFT City is Gujarat''s flagship destination for Non-Resident Indians (NRIs) due to its IFSC ecosystem and global lifestyle.
-
-### NRI Support Services
-- Virtual Property Walkthroughs & Remote Shortlisting
-- Power of Attorney (POA) Registration Support
-- FEMA & NRE/NRO Banking Guidance
-- Remote Registration & Professional Rental Management
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Why should I buy a flat in GIFT City, Gandhinagar?
-GIFT City offers world-class smart city infrastructure, international financial services ecosystem (IFSC), excellent metro connectivity, high rental demand, and strong long-term capital appreciation.
-
-### 2. What types of flats are available in GIFT City?
-Buyers can choose from 1 BHK Studios, 2 BHK Apartments, 3 BHK Luxury Flats, 4 BHK Residences, Duplex Homes, Penthouses, Ready-to-Move Apartments, and Under-Construction Projects.
-
-### 3. Are ready-to-move apartments available in GIFT City?
-Yes. Buyers can find ready-to-move apartments as well as newly completed and under-construction residential towers.
-
-### 4. Is GIFT City a good real estate investment location in Gujarat?
-Yes. The combination of the IFSC financial ecosystem, smart-city infrastructure, and growing corporate employment makes GIFT City one of Gujarat''s strongest long-term investment locations.
-
-### 5. Can I get a home loan for buying a flat in GIFT City?
-Yes. Leading nationalized and private banks (SBI, HDFC, ICICI, Bank of Baroda) offer pre-approved home loans up to 80-90% for eligible residential properties in GIFT City.
-
-### 6. Are luxury apartments with smart automation available in GIFT City?
-Yes. GIFT City offers high-rise luxury towers with app-based home controls, digital locks, infinity pools, co-working lounges, and EV charging stations.
-
-### 7. Should legal documents be verified before purchasing land or flats?
-Yes. Buyers should verify title deeds, AnyRoR extracts, approved building plans, BU/Occupancy certificates, and GUJRERA registration.
-
-### 8. Can NRIs buy flats in GIFT City?
-Yes. NRIs can freely purchase eligible residential properties in GIFT City in accordance with RBI and FEMA guidelines.
-
-### 9. What amenities are commonly available in GIFT City towers?
-Most premium projects offer a clubhouse, infinity pool, gymnasium, business lounge, children''s play area, landscaped sky gardens, CCTV security, power backup, covered parking, and EV charging.
-
-### 10. Why choose PropertysDeal for finding flats in GIFT City?
-PropertysDeal provides verified property listings, AI-powered property search, trusted builders and agents, transparent information, and direct buyer–seller communication to simplify your home purchase.
-
----
-
-## Conclusion & Next Steps
-
-A Flat for Sale in GIFT City, Gandhinagar offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
-
-With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:16:59.364Z', '2026-07-29T06:53:47.445Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T07:17:17.001Z', '2026-07-28T07:17:17.001Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (70, 'Residential plot in adajan', 'residential-plot-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -5777,7 +5505,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:46.807Z', '2026-07-28T04:02:46.807Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:46.807Z', '2026-07-28T04:02:46.807Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (71, 'Luxury property in adajan', 'luxury-property-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -6023,292 +5751,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:47.806Z', '2026-07-28T04:02:47.806Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (109, '2bhk flat under 50 lakh ahmedabad', '2bhk-flat-under-50-lakh-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
-
-Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
-
-Whether you want a ready-to-move apartment or a new RERA-registered project, there are multiple options available across North, East, and emerging West Ahmedabad.
-
----
-
-## Why Buy a 2 BHK Flat Under ₹50 Lakh in Ahmedabad?
-
-A budget of ₹50 lakh offers an excellent balance between affordability and long-term investment potential.
-
-### Key Benefits
-- **Ideal for first-time homebuyers**
-- **Lower EMI compared to premium homes**
-- **Easier home loan eligibility**
-- **Suitable for small and medium-sized families**
-- **Strong rental demand from IT & industrial employees**
-- **Better resale opportunities**
-- **Modern amenities available**
-- **Lower maintenance costs**
-
-Many buyers also choose this budget because it allows them to purchase homes in developing areas with future appreciation potential.
-
----
-
-## Best Areas to Buy a 2 BHK Under ₹50 Lakh in Ahmedabad
-
-### 1. Chandkheda
-One of Ahmedabad''s most established affordable housing markets.
-- **Highlights**: Ready-to-move apartments, Metro connectivity, close to Gandhinagar and GIFT City influence zone.
-- **Pricing**: ₹42–50 Lakhs depending on project and carpet area.
-
-### 2. Gota
-Gota continues to attract buyers because of its connectivity and developed social infrastructure.
-- **Highlights**: Direct SG Highway connectivity, top schools, colleges, and hospitals nearby.
-- **Pricing**: Entry-level 2 BHK options available around ₹45–50 Lakhs.
-
-### 3. Zundal
-Zundal is one of Ahmedabad''s fastest-growing residential locations.
-- **Highlights**: Modern gated societies, wide planned roads, close to Gandhinagar & GIFT City corridor.
-- **Pricing**: ₹45–50 Lakhs for 2 BHK configurations.
-
-### 4. Naroda & GIDC Belt
-Naroda is known for affordable residential projects and excellent value for money.
-- **Highlights**: Industrial employment hub, budget-friendly apartments, high rental yields.
-- **Pricing**: ₹40–45 Lakhs.
-
-### 5. Vaishno Devi Circle
-Offers modern apartment projects with easy access to SG Highway and nearby employment hubs.
-- **Highlights**: Premium gated communities, shopping centres, excellent road transit.
-- **Pricing**: 2 BHK units priced around ₹48–50 Lakhs.
-
-### 6. Hanspura & Kathwada
-Hanspura has become increasingly popular among first-time buyers.
-- **Highlights**: Budget apartments, new launches, family-friendly locality.
-- **Pricing**: 2 BHK flats available around ₹43–47 Lakhs.
-
----
-
-## Ready-to-Move vs Under-Construction 2 BHK Flats
-
-### Ready-to-Move Flats
-- **Advantages**: Immediate possession, zero construction delay, physical inspection before purchase, immediate rental income.
-
-### Under-Construction Projects
-- **Advantages**: Lower booking price, flexible payment plans, modern layouts, higher appreciation potential.
-
----
-
-## Property Price Trends in Ahmedabad (Budget Segment)
-
-Typical pricing for 2 BHK apartments in Ahmedabad:
-- **Developing Suburbs (Sanand, Naroda, Lambha)**: ₹40–45 Lakhs
-- **Established Corridors (Chandkheda, Hanspura)**: ₹45–48 Lakhs
-- **Growth Hubs (Vaishno Devi Circle, Zundal, Gota)**: ₹48–50 Lakhs
-
----
-
-## Home Loan Guide for Budget Buyers
-
-Buying a budget apartment becomes easier with a home loan from leading banks.
-
-### Key Benefits
-- **Competitive interest rates** (Starting 8.4%-8.75%)
-- **Flexible EMI tenures** (Up to 30 years)
-- **PMAY Subsidies** & Tax benefits under Section 24 and 80C
-
-### Documents Required
-- Aadhaar Card & PAN Card
-- Passport-size Photographs
-- Address Proof & Salary Slips (3 Months)
-- Bank Statements (6 Months) & 3-Year ITR
-- Property Documents & Builder RERA Certificate
-
----
-
-## Legal Verification & RERA Checklist
-
-Before booking a 2 BHK flat under ₹50 lakh in Ahmedabad, verify:
-- Sale Deed & Title Search Report (30 Years)
-- GUJRERA Registration Number & Approved Layout Plan
-- Occupancy Certificate (OC) / Building Use (BU) Permission
-- Encumbrance Certificate & Property Tax Paid Receipts
-- Society Maintenance Charges & Parking Allocation
-
----
-
-## Smart Home Features & Sustainable Living
-
-Modern budget residential projects in Ahmedabad increasingly incorporate tech and eco-friendly features:
-- Digital Door Locks, Video Intercom & App Controls
-- Rainwater Harvesting & Solar Lighting for Common Areas
-- Waste Management Systems & High-Speed Elevators
-- CCTV Security, 24×7 Power Backup & EV Charging Facilities
-
----
-
-## Property Management & Rental Income Potential
-
-Affordable 2 BHK apartments generate strong rental returns from IT professionals, industrial employees, students, and healthcare workers.
-
-### Rental Yield Highlights
-- **Average Rental Income**: ₹12,000 – ₹18,000 per month
-- **High Occupancy Rates**: Continuous demand in Chandkheda, Gota, and Naroda
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Can I buy a good 2 BHK flat under ₹50 lakh in Ahmedabad?
-Yes. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer quality 2 BHK apartments within ₹40 to ₹50 lakh.
-
-### 2. Which area is best for buying a 2 BHK flat under ₹50 lakh in Ahmedabad?
-Chandkheda, Gota, Zundal, and Vaishno Devi Circle are top choices for western/northern connectivity, while Naroda and Hanspura offer maximum affordability.
-
-### 3. Are ready-to-move 2 BHK flats available under ₹50 lakh in Ahmedabad?
-Yes. Buyers can find ready-to-move resale flats as well as newly completed projects in Chandkheda, Naroda, and Gota.
-
-### 4. Can I get a bank home loan for a 2 BHK flat under ₹50 lakh in Ahmedabad?
-Yes. Major banks (SBI, HDFC, ICICI, Bank of Baroda, Axis) offer home loans up to 80-90% for eligible RERA-registered projects.
-
-### 5. What additional costs should I consider beyond the flat purchase price?
-Budget for Gujarat Stamp Duty (4.9%), Registration Fee (1%), GST (1% for affordable housing), society maintenance deposit, and interior expenses.
-
-### 6. Are 2 BHK flats under ₹50 lakh good for real estate investment?
-Yes. Lower entry prices, high rental demand, and metro/ring road infrastructure expansion make them ideal for steady rental yields and resale appreciation.
-
-### 7. What amenities are provided in budget 2 BHK gated societies in Ahmedabad?
-Most projects include elevator access, covered parking, CCTV surveillance, 24/7 security, power backup, children''s play area, clubhouse, and landscaped gardens.
-
-### 8. Is buying an under-construction 2 BHK flat cheaper than ready-to-move in Ahmedabad?
-Yes. Under-construction projects are typically 10-15% cheaper than ready-to-move properties and offer flexible construction-linked payment plans.
-
-### 9. Can first-time buyers claim tax benefits on 2 BHK home loans?
-Yes. Buyers can claim tax deductions up to ₹2 Lakh on home loan interest under Section 24 and up to ₹1.5 Lakh on principal repayment under Section 80C.
-
-### 10. Why search for 2 BHK flats under ₹50 lakh on PropertysDeal?
-PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD photos, direct seller contacts, smart price filters, and complete home loan assistance.
-
----
-
-## Conclusion & Next Steps
-
-A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
-
-With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:05.158Z', '2026-07-29T06:57:43.295Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (9, 'How to buy property in gujarat', 'how-to-buy-property-in-gujarat', '# Complete Guide: How to Buy Property in Gujarat
-
-Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
-
-Gujarat is one of India''s most dynamic real estate markets, driven by rapid urbanization, infrastructure expansion (Metro Rail, Expressways, GIFT City), industrial growth, and strong demand across major cities such as Ahmedabad, Surat, Vadodara, Gandhinagar, Rajkot, Anand, Bharuch, and Vapi.
-
----
-
-## 10-Step Checklist: How to Buy Property in Gujarat
-
-### Step 1: Define Property Purpose & Budget
-- **Define Goal**: Self-use residence, rental income asset, long-term land investment, or business location.
-- **Budget Setup**: Account for the core property cost + 4.9% Stamp Duty + 1% Registration fee + Legal fees + Society maintenance deposit + Interiors.
-
-### Step 2: Location Selection & Connectivity Assessment
-- Assess proximity to work hubs, top schools, multi-specialty hospitals, Metro stations, and highway connectivity.
-
-### Step 3: Online Property Search & Site Visits
-- Filter 100% verified listings on **PropertysDeal**.
-- Visit properties in person to inspect construction quality, water supply, natural lighting, parking, and neighborhood environment.
-
-### Step 4: Complete Legal Due Diligence
-Verify all legal documents before paying any booking advance:
-- **Title Search Report (30 Years)**: Certified by an advocate to prove clear marketable owner title.
-- **Encumbrance Certificate (EC)**: Ensures zero pending bank mortgages or court attachments.
-- **Collector NA Permission (Section 65)**: Required for non-agricultural plots and independent homes.
-- **GUJRERA Registration**: Verify project details, RERA registration number, and possession deadlines on the official Gujarat RERA portal.
-- **Occupancy Certificate (OC) / BU Permission**: Municipal certificate authorizing building occupancy.
-
-### Step 5: Home Loan Pre-Approval & Documentation
-- Apply for pre-approved home loans from leading banks (SBI, HDFC, ICICI, Bank of Baroda).
-- Submit Income Tax Returns (3 years), 12-month bank statements, salary slips/business financials, and property chain deeds.
-
-### Step 6: Agreement for Sale & Token Advance
-- Sign an **Agreement for Sale** detailing the payment schedule, possession timeline, penalty clauses, and inclusion of parking/amenities.
-
-### Step 7: Property Registration & Stamp Duty Payment in Gujarat
-- Pay **4.9% Stamp Duty** (standard in Gujarat) + **1% Sub-Registrar Registration Fee**.
-- Execute and register the final **Sale Deed** at the jurisdictional Sub-Registrar Office (SRO).
-
-### Step 8: Post-Registration Mutation & Utility Transfer
-- Apply for **Property Mutation (Property Card / e-Dhara 7/12 entry update)** in government revenue records.
-- Transfer electricity meters (Torrent Power / UGVCL / DGVCL), municipal water connections, and society membership.
-
----
-
-## Property Buying Guidelines for Different Asset Types
-
-| Property Category | Key Legal Clearances Required | Essential Due Diligence Tips |
-| --- | --- | --- |
-| **Residential Flats / Apartments** | GUJRERA Approval, OC / BU Permission, Approved Building Plan | Verify carpet area, society maintenance rules, & parking allocation |
-| **Residential NA Plots** | Collector NA Order (Sec 65), Approved Layout Plan, Property Card | Verify 9-18m road access, underground drainage & zoning rules |
-| **Commercial Shops & Offices** | Commercial Zoning, Fire Safety NOC, Parking Clearance | Check footfall, CAM charges, signage rights & rental yields |
-| **Industrial Land & Sheds** | GIDC Allotment / NA Industrial Order, GPCB Consent (CTE/CTO) | Verify HT power supply, effluent treatment & heavy vehicle roads |
-| **Agricultural Farmland** | AnyRoR 7/12 & 8A Records, Ferfar (Mutation Entry No. 6) | Verify buyer Agriculturist Status under Section 63 Tenancy Act |
-
----
-
-## Stamp Duty, Jantri Rates & Registration Fees in Gujarat
-
-In Gujarat, property registration charges are calculated based on the higher of the **Actual Agreement Value** or the official **Government Jantri Rate**:
-- **Stamp Duty**: Standard **4.9%** of property valuation.
-- **Registration Fee**: Standard **1%** of property valuation (max caps apply for female buyers in specific schemes).
-- **Sub-Registrar Fees**: Nominal computerization & processing fees.
-
----
-
-## Common Mistakes to Avoid When Buying Property in Gujarat
-
-1. **Paying cash advance without a written Agreement for Sale**.
-2. **Skipping RERA registration verification on new under-construction projects**.
-3. **Not checking Occupancy Certificate (OC) / BU Permission for ready-to-move flats**.
-4. **Ignoring Common Area Maintenance (CAM) & hidden society transfer charges**.
-5. **Purchasing agricultural land without verified Agriculturist Status**.
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. What is the stamp duty and registration fee for buying property in Gujarat?
-The stamp duty in Gujarat is **4.9%** and the registration fee is **1%** of the higher value between the agreement price and the official government Jantri rate.
-
-### 2. What is a Jantri Rate in Gujarat?
-Jantri rate is the minimum government benchmark land/property rate set by the Gujarat Revenue Department for calculating stamp duty and registration fees.
-
-### 3. What is the difference between carpet area and built-up area under RERA?
-Under GUJRERA, carpet area is the net usable floor area of an apartment (excluding walls and balconies), and developers must quote prices based strictly on carpet area.
-
-### 4. What is BU Permission in Gujarat?
-BU (Building Use) Permission or Occupancy Certificate (OC) is an official certificate issued by local urban development authorities (AMC, SMC, VMC, RMC) certifying that the building was constructed according to approved plans and is safe for occupation.
-
-### 5. How can I check RERA registered projects in Gujarat?
-You can verify RERA registered projects, builder background, approved floor plans, and possession dates on the official **GUJRERA portal** (gujrera.gujarat.gov.in).
-
-### 6. Can an NRI buy residential or commercial property in Gujarat?
-Yes. NRIs and OCIs can freely purchase residential apartments, villas, commercial shops, and office spaces in Gujarat under RBI and FEMA regulations (excluding agricultural land).
-
-### 7. What is Property Mutation in Gujarat?
-Mutation is the official transfer of title ownership in municipal tax records (for urban flats) or Property Cards / e-Dhara 7/12 extracts (for plots and land).
-
-### 8. Is a home loan available for under-construction properties?
-Yes. Banks disburse home loans in construction-linked installment plans (CLP) approved by RERA.
-
-### 9. What legal documents are required for home loan approval?
-Registered Sale Deed, Chain Title Deeds, Approved Building Plan, RERA Registration, Index II, Salary Slips / ITR, and 12-month Bank Statements.
-
-### 10. Why use PropertysDeal to find properties in Gujarat?
-PropertysDeal provides 100% verified residential, commercial, industrial, and plot listings across Gujarat with authentic pricing, legal document verification support, and direct seller/builder contact.
-
----
-
-## Conclusion & Next Steps
-
-Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
-
-With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-27T09:18:25.987Z', '2026-07-29T06:57:45.286Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:47.806Z', '2026-07-28T04:02:47.806Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (89, 'Property in gift city', 'property-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -6488,7 +5931,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:01.838Z', '2026-07-28T04:17:01.838Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:01.838Z', '2026-07-28T04:17:01.838Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (90, '2bhk flat in gift city', '2bhk-flat-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -6668,7 +6111,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:03.075Z', '2026-07-28T04:17:03.075Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:03.075Z', '2026-07-28T04:17:03.075Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (106, 'Residential plot in vallabh vidyanagar', 'residential-plot-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -6900,7 +6343,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:47.997Z', '2026-07-28T04:18:47.997Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:47.997Z', '2026-07-28T04:18:47.997Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (47, 'Residential plot althan surat', 'residential-plot-althan-surat', '# Plot for Sale in Althan, Surat
 
 Althan has emerged as one of Surat''s fastest-growing residential and investment hotspots. Located strategically in the south-western corridor of Surat, Althan offers an ideal balance of peaceful living, rapid urban infrastructure growth, and seamless connectivity to VIP Road, Vesu, City Light, Bhatar, and Surat International Airport. Buying a **plot for sale in Althan, Surat** gives land buyers, homebuilders, and investors the freedom to design custom dream bungalows, luxury villas, or high-yield commercial properties.
@@ -7050,7 +6493,7 @@ PropertysDeal provides 100% verified plot listings in Althan with direct owner/d
 A **Plot for Sale in Althan, Surat** offers the perfect foundation for building your dream home or securing a high-return real estate asset in one of Surat''s most prestigious corridors. With excellent road connectivity, NA clearance transparency, modern infrastructure, and steady long-term appreciation, Althan continues to attract smart homebuyers and investors alike.
 
 Explore verified plot listings, compare project layouts, and connect directly with trusted developers and landowners on PropertysDeal today!
-', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:06.486Z', '2026-07-28T03:37:06.486Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:06.486Z', '2026-07-28T03:37:06.486Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (31, 'Property in adajan', 'property-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -7296,159 +6739,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:11.416Z', '2026-07-28T03:33:11.416Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (126, 'New Projects in Bopal | Real Estate Gujarat', 'new-projects-in-bopal', '# New Projects in Bopal, Ahmedabad
-
-Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
-
-Its proximity to South Bopal, Shela, Shilaj, SG Highway, Science City, and Ambli has further strengthened demand among both end-users and investors.
-
----
-
-## Why Buy Property in Bopal, Ahmedabad?
-
-Bopal offers an ideal combination of residential comfort and urban convenience.
-
-### Key Advantages
-- **Excellent connectivity to SG Highway & SP Ring Road**
-- **Close proximity to South Bopal, Shela, Shilaj, and Ambli**
-- **Modern gated communities with lifestyle amenities**
-- **Reputed international schools, colleges, and hospitals**
-- **Shopping malls, supermarkets, and dining destinations**
-- **Growing corporate & IT employment hubs**
-- **High rental demand & strong resale value**
-- **Excellent long-term capital appreciation**
-
-Ongoing civic improvements and infrastructure investment continue to support residential growth in the Bopal region.
-
----
-
-## Popular New Residential Projects in Bopal
-
-Bopal has a large pipeline of residential developments catering to different budgets:
-- **Swastik Clairmont**: Premium 3 & 4 BHK residences with high-end amenities.
-- **Rajyash Regius**: Ultra-luxury living with modern clubhouse and sports facilities.
-- **Kalav Skyline**: High-rise residential towers offering efficient 2 & 3 BHK layouts.
-- **Advith Elegance**: Contemporary smart homes located near South Bopal corridor.
-- **Solo Bliss & Akshar Solo Sparsh**: Budget-friendly yet amenity-rich residential communities.
-
----
-
-## Apartment Configurations: 2 BHK, 3 BHK & 4 BHK
-
-### 2 BHK Apartments
-- **Ideal for**: First-time buyers, young professionals, small families, and rental investors.
-- **Features**: Covered parking, children''s play area, CCTV security, landscaped gardens, and fitness centres.
-
-### 3 BHK Apartments
-- **Ideal for**: Growing families, corporate executives, business owners, and long-term homeowners.
-- **Features**: Grand clubhouse, swimming pool, indoor games, multi-purpose hall, and jogging tracks.
-
-### 4 BHK Luxury Apartments & Penthouses
-- **Ideal for**: Premium homebuyers seeking large living spaces, private balconies, and smart automation.
-
----
-
-## Best Areas Near Bopal
-
-- **South Bopal**: High-density modern township area with top schools and commercial markets.
-- **Shela**: Rapidly developing luxury residential corridor with high-end high-rise projects.
-- **Shilaj**: Peaceful green locality connecting Bopal with Science City and SP Ring Road.
-- **Ambli**: High-net-worth luxury residential address along Ambli-Bopal Road.
-
----
-
-## Property Price Trends in Bopal
-
-New residential launches in Bopal cater to budget, mid-segment, and luxury buyers:
-- **2 BHK Apartments**: Starting from ₹50 Lakhs to ₹68 Lakhs.
-- **3 BHK Premium Flats**: Ranging from ₹70 Lakhs to ₹1.25 Crore.
-- **4 BHK Luxury Residences**: Ranging from ₹1.30 Crore to ₹2.50 Crore+.
-
----
-
-## Home Loan Guide for New Projects
-
-Most new residential projects in Bopal are pre-approved for financing from leading banks (SBI, HDFC, ICICI, Bank of Baroda, Axis).
-
-### Documents Required
-- Aadhaar Card & PAN Card
-- Passport-size Photographs
-- Address Proof & Salary Slips (3 Months)
-- Bank Statements (6 Months) & 3-Year ITR
-- Builder Allotment Letter, Payment Receipts, & RERA Certificate
-
----
-
-## Legal Verification & RERA Checklist
-
-Before booking an under-construction apartment in Bopal, verify:
-- GUJRERA Registration Number & Project Status on the RERA portal
-- Title Search Report & Clear Land Ownership
-- Approved Municipal Building Plans & Environmental Clearances
-- Defined Construction Milestones & Possession Timelines
-
----
-
-## Smart Home Features & Sustainable Living
-
-New developments in Bopal emphasize modern tech and eco-friendly features:
-- Digital Door Locks, Video Door Phones & App-Based Security
-- Rainwater Harvesting, Solar Common Lighting & Waste Management
-- EV Charging Stations, High-Speed Fiber Internet & CCTV Surveillance
-
----
-
-## Property Management Services & Rental Yield
-
-Bopal enjoys high rental demand due to its proximity to Prahlad Nagar, S.G. Highway, and corporate parks.
-
-### Average Rental Yields
-- **2 BHK Flats**: ₹15,000 – ₹22,000 per month
-- **3 BHK Flats**: ₹24,000 – ₹38,000 per month
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Why should I buy a flat in a new project in Bopal, Ahmedabad?
-Bopal offers rapid urban development, excellent SG Highway connectivity, top schools, modern gated communities, strong rental yields, and high capital appreciation.
-
-### 2. What types of new residential projects are available in Bopal?
-Buyers can choose from 2 BHK, 3 BHK & 4 BHK Apartments, Duplex Homes, Luxury Penthouses, Ready-to-Move Flats, and Under-Construction RERA Projects.
-
-### 3. Are RERA-registered new projects available in Bopal?
-Yes. Almost all new residential developments in Bopal (such as Swastik Clairmont, Kalav Skyline, Rajyash Regius) are registered under GUJRERA.
-
-### 4. Can I get a home loan for under-construction flats in Bopal?
-Yes. Major nationalized and private banks provide construction-linked home loans up to 80-90% for RERA-registered projects in Bopal.
-
-### 5. What is the starting price for a 2 BHK flat in Bopal?
-Compact 2 BHK flats in Bopal start around ₹50 Lakhs, while spacious 3 BHK homes range from ₹70 Lakhs upwards.
-
-### 6. Is South Bopal and Shela close to Bopal?
-Yes. South Bopal and Shela are directly adjacent to Bopal and share major road networks, schools, and commercial hubs.
-
-### 7. What amenities are provided in new gated communities in Bopal?
-Grand clubhouse, swimming pool, gymnasium, children''s play area, landscaped gardens, multi-level parking, 24/7 security, power backup, and smart home provisions.
-
-### 8. Can NRIs invest in new residential projects in Bopal?
-Yes. NRIs can freely purchase eligible residential property in India in accordance with RBI and FEMA guidelines.
-
-### 9. What should I check before booking an under-construction flat in Bopal?
-Verify GUJRERA registration, developer delivery track record, title clearance, carpet area vs super built-up area, and possession date penalty clauses.
-
-### 10. Why search for new projects in Bopal on PropertysDeal?
-PropertysDeal offers verified new project listings in Bopal with HD photos, RERA details, transparent pricing, direct builder contact, and complete home loan assistance.
-
----
-
-## Conclusion & Next Steps
-
-**New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
-
-With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:09.583Z', '2026-07-29T06:57:44.298Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:11.416Z', '2026-07-28T03:33:11.416Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (127, 'New Projects in Bopal Ahmedabad', 'new-projects-in-bopal-ahmedabad', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -7600,7 +6891,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:10.577Z', '2026-07-28T04:32:10.577Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:10.577Z', '2026-07-28T04:32:10.577Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (159, 'Villa for Sale Vadodara', 'villas-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -7745,7 +7036,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:48.490Z', '2026-07-28T04:38:48.490Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:48.490Z', '2026-07-28T04:38:48.490Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (260, 'RERA Registered Properties Gujarat', 'rera-registered-flats-surat', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -7850,110 +7141,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:50.797Z', '2026-07-28T05:02:50.797Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (4, 'Stamp duty in gujarat', 'stamp-duty-in-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
-
-Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
-
-Whether you are buying a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office in Vadodara, or an industrial shed in GIDC, understanding current stamp duty rates and government **Jantri Benchmark Rates** ensures accurate financial planning and clear property title ownership.
-
----
-
-## Current Stamp Duty & Property Registration Rates in Gujarat
-
-For most property sale transactions (conveyance deeds) in Gujarat:
-
-| Charge Type | Rate Percentage | Key Calculation Basis |
-| --- | --- | --- |
-| **Basic Stamp Duty** | **3.5%** | Applied on higher of Sale Value or Government Jantri Rate |
-| **Surcharge Levy** | **1.4%** (40% of basic duty) | Added directly to basic stamp duty |
-| **Total Effective Stamp Duty** | **4.9%** | Total effective state stamp duty payable |
-| **Sub-Registrar Registration Fee** | **1.0%** | Standard government property registration fee |
-| **Total Statutory Cost** | **5.9%** | Combined Effective Stamp Duty + Registration Fee |
-
-*Note: Sole female ownership registration fee concessions or government affordable housing waivers may apply subject to current Gujarat Revenue notifications.*
-
----
-
-## What is Government Jantri Rate in Gujarat?
-
-The **Jantri Rate** (Annual Statement of Rates / ASR) is the minimum benchmark land and property valuation fixed by the Gujarat Revenue Department for every survey number, village, town, and city ward.
-
-### How Stamp Duty Calculation Works with Jantri Value:
-Stamp duty is ALWAYS calculated on the **HIGHER** of two values:
-1. **Actual Agreed Transaction Value** (Price stated in the Sale Deed), OR
-2. **Official Government Jantri Valuation**.
-
-#### Calculation Examples:
-- **Scenario A (Agreed Price Higher)**: Transaction Value = ₹75 Lakhs, Jantri Valuation = ₹65 Lakhs. Stamp Duty is calculated on **₹75 Lakhs** (4.9% = ₹3,67,500).
-- **Scenario B (Jantri Valuation Higher)**: Transaction Value = ₹50 Lakhs, Jantri Valuation = ₹60 Lakhs. Stamp Duty is calculated on **₹60 Lakhs** (4.9% = ₹2,94,000).
-
----
-
-## Digital GARVI Portal & E-Stamping Process
-
-The Revenue Department of Gujarat operates the **GARVI Portal** (Gujarat Registration & Stamp Revenue Integrated System) to digitize property valuations and registration workflows.
-
-### E-Stamping via Stock Holding Corporation (SHCIL)
-Traditional stamp papers have been replaced by digital **e-Stamping certificates** issued by SHCIL or authorized banks.
-1. Search your plot/flat survey number Jantri value on the **GARVI portal**.
-2. Calculate total 4.9% Stamp Duty & 1% Registration Fees online.
-3. Pay via NetBanking, UPI, or challan at authorized bank branches.
-4. Download the tamper-proof e-Stamp certificate for inclusion in the final Sale Deed.
-
----
-
-## Step-by-Step Property Registration Workflow in Gujarat
-
-1. **Document Verification**: Complete legal due diligence (30-year title search, EC, NA order, RERA check).
-2. **Drafting Sale Deed**: Prepare the final Sale Deed detailing property boundaries, payment schedule, and seller/buyer details.
-3. **E-Stamp Purchase**: Generate the e-Stamp certificate equivalent to 4.9% of valuation.
-4. **GARVI Appointment Booking**: Book an online appointment slot at the jurisdictional Sub-Registrar Office (SRO).
-5. **Physical Biometric & Registration**: Present buyer, seller, and two witnesses before the Sub-Registrar for biometric fingerprinting & photo capture.
-6. **Index II & Document Collection**: Collect the registered Sale Deed and Index II extract confirming official ownership recording.
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. What is the total stamp duty and registration fee in Gujarat?
-The effective stamp duty is **4.9%** (3.5% basic + 1.4% surcharge) and the registration fee is **1%**, making the total statutory property registration cost **5.9%** in Gujarat.
-
-### 2. What is Jantri Rate in Gujarat and how can I check it?
-Jantri is the minimum government benchmark valuation rate for land/property in Gujarat. You can search current Jantri rates online using your city, village, and survey number on the **GARVI portal** (garvi.gujarat.gov.in).
-
-### 3. Is there a stamp duty concession for female buyers in Gujarat?
-Yes. Solitary female property buyers are eligible for a **100% waiver on the 1% registration fee** in specific qualifying residential transactions (Stamp duty remains 4.9%).
-
-### 4. Who pays stamp duty when buying property in Gujarat?
-Unless explicitly agreed otherwise in the sales contract, the **buyer** pays all stamp duty and registration charges under standard practice in Gujarat.
-
-### 5. What is the penalty for under-valuing property to avoid stamp duty?
-Under Section 32A of the Gujarat Stamp Act, the Collector of Stamps can issue notices, demand short-paid stamp duty plus interest penalties up to 18% per annum, and withhold Property Card mutation.
-
-### 6. What is Index II in Gujarat property registration?
-Index II is an official extract issued by the Sub-Registrar Office after property registration, summarizing seller/buyer names, property description, transaction value, and stamp duty paid.
-
-### 7. How long is an e-Stamp certificate valid?
-An e-Stamp certificate issued in Gujarat does not expire, but it must be submitted for property registration within the statutory timelines following document execution.
-
-### 8. Is stamp duty applicable to commercial and industrial property purchases?
-Yes. Commercial shops, corporate offices, industrial plots, and GIDC factory sheds are subject to standard 4.9% stamp duty and 1% registration fees.
-
-### 9. Can I get a home loan to cover stamp duty costs?
-Reserve Bank of India (RBI) guidelines prohibit banks from including stamp duty and registration charges in the core Home Loan LTV ratio; buyers must pay these statutory fees from their down payment funds.
-
-### 10. Why use PropertysDeal for property buying in Gujarat?
-PropertysDeal provides transparent property pricing, verified Jantri valuation tools, direct builder/owner connections, and complete legal registration guidance across Gujarat.
-
----
-
-## Conclusion & Next Steps
-
-Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
-
-With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-27T04:10:38.092Z', '2026-07-29T06:57:45.784Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:50.797Z', '2026-07-28T05:02:50.797Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (26, 'Flat for sale vesu', 'flat-for-sale-vesu', '# Flat for Sale in Vesu, Surat
 
 Vesu has emerged as one of Surat''s most prestigious and rapidly developing residential destinations. Located in the western part of the city, the area is known for wide roads, premium residential projects, excellent infrastructure, and seamless connectivity to VIP Road, Piplod, Althan, City Light, and Surat International Airport. It has become a preferred location for professionals, business owners, NRIs, and families looking for a modern lifestyle.
@@ -8255,9 +7443,9 @@ PropertysDeal offers verified property listings, AI-powered search, trusted buil
 A **Flat for Sale in Vesu, Surat** offers the perfect combination of luxury, comfort, excellent connectivity, and long-term investment potential. With premium residential projects, modern amenities, and a rapidly developing urban landscape, Vesu continues to be one of Surat''s most preferred locations for homebuyers and investors.
 
 Whether you are looking for a ready-to-move apartment, a spacious family home, or a luxury residence, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners—making your property-buying journey simple, transparent, and reliable.
-', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:33.645Z', '2026-07-28T03:13:33.645Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (2, 'Rera gujarat', 'rera-gujarat', 'RERA Gujarat (GUJRERA) is the regulatory body enforcing construction guidelines, developer accountability, and buyer rights. Buyers must verify the registration of builders on the GUJRERA portal before releasing funds.', 'GUJRERA Guide: RERA Rules & Verification Checklist in Gujarat', 'Learn how to verify projects on GUJRERA portal, builder responsibilities, escrow rules, and dispute resolution guidelines under RERA Gujarat.', '2026-07-27T03:23:04.715Z', '2026-07-27T03:23:04.715Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (1, 'How to buy property', 'how-to-buy-property', 'Buying property in Gujarat involves verifying the land title, obtaining the Non-Agricultural (NA) certificate, checking RERA validation, calculating stamp duty, and registering the sale deed at the local sub-registrar office.', 'How to Buy Property in Gujarat | Real Estate Guide', 'Complete investor guide for How to Buy Property in Gujarat in Gujarat. Check property rates, RERA validation, and verification guidelines.', '2026-07-27T03:23:04.458Z', '2026-07-27T04:10:37.821Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:33.645Z', '2026-07-28T03:13:33.645Z') ON CONFLICT DO NOTHING;
+INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (2, 'Rera gujarat', 'rera-gujarat', 'RERA Gujarat (GUJRERA) is the regulatory body enforcing construction guidelines, developer accountability, and buyer rights. Buyers must verify the registration of builders on the GUJRERA portal before releasing funds.', 'GUJRERA Guide: RERA Rules & Verification Checklist in Gujarat', 'Learn how to verify projects on GUJRERA portal, builder responsibilities, escrow rules, and dispute resolution guidelines under RERA Gujarat.', '2026-07-27T03:23:04.715Z', '2026-07-27T03:23:04.715Z') ON CONFLICT DO NOTHING;
+INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (1, 'How to buy property', 'how-to-buy-property', 'Buying property in Gujarat involves verifying the land title, obtaining the Non-Agricultural (NA) certificate, checking RERA validation, calculating stamp duty, and registering the sale deed at the local sub-registrar office.', 'How to Buy Property in Gujarat | Real Estate Guide', 'Complete investor guide for How to Buy Property in Gujarat in Gujarat. Check property rates, RERA validation, and verification guidelines.', '2026-07-27T03:23:04.458Z', '2026-07-27T04:10:37.821Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (28, '3bhk flat vesu surat', '3bhk-flat-vesu-surat', '# Flat for Sale in Vesu, Surat
 
 Vesu has emerged as one of Surat''s most prestigious and rapidly developing residential destinations. Located in the western part of the city, the area is known for wide roads, premium residential projects, excellent infrastructure, and seamless connectivity to VIP Road, Piplod, Althan, City Light, and Surat International Airport. It has become a preferred location for professionals, business owners, NRIs, and families looking for a modern lifestyle.
@@ -8559,7 +7747,7 @@ PropertysDeal offers verified property listings, AI-powered search, trusted buil
 A **Flat for Sale in Vesu, Surat** offers the perfect combination of luxury, comfort, excellent connectivity, and long-term investment potential. With premium residential projects, modern amenities, and a rapidly developing urban landscape, Vesu continues to be one of Surat''s most preferred locations for homebuyers and investors.
 
 Whether you are looking for a ready-to-move apartment, a spacious family home, or a luxury residence, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners—making your property-buying journey simple, transparent, and reliable.
-', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:36.114Z', '2026-07-28T03:13:36.114Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:36.114Z', '2026-07-28T03:13:36.114Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (29, 'Property in vesu', 'property-in-vesu', '# Flat for Sale in Vesu, Surat
 
 Vesu has emerged as one of Surat''s most prestigious and rapidly developing residential destinations. Located in the western part of the city, the area is known for wide roads, premium residential projects, excellent infrastructure, and seamless connectivity to VIP Road, Piplod, Althan, City Light, and Surat International Airport. It has become a preferred location for professionals, business owners, NRIs, and families looking for a modern lifestyle.
@@ -8861,7 +8049,7 @@ PropertysDeal offers verified property listings, AI-powered search, trusted buil
 A **Flat for Sale in Vesu, Surat** offers the perfect combination of luxury, comfort, excellent connectivity, and long-term investment potential. With premium residential projects, modern amenities, and a rapidly developing urban landscape, Vesu continues to be one of Surat''s most preferred locations for homebuyers and investors.
 
 Whether you are looking for a ready-to-move apartment, a spacious family home, or a luxury residence, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners—making your property-buying journey simple, transparent, and reliable.
-', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:37.356Z', '2026-07-28T03:13:37.356Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Vesu, Surat | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Vesu, Surat. Find ready-to-move 2 BHK, 3 BHK & luxury 4 BHK apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:13:37.356Z', '2026-07-28T03:13:37.356Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (34, '2bhk flat adajan surat', '2bhk-flat-adajan-surat', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established residential neighborhoods, located on the western bank of the Tapi River. Over the years, it has transformed into a vibrant residential hub offering everything from affordable apartments to premium villas and luxury homes. Excellent road connectivity, reputed educational institutions, healthcare facilities, shopping destinations, and recreational spaces make it one of the city''s most preferred places to live.
@@ -9121,7 +8309,7 @@ PropertysDeal offers verified listings, detailed property information, and smart
 **Property in Adajan, Surat** remains one of the best choices for homebuyers and investors seeking a well-developed residential locality with excellent connectivity, quality amenities, and long-term growth potential. From affordable apartments to premium villas and luxury residences, Adajan offers housing options for diverse budgets and lifestyles.
 
 Whether you''re buying your first home, upgrading to a larger residence, or investing for long-term appreciation, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury apartments, independent houses, price trends, and legal guides.', '2026-07-28T03:33:14.387Z', '2026-07-28T03:33:14.387Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury apartments, independent houses, price trends, and legal guides.', '2026-07-28T03:33:14.387Z', '2026-07-28T03:33:14.387Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (35, '3bhk flat adajan surat', '3bhk-flat-adajan-surat', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established residential neighborhoods, located on the western bank of the Tapi River. Over the years, it has transformed into a vibrant residential hub offering everything from affordable apartments to premium villas and luxury homes. Excellent road connectivity, reputed educational institutions, healthcare facilities, shopping destinations, and recreational spaces make it one of the city''s most preferred places to live.
@@ -9381,7 +8569,7 @@ PropertysDeal offers verified listings, detailed property information, and smart
 **Property in Adajan, Surat** remains one of the best choices for homebuyers and investors seeking a well-developed residential locality with excellent connectivity, quality amenities, and long-term growth potential. From affordable apartments to premium villas and luxury residences, Adajan offers housing options for diverse budgets and lifestyles.
 
 Whether you''re buying your first home, upgrading to a larger residence, or investing for long-term appreciation, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury apartments, independent houses, price trends, and legal guides.', '2026-07-28T03:33:15.371Z', '2026-07-28T03:33:15.371Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury apartments, independent houses, price trends, and legal guides.', '2026-07-28T03:33:15.371Z', '2026-07-28T03:33:15.371Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (36, '2bhk pal surat', '2bhk-pal-surat', '# 2 BHK Flats in Pal, Surat
 
 Pal is one of Surat''s fastest-growing residential areas and has become a preferred destination for families, first-time homebuyers, and investors. The locality offers a wide selection of 2 BHK apartments, ranging from affordable ready-to-move homes to premium apartments in gated communities. Wide roads, modern infrastructure, reputed schools, hospitals, and easy access to commercial hubs make Pal an attractive place to own a home.
@@ -9590,7 +8778,7 @@ PropertysDeal provides verified property listings, detailed project information,
 A **2 BHK in Pal, Surat** offers an excellent combination of affordability, modern amenities, and long-term investment potential. With a wide range of ready-to-move and new apartments, family-friendly surroundings, strong connectivity, and promising appreciation potential, Pal continues to be one of Surat''s top residential destinations.
 
 Whether you''re buying your first home or investing for the future, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:05.649Z', '2026-07-28T03:36:05.649Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:05.649Z', '2026-07-28T03:36:05.649Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (37, '2bhk flat pal surat', '2bhk-flat-pal-surat', '# 2 BHK Flats in Pal, Surat
 
 Pal is one of Surat''s fastest-growing residential areas and has become a preferred destination for families, first-time homebuyers, and investors. The locality offers a wide selection of 2 BHK apartments, ranging from affordable ready-to-move homes to premium apartments in gated communities. Wide roads, modern infrastructure, reputed schools, hospitals, and easy access to commercial hubs make Pal an attractive place to own a home.
@@ -9799,7 +8987,7 @@ PropertysDeal provides verified property listings, detailed project information,
 A **2 BHK in Pal, Surat** offers an excellent combination of affordability, modern amenities, and long-term investment potential. With a wide range of ready-to-move and new apartments, family-friendly surroundings, strong connectivity, and promising appreciation potential, Pal continues to be one of Surat''s top residential destinations.
 
 Whether you''re buying your first home or investing for the future, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:07.292Z', '2026-07-28T03:36:07.292Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:07.292Z', '2026-07-28T03:36:07.292Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (38, 'Flat for sale in pal surat', 'flat-for-sale-in-pal-surat', '# 2 BHK Flats in Pal, Surat
 
 Pal is one of Surat''s fastest-growing residential areas and has become a preferred destination for families, first-time homebuyers, and investors. The locality offers a wide selection of 2 BHK apartments, ranging from affordable ready-to-move homes to premium apartments in gated communities. Wide roads, modern infrastructure, reputed schools, hospitals, and easy access to commercial hubs make Pal an attractive place to own a home.
@@ -10008,7 +9196,7 @@ PropertysDeal provides verified property listings, detailed project information,
 A **2 BHK in Pal, Surat** offers an excellent combination of affordability, modern amenities, and long-term investment potential. With a wide range of ready-to-move and new apartments, family-friendly surroundings, strong connectivity, and promising appreciation potential, Pal continues to be one of Surat''s top residential destinations.
 
 Whether you''re buying your first home or investing for the future, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:08.592Z', '2026-07-28T03:36:08.592Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:08.592Z', '2026-07-28T03:36:08.592Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (39, 'Flat for sale in pal', 'flat-for-sale-in-pal', '# 2 BHK Flats in Pal, Surat
 
 Pal is one of Surat''s fastest-growing residential areas and has become a preferred destination for families, first-time homebuyers, and investors. The locality offers a wide selection of 2 BHK apartments, ranging from affordable ready-to-move homes to premium apartments in gated communities. Wide roads, modern infrastructure, reputed schools, hospitals, and easy access to commercial hubs make Pal an attractive place to own a home.
@@ -10217,7 +9405,7 @@ PropertysDeal provides verified property listings, detailed project information,
 A **2 BHK in Pal, Surat** offers an excellent combination of affordability, modern amenities, and long-term investment potential. With a wide range of ready-to-move and new apartments, family-friendly surroundings, strong connectivity, and promising appreciation potential, Pal continues to be one of Surat''s top residential destinations.
 
 Whether you''re buying your first home or investing for the future, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:09.891Z', '2026-07-28T03:36:09.891Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:09.891Z', '2026-07-28T03:36:09.891Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (40, 'Property in pal surat', 'property-in-pal-surat', '# 2 BHK Flats in Pal, Surat
 
 Pal is one of Surat''s fastest-growing residential areas and has become a preferred destination for families, first-time homebuyers, and investors. The locality offers a wide selection of 2 BHK apartments, ranging from affordable ready-to-move homes to premium apartments in gated communities. Wide roads, modern infrastructure, reputed schools, hospitals, and easy access to commercial hubs make Pal an attractive place to own a home.
@@ -10426,7 +9614,7 @@ PropertysDeal provides verified property listings, detailed project information,
 A **2 BHK in Pal, Surat** offers an excellent combination of affordability, modern amenities, and long-term investment potential. With a wide range of ready-to-move and new apartments, family-friendly surroundings, strong connectivity, and promising appreciation potential, Pal continues to be one of Surat''s top residential destinations.
 
 Whether you''re buying your first home or investing for the future, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:11.185Z', '2026-07-28T03:36:11.185Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:11.185Z', '2026-07-28T03:36:11.185Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (41, 'Property in pal', 'property-in-pal', '# 2 BHK Flats in Pal, Surat
 
 Pal is one of Surat''s fastest-growing residential areas and has become a preferred destination for families, first-time homebuyers, and investors. The locality offers a wide selection of 2 BHK apartments, ranging from affordable ready-to-move homes to premium apartments in gated communities. Wide roads, modern infrastructure, reputed schools, hospitals, and easy access to commercial hubs make Pal an attractive place to own a home.
@@ -10635,7 +9823,7 @@ PropertysDeal provides verified property listings, detailed project information,
 A **2 BHK in Pal, Surat** offers an excellent combination of affordability, modern amenities, and long-term investment potential. With a wide range of ready-to-move and new apartments, family-friendly surroundings, strong connectivity, and promising appreciation potential, Pal continues to be one of Surat''s top residential destinations.
 
 Whether you''re buying your first home or investing for the future, PropertysDeal helps you discover verified listings, compare projects, and connect with trusted builders and property owners.
-', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:12.431Z', '2026-07-28T03:36:12.431Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat in Pal, Surat | Buy Ready to Move & Luxury 2 BHK', 'Explore verified 2 BHK flats for sale in Pal, Surat. Compare ready-to-move & new residential projects, price trends (₹50L - ₹70L), amenities, and legal guides.', '2026-07-28T03:36:12.431Z', '2026-07-28T03:36:12.431Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (42, 'Plot for sale in althan', 'plot-for-sale-in-althan', '# Plot for Sale in Althan, Surat
 
 Althan has emerged as one of Surat''s fastest-growing residential and investment hotspots. Located strategically in the south-western corridor of Surat, Althan offers an ideal balance of peaceful living, rapid urban infrastructure growth, and seamless connectivity to VIP Road, Vesu, City Light, Bhatar, and Surat International Airport. Buying a **plot for sale in Althan, Surat** gives land buyers, homebuilders, and investors the freedom to design custom dream bungalows, luxury villas, or high-yield commercial properties.
@@ -10785,7 +9973,7 @@ PropertysDeal provides 100% verified plot listings in Althan with direct owner/d
 A **Plot for Sale in Althan, Surat** offers the perfect foundation for building your dream home or securing a high-return real estate asset in one of Surat''s most prestigious corridors. With excellent road connectivity, NA clearance transparency, modern infrastructure, and steady long-term appreciation, Althan continues to attract smart homebuyers and investors alike.
 
 Explore verified plot listings, compare project layouts, and connect directly with trusted developers and landowners on PropertysDeal today!
-', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:00.038Z', '2026-07-28T03:37:00.038Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:00.038Z', '2026-07-28T03:37:00.038Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (43, 'Plot for sale in althan surat', 'plot-for-sale-in-althan-surat', '# Plot for Sale in Althan, Surat
 
 Althan has emerged as one of Surat''s fastest-growing residential and investment hotspots. Located strategically in the south-western corridor of Surat, Althan offers an ideal balance of peaceful living, rapid urban infrastructure growth, and seamless connectivity to VIP Road, Vesu, City Light, Bhatar, and Surat International Airport. Buying a **plot for sale in Althan, Surat** gives land buyers, homebuilders, and investors the freedom to design custom dream bungalows, luxury villas, or high-yield commercial properties.
@@ -10935,7 +10123,7 @@ PropertysDeal provides 100% verified plot listings in Althan with direct owner/d
 A **Plot for Sale in Althan, Surat** offers the perfect foundation for building your dream home or securing a high-return real estate asset in one of Surat''s most prestigious corridors. With excellent road connectivity, NA clearance transparency, modern infrastructure, and steady long-term appreciation, Althan continues to attract smart homebuyers and investors alike.
 
 Explore verified plot listings, compare project layouts, and connect directly with trusted developers and landowners on PropertysDeal today!
-', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:01.329Z', '2026-07-28T03:37:01.329Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:01.329Z', '2026-07-28T03:37:01.329Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (44, 'Plot for sale althan', 'plot-for-sale-althan', '# Plot for Sale in Althan, Surat
 
 Althan has emerged as one of Surat''s fastest-growing residential and investment hotspots. Located strategically in the south-western corridor of Surat, Althan offers an ideal balance of peaceful living, rapid urban infrastructure growth, and seamless connectivity to VIP Road, Vesu, City Light, Bhatar, and Surat International Airport. Buying a **plot for sale in Althan, Surat** gives land buyers, homebuilders, and investors the freedom to design custom dream bungalows, luxury villas, or high-yield commercial properties.
@@ -11085,7 +10273,7 @@ PropertysDeal provides 100% verified plot listings in Althan with direct owner/d
 A **Plot for Sale in Althan, Surat** offers the perfect foundation for building your dream home or securing a high-return real estate asset in one of Surat''s most prestigious corridors. With excellent road connectivity, NA clearance transparency, modern infrastructure, and steady long-term appreciation, Althan continues to attract smart homebuyers and investors alike.
 
 Explore verified plot listings, compare project layouts, and connect directly with trusted developers and landowners on PropertysDeal today!
-', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:02.618Z', '2026-07-28T03:37:02.618Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:02.618Z', '2026-07-28T03:37:02.618Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (45, 'Property in althan surat', 'property-in-althan-surat', '# Plot for Sale in Althan, Surat
 
 Althan has emerged as one of Surat''s fastest-growing residential and investment hotspots. Located strategically in the south-western corridor of Surat, Althan offers an ideal balance of peaceful living, rapid urban infrastructure growth, and seamless connectivity to VIP Road, Vesu, City Light, Bhatar, and Surat International Airport. Buying a **plot for sale in Althan, Surat** gives land buyers, homebuilders, and investors the freedom to design custom dream bungalows, luxury villas, or high-yield commercial properties.
@@ -11235,7 +10423,7 @@ PropertysDeal provides 100% verified plot listings in Althan with direct owner/d
 A **Plot for Sale in Althan, Surat** offers the perfect foundation for building your dream home or securing a high-return real estate asset in one of Surat''s most prestigious corridors. With excellent road connectivity, NA clearance transparency, modern infrastructure, and steady long-term appreciation, Althan continues to attract smart homebuyers and investors alike.
 
 Explore verified plot listings, compare project layouts, and connect directly with trusted developers and landowners on PropertysDeal today!
-', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:03.909Z', '2026-07-28T03:37:03.909Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Plot for Sale in Althan, Surat | Buy NA Residential & Gated Plots', 'Explore verified plots for sale in Althan, Surat. Find NA residential plots, gated township plots, commercial land, price trends (₹4,500/sq.ft), and legal guides.', '2026-07-28T03:37:03.909Z', '2026-07-28T03:37:03.909Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (128, 'New Projects in Bopal Ahmedabad', 'property-in-bopal-ahmedabad', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -11387,219 +10575,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:11.563Z', '2026-07-28T04:32:11.563Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (5, 'Rera registered properties gujarat', 'rera-registered-properties-gujarat', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
-
-The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
-
-Whether you''re buying an under-construction 2 BHK/3 BHK flat in Ahmedabad, a luxury villa in Surat, a commercial office on S.G. Highway, or a township plot in Vadodara, verifying the **GujRERA Registration Number** is the most critical step to ensure a secure property purchase.
-
----
-
-## Key Buyer Protections & Benefits of RERA Registered Properties in Gujarat
-
-| RERA Protection Rule | Impact on Property Buyer |
-| --- | --- |
-| **Standardized Carpet Area** | Developers can ONLY sell properties based on net usable Carpet Area (excluding thick outer walls & balcony gaps). |
-| **70% Escrow Account Rule** | 70% of buyer funds collected must be deposited into a dedicated bank escrow account used exclusively for project land & construction costs. |
-| **Possession Deadline Commitment** | Developers are legally bound to deliver possession by the declared date; delays mandate interest payouts to buyers. |
-| **5-Year Defect Liability Period** | Builders are legally responsible for fixing structural defects free of charge for 5 years after handing over possession. |
-| **Protection Against Plan Alteration** | Developers cannot alter approved floor plans or structural designs without two-thirds (2/3rd) consent of all buyer allottees. |
-| **Formal GujRERA Complaint Redressal** | Fast-track dispute resolution via the GujRERA Adjudicating Officer & Appellate Tribunal. |
-
----
-
-## How to Verify GujRERA Registration Online (Step-by-Step)
-
-Before paying any token advance or signing an Agreement for Sale:
-
-1. **Obtain the RERA Number**: Ask the builder for their official PR/GJ/CITY/MUNICIPALITY/RERA Registration Number (displayed on marketing boards & brochures).
-2. **Visit GujRERA Portal**: Access the official Gujarat RERA website (**gujrera.gujarat.gov.in**).
-3. **Project Search**: Enter the RERA Registration Number, Project Name, or Builder/Promoter Name under "Project Search".
-4. **Inspect Official Uploads**:
-   - Verify **Approved Building Plans** & floor layouts approved by local authorities (AMC, SMC, VMC, RMC).
-   - Check **Promoter Past Track Record** (number of delivered projects vs delayed projects).
-   - Review **Quarterly Progress Reports (QPR)** showing physical construction completion percentages and fund utilization.
-   - Check **Declared Possession Timeline** and verify land title clearance documents.
-
----
-
-## Major RERA Registered Property Hubs in Gujarat
-
-### 1. Ahmedabad RERA Projects
-- **High-Demand Corridors**: S.G. Highway, South Bopal, Shela, Shilaj, Gota, Science City, Vaishnodevi Circle, SP Ring Road.
-- **Project Types**: High-rise 2/3/4 BHK apartments, commercial IT office towers, and gated villa communities.
-
-### 2. Surat RERA Projects
-- **High-Demand Corridors**: Vesu, Pal, Adajan, Dumas Road, Althan, VIP Road.
-- **Project Types**: Premium 3/4 BHK apartments, high-street retail complexes, and diamond/textile trade offices.
-
-### 3. Gandhinagar & GIFT City RERA Projects
-- **High-Demand Corridors**: Raysan, Kudasan, Sargasan, GIFT City IFSC influence corridor.
-
-### 4. Vadodara & Rajkot RERA Projects
-- **Vadodara**: Sevasi, Bhayli, Gotri, Atladara, Kalali.
-- **Rajkot**: Kalawad Road, Raiya Road, 150 Feet Ring Road, Mavdi.
-
----
-
-## Essential Legal Checklist Before Booking Under-Construction Properties
-
-- Verify project RERA status on **gujrera.gujarat.gov.in**.
-- Verify 70% Bank Escrow Account details in the RERA registration certificate.
-- Ensure the **Agreement for Sale** strictly follows the model RERA format with declared possession deadlines and penalty interest clauses.
-- Confirm **Occupancy Certificate (OC) / BU Permission** status if the project is near completion.
-- Obtain official payment receipts stamped with the developer''s corporate seal for every installment.
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. How do I check if a property is RERA approved in Gujarat?
-You can search the project''s RERA Registration Number or promoter name on the official **GujRERA portal** (gujrera.gujarat.gov.in) to verify active registration, approved plans, and completion dates.
-
-### 2. Are all real estate projects required to be registered under RERA in Gujarat?
-Projects where the land area exceeds 500 square meters or where the number of apartments exceeds 8 units MUST be registered with GujRERA before marketing or selling.
-
-### 3. What happens if a builder delays possession of a RERA registered project?
-Under RERA Section 18, if a builder fails to give possession on time, the buyer can either claim a full refund with interest or remain in the project and claim monthly interest for every month of delay until possession.
-
-### 4. What is a RERA Carpet Area?
-RERA Carpet Area is the net usable floor area of an apartment excluding external walls, service shafts, and open balconies. Developers are legally prohibited from selling based on super built-up area.
-
-### 5. What is the 5-year defect liability clause under GujRERA?
-Under RERA, if structural defects or poor construction quality are reported within 5 years of possession, the builder must repair them free of charge within 30 days.
-
-### 6. Can a builder change the approved floor plan after booking?
-No. Builders cannot make structural modifications or floor plan alterations without obtaining written consent from at least two-thirds (2/3rd) of the allottees.
-
-### 7. How do I file a complaint against a developer in GujRERA?
-You can file an online complaint on the GujRERA portal by uploading payment receipts, the Agreement for Sale, and evidence of breach, followed by formal hearings.
-
-### 8. Are commercial shops and office spaces covered under GujRERA?
-Yes. Commercial office buildings, shopping complexes, and mixed-use developments meeting the registration criteria are fully covered under GujRERA.
-
-### 9. Do banks require RERA registration for home loan approvals?
-Yes. Banks and housing finance companies require a valid GujRERA registration number before approving home loans for under-construction properties.
-
-### 10. Why search for RERA registered properties on PropertysDeal?
-PropertysDeal lists 100% verified RERA registered properties across Gujarat with direct developer contact, approved carpet area pricing, and verified construction timeline updates.
-
----
-
-## Conclusion & Next Steps
-
-Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
-
-With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-27T04:10:38.357Z', '2026-07-29T06:57:46.279Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (6, 'Best areas to buy flat in ahmedabad', 'best-areas-to-buy-flat-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
-
-Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
-
-Whether you are a first-time homebuyer, a family seeking top schools and hospitals, an NRI, or an investor seeking rental yield and capital growth, choosing the right locality in West, North, or South-West Ahmedabad is key to maximizing your property value.
-
----
-
-## Top 10 Localities to Buy a Flat in Ahmedabad
-
-### 1. South Bopal & Shela (South-West Growth Corridor)
-- **Target Audience**: Families, IT Professionals, First-Time Buyers, & Long-Term Investors.
-- **Price Range**: ₹4,500 – ₹7,200 / sq.ft (Mid & Premium Segments).
-- **Highlights**: Direct access to SP Ring Road, top CBSE schools (DPS Bopal, Cosmos), multi-specialty hospitals, and modern gated townships.
-
-### 2. Science City & S.G. Highway (Western Premium Hub)
-- **Target Audience**: Business owners, Doctors, Corporate Executives, & High Net Worth Individuals.
-- **Price Range**: ₹7,500 – ₹12,000 / sq.ft.
-- **Highlights**: 6-lane Boulevard connectivity, Science City entertainment zone, Grade A corporate hubs, fine dining, and metro access.
-
-### 3. Gota & Chandkheda (North Ahmedabad Metro Belt)
-- **Target Audience**: First-Time Homebuyers, Government Staff, & Rental Yield Investors.
-- **Price Range**: ₹4,200 – ₹6,200 / sq.ft (Affordable & Budget Segments).
-- **Highlights**: Direct Ahmedabad Metro station access, easy commute to GIFT City and SG Highway, high rental demand from students & young professionals.
-
-### 4. Thaltej, Satellite & Bodakdev (Core Luxury Districts)
-- **Target Audience**: Luxury Buyers, NRIs, & Established Business Leaders.
-- **Price Range**: ₹11,000 – ₹18,000+ / sq.ft.
-- **Highlights**: Prime West Ahmedabad address, high-end retail malls (Alpha One, Iscon), top healthcare facilities (Zydus Hospital), and ultra-luxury 3/4 BHK projects.
-
-### 5. Vaishnodevi Circle & Shilaj (Emerging High-Appreciation Zones)
-- **Target Audience**: Investors & Young Families.
-- **Price Range**: ₹5,500 – ₹8,500 / sq.ft.
-- **Highlights**: Junction of SG Highway & SP Ring Road, proximity to Nirma University and SG Highway IT parks.
-
----
-
-## Locality Comparison Matrix: Price, Rental Yield & Growth Potential
-
-| Locality Name | Average Flat Price (sq.ft) | Rental Yield | Primary Target Buyer | Key Advantage |
-| --- | --- | --- | --- | --- |
-| **South Bopal** | ₹4,800 – ₹6,800 | 4.2% – 5.0% | Families & IT Staff | SP Ring Road transit & CBSE schools |
-| **Shela** | ₹4,500 – ₹6,200 | 4.0% – 4.8% | Investors & Buyers | High township appreciation |
-| **Gota** | ₹4,200 – ₹5,800 | 4.5% – 5.5% | First-Time Buyers | Metro connectivity & affordable rates |
-| **Science City** | ₹7,500 – ₹11,000 | 3.8% – 4.5% | Premium Families | World-class road infrastructure |
-| **Bodakdev / Thaltej**| ₹12,000 – ₹18,000+ | 3.2% – 4.0% | Ultra-Luxury & NRIs | Premium lifestyle address & high resale |
-
----
-
-## Homebuyer Selection Guide: Match Your Needs
-
-- **For First-Time Buyers (Budget ₹40L - ₹65L)**: Focus on **Gota, Chandkheda, Shela, and Nava Naroda**.
-- **For Families (Budget ₹65L - ₹1.25 Cr)**: Focus on **South Bopal, Science City, Vaishnodevi Circle, and Motera**.
-- **For Luxury Buyers (Budget ₹1.5 Cr - ₹4.0 Cr+)**: Focus on **Bodakdev, Thaltej, Satellite, Ambli Road, and Sindhu Bhavan Road (SBR)**.
-
----
-
-## Essential Legal Verification Checklist Before Booking
-
-Before paying any booking token or advance:
-1. Verify the project''s **GUJRERA Registration Number** on official Gujarat RERA portal.
-2. Inspect the **Occupancy Certificate (OC) / BU Permission** for ready-to-move flats.
-3. Verify title clearance (30-year advocate report) & **Property Card** records.
-4. Calculate total all-inclusive costs: Flat cost + **4.9% Stamp Duty** + **1% Registration Fee** + GST (for under-construction) + Society CAM deposit.
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Which area is best to buy a flat in Ahmedabad for first-time homebuyers?
-**Gota, Chandkheda, Shela, and South Bopal** are highly recommended due to budget-friendly prices (₹4,200–₹6,500/sq.ft), excellent metro/bus connectivity, and rapid infrastructure growth.
-
-### 2. Which are the top luxury areas to buy a flat in Ahmedabad?
-**Bodakdev, Thaltej, Satellite, Ambli Road, Sindhu Bhavan Road (SBR), and Prahlad Nagar** offer premium 3, 4, & 5 BHK luxury apartments and penthouses.
-
-### 3. Which areas in Ahmedabad offer the highest rental yields?
-**Gota, Chandkheda, South Bopal, Motera, and Satellite** generate strong rental yields between 4.2% and 5.5% due to high tenant demand from IT professionals and college students.
-
-### 4. What is the average price per sq.ft of flats in South Bopal and Shela?
-Flats in South Bopal and Shela range between ₹4,500 and ₹6,800 per sq.ft depending on project amenities, building height, and developer reputation.
-
-### 5. Why is Science City Road popular for residential flats?
-Science City Road features 6-lane wide avenues, proximity to S.G. Highway IT corridors, top-tier schools, multi-specialty hospitals, and premium gated township amenities.
-
-### 6. Are ready-to-move flats exempt from GST in Ahmedabad?
-Yes. Ready-to-move-in flats with a valid Occupancy Certificate (OC) / BU Permission are 100% exempt from GST (saving 5% compared to under-construction flats).
-
-### 7. What is the stamp duty and registration charge when buying a flat in Ahmedabad?
-Effective Stamp Duty is **4.9%** (3.5% basic + 1.4% surcharge) and Sub-Registrar Registration Fee is **1%** (total 5.9% statutory charge based on sale price or Jantri rate).
-
-### 8. Is Shela a good location for long-term real estate investment?
-Yes. Shela is experiencing rapid township developments, luxury clubhouses, wide internal roads, and high appreciation rates due to proximity to South Bopal and SP Ring Road.
-
-### 9. Which areas benefit most from Metro connectivity in Ahmedabad?
-Gota, Thaltej, Commerce Six Roads, Navrangpura, Chandkheda, and Motera benefit directly from active Ahmedabad Metro rail stations.
-
-### 10. Why search for flats in Ahmedabad on PropertysDeal?
-PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, certified GUJRERA details, direct builder/owner contacts, and transparent all-inclusive price breakdowns.
-
----
-
-## Conclusion & Next Steps
-
-Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
-
-Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-27T04:10:38.618Z', '2026-07-29T06:57:46.776Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:11.563Z', '2026-07-28T04:32:11.563Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (51, 'Property in alkapuri vadodara', 'property-in-alkapuri-vadodara', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -11759,7 +10735,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:27.281Z', '2026-07-28T03:42:27.281Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:27.281Z', '2026-07-28T03:42:27.281Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (52, 'Property in alkapuri', 'property-in-alkapuri', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -11919,7 +10895,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:28.582Z', '2026-07-28T03:42:28.582Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:28.582Z', '2026-07-28T03:42:28.582Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (53, '2bhk flat alkapuri vadodara', '2bhk-flat-alkapuri-vadodara', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -12079,7 +11055,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:29.881Z', '2026-07-28T03:42:29.881Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:29.881Z', '2026-07-28T03:42:29.881Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (54, '3bhk flat alkapuri vadodara', '3bhk-flat-alkapuri-vadodara', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -12239,7 +11215,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:31.180Z', '2026-07-28T03:42:31.180Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:31.180Z', '2026-07-28T03:42:31.180Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (55, 'Property in gotri vadodara', 'property-in-gotri-vadodara', '# Property in Gotri, Vadodara
 
 Gotri is one of the most established and rapidly developing residential localities in western Vadodara. The area offers a balanced mix of affordable, mid-range, and premium housing, making it suitable for first-time buyers, growing families, professionals, and investors. Its excellent connectivity, quality educational institutions, healthcare facilities, shopping centres, and modern residential projects have made Gotri one of the city''s preferred places to live.
@@ -12493,7 +11469,7 @@ PropertysDeal provides verified listings, detailed project information, smart se
 **Property in Gotri, Vadodara** offers an excellent combination of modern living, quality infrastructure, and long-term investment potential. Whether you''re looking for an affordable apartment, a premium villa, an independent house, or a residential plot, Gotri provides options for every type of buyer.
 
 Discover verified 2 BHK, 3 BHK, villas, and plot listings in Gotri on PropertysDeal today!
-', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:28.230Z', '2026-07-28T03:45:28.230Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:28.230Z', '2026-07-28T03:45:28.230Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (56, 'Property in gotri', 'property-in-gotri', '# Property in Gotri, Vadodara
 
 Gotri is one of the most established and rapidly developing residential localities in western Vadodara. The area offers a balanced mix of affordable, mid-range, and premium housing, making it suitable for first-time buyers, growing families, professionals, and investors. Its excellent connectivity, quality educational institutions, healthcare facilities, shopping centres, and modern residential projects have made Gotri one of the city''s preferred places to live.
@@ -12747,7 +11723,7 @@ PropertysDeal provides verified listings, detailed project information, smart se
 **Property in Gotri, Vadodara** offers an excellent combination of modern living, quality infrastructure, and long-term investment potential. Whether you''re looking for an affordable apartment, a premium villa, an independent house, or a residential plot, Gotri provides options for every type of buyer.
 
 Discover verified 2 BHK, 3 BHK, villas, and plot listings in Gotri on PropertysDeal today!
-', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:29.233Z', '2026-07-28T03:45:29.233Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:29.233Z', '2026-07-28T03:45:29.233Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (57, 'Flat for sale in gotri vadodara', 'flat-for-sale-in-gotri-vadodara', '# Property in Gotri, Vadodara
 
 Gotri is one of the most established and rapidly developing residential localities in western Vadodara. The area offers a balanced mix of affordable, mid-range, and premium housing, making it suitable for first-time buyers, growing families, professionals, and investors. Its excellent connectivity, quality educational institutions, healthcare facilities, shopping centres, and modern residential projects have made Gotri one of the city''s preferred places to live.
@@ -13001,7 +11977,7 @@ PropertysDeal provides verified listings, detailed project information, smart se
 **Property in Gotri, Vadodara** offers an excellent combination of modern living, quality infrastructure, and long-term investment potential. Whether you''re looking for an affordable apartment, a premium villa, an independent house, or a residential plot, Gotri provides options for every type of buyer.
 
 Discover verified 2 BHK, 3 BHK, villas, and plot listings in Gotri on PropertysDeal today!
-', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:30.230Z', '2026-07-28T03:45:30.230Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:30.230Z', '2026-07-28T03:45:30.230Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (58, 'Flat for sale in gotri', 'flat-for-sale-in-gotri', '# Property in Gotri, Vadodara
 
 Gotri is one of the most established and rapidly developing residential localities in western Vadodara. The area offers a balanced mix of affordable, mid-range, and premium housing, making it suitable for first-time buyers, growing families, professionals, and investors. Its excellent connectivity, quality educational institutions, healthcare facilities, shopping centres, and modern residential projects have made Gotri one of the city''s preferred places to live.
@@ -13255,7 +12231,7 @@ PropertysDeal provides verified listings, detailed project information, smart se
 **Property in Gotri, Vadodara** offers an excellent combination of modern living, quality infrastructure, and long-term investment potential. Whether you''re looking for an affordable apartment, a premium villa, an independent house, or a residential plot, Gotri provides options for every type of buyer.
 
 Discover verified 2 BHK, 3 BHK, villas, and plot listings in Gotri on PropertysDeal today!
-', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:31.225Z', '2026-07-28T03:45:31.225Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:31.225Z', '2026-07-28T03:45:31.225Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (59, '2bhk flat gotri vadodara', '2bhk-flat-gotri-vadodara', '# Property in Gotri, Vadodara
 
 Gotri is one of the most established and rapidly developing residential localities in western Vadodara. The area offers a balanced mix of affordable, mid-range, and premium housing, making it suitable for first-time buyers, growing families, professionals, and investors. Its excellent connectivity, quality educational institutions, healthcare facilities, shopping centres, and modern residential projects have made Gotri one of the city''s preferred places to live.
@@ -13509,7 +12485,7 @@ PropertysDeal provides verified listings, detailed project information, smart se
 **Property in Gotri, Vadodara** offers an excellent combination of modern living, quality infrastructure, and long-term investment potential. Whether you''re looking for an affordable apartment, a premium villa, an independent house, or a residential plot, Gotri provides options for every type of buyer.
 
 Discover verified 2 BHK, 3 BHK, villas, and plot listings in Gotri on PropertysDeal today!
-', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:32.229Z', '2026-07-28T03:45:32.229Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:32.229Z', '2026-07-28T03:45:32.229Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (60, '3bhk flat gotri vadodara', '3bhk-flat-gotri-vadodara', '# Property in Gotri, Vadodara
 
 Gotri is one of the most established and rapidly developing residential localities in western Vadodara. The area offers a balanced mix of affordable, mid-range, and premium housing, making it suitable for first-time buyers, growing families, professionals, and investors. Its excellent connectivity, quality educational institutions, healthcare facilities, shopping centres, and modern residential projects have made Gotri one of the city''s preferred places to live.
@@ -13763,7 +12739,7 @@ PropertysDeal provides verified listings, detailed project information, smart se
 **Property in Gotri, Vadodara** offers an excellent combination of modern living, quality infrastructure, and long-term investment potential. Whether you''re looking for an affordable apartment, a premium villa, an independent house, or a residential plot, Gotri provides options for every type of buyer.
 
 Discover verified 2 BHK, 3 BHK, villas, and plot listings in Gotri on PropertysDeal today!
-', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:33.220Z', '2026-07-28T03:45:33.220Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Gotri, Vadodara | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Gotri, Vadodara. Compare 2 BHK & 3 BHK apartments, luxury villas, residential plots, price trends (₹5,100/sq.ft), and legal guides.', '2026-07-28T03:45:33.220Z', '2026-07-28T03:45:33.220Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (30, 'Property in adajan surat', 'property-in-adajan-surat', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -14009,7 +12985,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:10.391Z', '2026-07-28T03:33:10.391Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:10.391Z', '2026-07-28T03:33:10.391Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (32, 'Flat for sale in adajan', 'flat-for-sale-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -14255,7 +13231,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:12.404Z', '2026-07-28T03:33:12.404Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T03:33:12.404Z', '2026-07-28T03:33:12.404Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (65, 'Flats in adajan surat', 'flats-in-adajan-surat', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -14501,7 +13477,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:41.809Z', '2026-07-28T04:02:41.809Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:41.809Z', '2026-07-28T04:02:41.809Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (66, '2bhk flat in adajan', '2bhk-flat-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -14747,7 +13723,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:42.818Z', '2026-07-28T04:02:42.818Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:42.818Z', '2026-07-28T04:02:42.818Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (67, '3bhk flat in adajan', '3bhk-flat-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -14993,7 +13969,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:43.813Z', '2026-07-28T04:02:43.813Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:43.813Z', '2026-07-28T04:02:43.813Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (68, 'Villa for sale in adajan', 'villa-for-sale-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -15239,7 +14215,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:44.810Z', '2026-07-28T04:02:44.810Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:44.810Z', '2026-07-28T04:02:44.810Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (72, 'New residential projects in adajan', 'new-residential-projects-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -15485,7 +14461,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:48.804Z', '2026-07-28T04:02:48.804Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:48.804Z', '2026-07-28T04:02:48.804Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (73, 'Property in kalawad road rajkot', 'property-in-kalawad-road-rajkot', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -15727,7 +14703,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:04.118Z', '2026-07-28T04:15:04.118Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:04.118Z', '2026-07-28T04:15:04.118Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (74, 'Property in kalawad road', 'property-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -15969,7 +14945,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:05.181Z', '2026-07-28T04:15:05.181Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:05.181Z', '2026-07-28T04:15:05.181Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (75, 'Flat for sale in kalawad road rajkot', 'flat-for-sale-in-kalawad-road-rajkot', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -16211,7 +15187,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:06.178Z', '2026-07-28T04:15:06.178Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:06.178Z', '2026-07-28T04:15:06.178Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (76, 'Flat for sale in kalawad road', 'flat-for-sale-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -16453,7 +15429,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:07.170Z', '2026-07-28T04:15:07.170Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:07.170Z', '2026-07-28T04:15:07.170Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (77, 'Flats in kalawad road rajkot', 'flats-in-kalawad-road-rajkot', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -16695,7 +15671,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:08.159Z', '2026-07-28T04:15:08.159Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:08.159Z', '2026-07-28T04:15:08.159Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (78, '2bhk flat in kalawad road', '2bhk-flat-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -16937,7 +15913,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:09.153Z', '2026-07-28T04:15:09.153Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:09.153Z', '2026-07-28T04:15:09.153Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (79, '3bhk flat in kalawad road', '3bhk-flat-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -17179,7 +16155,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:10.153Z', '2026-07-28T04:15:10.153Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:10.153Z', '2026-07-28T04:15:10.153Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (80, 'Villa for sale in kalawad road', 'villa-for-sale-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -17421,7 +16397,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:11.146Z', '2026-07-28T04:15:11.146Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:11.146Z', '2026-07-28T04:15:11.146Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (81, 'Independent house in kalawad road', 'independent-house-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -17663,7 +16639,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:12.141Z', '2026-07-28T04:15:12.141Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:12.141Z', '2026-07-28T04:15:12.141Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (82, 'Residential plot in kalawad road', 'residential-plot-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -17905,7 +16881,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:13.154Z', '2026-07-28T04:15:13.154Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:13.154Z', '2026-07-28T04:15:13.154Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (83, 'Luxury property in kalawad road', 'luxury-property-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -18147,7 +17123,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:14.152Z', '2026-07-28T04:15:14.152Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:14.152Z', '2026-07-28T04:15:14.152Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (84, 'New residential projects in kalawad road', 'new-residential-projects-in-kalawad-road', '# Property in Kalawad Road, Rajkot
 
 Kalawad Road has become one of the most desirable residential and commercial corridors in Rajkot. Known for its modern infrastructure, premium residential projects, educational institutions, healthcare facilities, shopping destinations, and excellent road connectivity, the locality attracts homebuyers, professionals, business owners, and investors alike.
@@ -18389,7 +17365,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Kalawad Road, Rajkot** offers an excellent combination of premium living, modern infrastructure, strong connectivity, and long-term investment potential. Whether you''re looking for an apartment, independent house, luxury villa, or residential plot, Kalawad Road provides options for every lifestyle and budget.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed decisions with confidence.
-', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:15.150Z', '2026-07-28T04:15:15.150Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Kalawad Road, Rajkot | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Kalawad Road, Rajkot. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends, and legal guides.', '2026-07-28T04:15:15.150Z', '2026-07-28T04:15:15.150Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (85, 'Flat for sale in gift city', 'flat-for-sale-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -18569,7 +17545,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:16:56.857Z', '2026-07-28T04:16:56.857Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:16:56.857Z', '2026-07-28T04:16:56.857Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (86, 'Flat for sale in gift city gandhinagar', 'flat-for-sale-in-gift-city-gandhinagar', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -18749,7 +17725,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:16:58.121Z', '2026-07-28T04:16:58.121Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:16:58.121Z', '2026-07-28T04:16:58.121Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (91, '3bhk flat in gift city', '3bhk-flat-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -18929,7 +17905,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:04.314Z', '2026-07-28T04:17:04.314Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:04.314Z', '2026-07-28T04:17:04.314Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (92, 'Luxury flats in gift city', 'luxury-flats-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -19109,7 +18085,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:05.558Z', '2026-07-28T04:17:05.558Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:05.558Z', '2026-07-28T04:17:05.558Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (93, 'Ready to move flats in gift city', 'ready-to-move-flats-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -19289,7 +18265,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:06.805Z', '2026-07-28T04:17:06.805Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:06.805Z', '2026-07-28T04:17:06.805Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (94, 'Smart apartments in gift city', 'smart-apartments-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -19469,7 +18445,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:08.043Z', '2026-07-28T04:17:08.043Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:08.043Z', '2026-07-28T04:17:08.043Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (95, 'Residential property in gift city', 'residential-property-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -19649,7 +18625,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:09.298Z', '2026-07-28T04:17:09.298Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:09.298Z', '2026-07-28T04:17:09.298Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (96, 'New residential projects in gift city', 'new-residential-projects-in-gift-city', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -19829,7 +18805,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:10.540Z', '2026-07-28T04:17:10.540Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:10.540Z', '2026-07-28T04:17:10.540Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (98, 'Property in vallabh vidyanagar anand', 'property-in-vallabh-vidyanagar-anand', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -20061,7 +19037,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:39.709Z', '2026-07-28T04:18:39.709Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:39.709Z', '2026-07-28T04:18:39.709Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (99, 'Flat for sale in vallabh vidyanagar', 'flat-for-sale-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -20293,7 +19269,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:40.746Z', '2026-07-28T04:18:40.746Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:40.746Z', '2026-07-28T04:18:40.746Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (123, 'Ready to move 3bhk flats surat', 'ready-to-move-3bhk-flats-surat', '# Ready to Move Flats in Surat
 
 Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
@@ -20459,239 +19435,7 @@ PropertysDeal provides 100% verified ready possession listings in Surat with HD 
 A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
 
 With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:53.136Z', '2026-07-28T04:25:53.136Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (97, 'Property in vallabh vidyanagar', 'property-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
-
-Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
-
-Whether you''re searching for a modern apartment, an independent house, a villa, or a residential plot, Vallabh Vidyanagar offers residential options suitable for different budgets and lifestyles.
-
----
-
-## Why Buy Property in Vallabh Vidyanagar, Anand?
-
-The locality combines educational excellence with a peaceful residential atmosphere, making it one of Anand district''s most desirable places to live.
-
-### Key Advantages
-- **Well-planned educational township**
-- **Sardar Patel University & CVM educational ecosystem**
-- **Peaceful and green surroundings**
-- **Good road & railway connectivity**
-- **Reputed schools, colleges, and research centres**
-- **Multi-specialty hospitals and healthcare facilities**
-- **Shopping centres and daily conveniences**
-- **Strong rental demand from students and faculty**
-- **Family-friendly neighbourhood**
-- **Stable long-term investment potential**
-
-Its strategic location between Ahmedabad and Vadodara along the NH-48 corridor also makes it convenient for commuters and professionals.
-
----
-
-## Flats for Sale in Vallabh Vidyanagar
-
-Apartments remain one of the most popular residential choices in the area because of demand from families, working professionals, university staff, and investors.
-
-### Available Apartment Types
-- 1 BHK Flats
-- 2 BHK Apartments
-- 3 BHK Apartments
-- 4 BHK Luxury Flats
-- Duplex Apartments
-- Penthouse Residences
-
-### Modern Apartment Amenities
-Modern apartment projects generally include a clubhouse, gymnasium, landscaped gardens, children''s play area, CCTV security, covered parking, power backup, high-speed elevators, community hall, and visitor parking.
-
-Apartments are particularly attractive for buyers looking for rental income due to the steady student and academic population.
-
----
-
-## Villas & Independent Houses
-
-Independent houses and villas are ideal for buyers seeking larger living spaces and greater privacy in Vallabh Vidyanagar.
-
-### Benefits
-- **Spacious floor plans**
-- **Private parking**
-- **Independent ownership**
-- **Garden space (selected homes)**
-- **Better privacy**
-- **Flexible interior customization**
-- **Suitable for joint families**
-
-Many buyers prefer independent homes for long-term residence in this peaceful township.
-
----
-
-## Residential Plots in Vallabh Vidyanagar
-
-Residential plots are available in and around Vallabh Vidyanagar for buyers who wish to build custom homes.
-
-### Advantages
-- Freedom to design your own house
-- Long-term land appreciation
-- Flexible construction schedule
-- Independent ownership & high resale demand
-
-Plots continue to attract investors looking for gradual appreciation over the coming years.
-
----
-
-## New Residential Projects
-
-New residential developments continue to improve the housing options available in Vallabh Vidyanagar.
-
-### Benefits of New Projects
-- Contemporary architecture & efficient layouts
-- Premium amenities & smart home provisions
-- Better energy efficiency & attractive payment plans
-- Improved resale value
-
-These projects cater to first-time buyers, professionals, retirees, and investors.
-
----
-
-## Luxury Properties in Vallabh Vidyanagar
-
-Luxury housing includes premium apartments, duplex homes, and independent villas with modern amenities.
-
-### Luxury Features
-- Premium Clubhouse & Fitness Centre
-- Landscaped Gardens & Indoor Games
-- Community Hall & Smart Home Features
-- Video Door Phones & Multi-Level Parking
-- 24×7 Security & CCTV Surveillance
-
-These homes provide a comfortable lifestyle with quality construction and premium finishes.
-
----
-
-## Best Areas Near Vallabh Vidyanagar
-
-- **Anand City**: The commercial centre of the district with shopping, healthcare, business establishments, and railway connectivity.
-- **Karamsad**: A rapidly developing residential area offering apartments, villas, and medical institutions.
-- **Bakrol**: A preferred residential location with affordable housing and growing infrastructure.
-- **Mogri**: Known for peaceful surroundings and residential developments.
-- **Chikhodra**: An emerging residential locality offering good investment opportunities.
-
----
-
-## Infrastructure & Connectivity
-
-Vallabh Vidyanagar enjoys excellent connectivity with Anand and neighbouring cities.
-
-### Connectivity Highlights
-- Direct access to Anand Railway Station & NH-48 Expressway
-- Located on the Ahmedabad–Vadodara Industrial Corridor
-- Easy transit to Karamsad, Bakrol, and Chikhodra
-- Proximity to Anand GIDC industrial hubs
-
----
-
-## Property Price Trends in Vallabh Vidyanagar
-
-Vallabh Vidyanagar has a stable residential real estate market driven by educational institutions, family housing, and consistent rental demand. The average residential property price is approximately **₹4,200 per sq. ft.**, with prices varying based on location, property type, and amenities.
-
----
-
-## Home Loan Guide
-
-A home loan helps buyers purchase residential property with manageable monthly EMIs.
-
-### Documents Required
-- Aadhaar Card & PAN Card
-- Passport-size Photographs
-- Address Proof & Income Proof (Salary Slips / ITR)
-- 6-Month Bank Statements
-- Property Documents & Approved Building Plans
-
----
-
-## Legal Verification & RERA Checklist
-
-Before purchasing any property in Vallabh Vidyanagar, verify:
-- Sale Deed, Title Deed & Mother Deed
-- Encumbrance Certificate & Property Tax Receipts
-- Approved Building Plan & Occupancy Certificate (OC)
-- Society NOC & RERA Project Registration
-
----
-
-## Smart Home Features & Sustainable Living
-
-Modern residential projects in Vallabh Vidyanagar are adopting smart automation and eco-friendly features:
-- Digital Door Locks, Video Door Phones & App Controls
-- Smart Lighting, Motion Sensors & Visitor Management
-- Rainwater Harvesting, Solar Power for Common Areas & EV Charging Stations
-- Organic Waste Management & Green Landscaping
-
----
-
-## Property Management Services
-
-Professional property management is beneficial for investors, NRIs, and faculty members who own property in Anand district.
-
-### Services Include
-- Tenant verification & rent collection
-- Property inspection & maintenance coordination
-- Interior renovation support & lease documentation
-- Property valuation & resale assistance
-
----
-
-## NRI Buying Guide
-
-Vallabh Vidyanagar also attracts NRI buyers because of its educational ecosystem and peaceful residential environment.
-
-### Support Services
-- Virtual Property Tours & Shortlisting
-- Legal Verification & Documentation Support
-- Power of Attorney (POA) Assistance
-- Property Registration & Rental Management
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Why should I buy property in Vallabh Vidyanagar, Anand?
-Vallabh Vidyanagar offers excellent educational infrastructure (SPU & CVM), peaceful surroundings, quality civic amenities, and stable long-term property appreciation, making it ideal for families and investors.
-
-### 2. What types of properties are available in Vallabh Vidyanagar?
-Buyers can choose from 1-4 BHK Apartments, Independent Houses, Villas, Duplex Homes, Residential Plots, Luxury Penthouses, Ready-to-Move Homes, and Under-Construction Projects.
-
-### 3. Are ready-to-move properties available in Vallabh Vidyanagar?
-Yes. Buyers can find ready-to-move apartments, resale homes, and completed residential projects suitable for immediate possession.
-
-### 4. Is Vallabh Vidyanagar a good real estate investment location in Gujarat?
-Yes. The presence of major educational institutions, stable rental demand from students and faculty, and planned residential development make it a strong long-term investment location.
-
-### 5. Can I get a home loan for buying property in Vallabh Vidyanagar?
-Yes. Most leading banks (SBI, HDFC, ICICI, Bank of Baroda, Axis) offer home loans up to 80-90% for eligible residential properties.
-
-### 6. Are luxury properties available in Vallabh Vidyanagar?
-Yes. Buyers can find premium apartments, villas, duplex homes, and gated community residences equipped with modern amenities and smart features.
-
-### 7. Should legal documents be verified before buying?
-Absolutely. Buyers should verify title deeds, AnyRoR land extracts, approved building plans, tax records, occupancy certificates, and RERA registration.
-
-### 8. Can NRIs purchase property in Vallabh Vidyanagar?
-Yes. NRIs can purchase eligible residential properties in India according to applicable RBI and FEMA regulations.
-
-### 9. What amenities do modern residential projects offer in Vallabh Vidyanagar?
-Most premium projects provide a clubhouse, gymnasium, landscaped gardens, children''s play area, CCTV security, power backup, covered parking, community hall, and smart home features.
-
-### 10. Why choose PropertysDeal for buying property in Vallabh Vidyanagar?
-PropertysDeal provides verified property listings, AI-powered search, trusted builders and agents, transparent property information, and direct buyer–seller communication to simplify your home purchase.
-
----
-
-## Conclusion & Next Steps
-
-**Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
-
-With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:38.672Z', '2026-07-29T06:57:42.800Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:53.136Z', '2026-07-28T04:25:53.136Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (100, 'Flat for sale in vallabh vidyanagar anand', 'flat-for-sale-in-vallabh-vidyanagar-anand', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -20923,7 +19667,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:41.792Z', '2026-07-28T04:18:41.792Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:41.792Z', '2026-07-28T04:18:41.792Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (101, 'Flats in vallabh vidyanagar', 'flats-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -21155,7 +19899,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:42.826Z', '2026-07-28T04:18:42.826Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:42.826Z', '2026-07-28T04:18:42.826Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (102, '2bhk flat in vallabh vidyanagar', '2bhk-flat-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -21387,7 +20131,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:43.856Z', '2026-07-28T04:18:43.856Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:43.856Z', '2026-07-28T04:18:43.856Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (103, '3bhk flat in vallabh vidyanagar', '3bhk-flat-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -21619,7 +20363,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:44.890Z', '2026-07-28T04:18:44.890Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:44.890Z', '2026-07-28T04:18:44.890Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (104, 'Villa for sale in vallabh vidyanagar', 'villa-for-sale-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -21851,7 +20595,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:45.933Z', '2026-07-28T04:18:45.933Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:45.933Z', '2026-07-28T04:18:45.933Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (105, 'Independent house in vallabh vidyanagar', 'independent-house-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -22083,7 +20827,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:46.965Z', '2026-07-28T04:18:46.965Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:46.965Z', '2026-07-28T04:18:46.965Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (107, 'Luxury property in vallabh vidyanagar', 'luxury-property-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -22315,7 +21059,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:49.024Z', '2026-07-28T04:18:49.024Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:49.024Z', '2026-07-28T04:18:49.024Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (108, 'New residential projects in vallabh vidyanagar', 'new-residential-projects-in-vallabh-vidyanagar', '# Property in Vallabh Vidyanagar, Anand
 
 Vallabh Vidyanagar is one of Gujarat''s most well-planned educational and residential townships. Located in Anand district, the town is renowned for prestigious institutions such as Sardar Patel University and the educational ecosystem developed by Charutar Vidya Mandal. Because of its peaceful environment, greenery, and excellent civic infrastructure, it has become a preferred destination for families, professors, professionals, students, and long-term investors.
@@ -22547,7 +21291,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Vallabh Vidyanagar, Anand** offers an excellent combination of quality education, peaceful surroundings, modern infrastructure, and long-term investment potential. Whether you are looking for an apartment, independent house, luxury villa, or residential plot, Vallabh Vidyanagar provides diverse property options to suit different lifestyles and budgets.
 
 With PropertysDeal, you can explore verified property listings, compare projects, connect with trusted builders and sellers, and make informed buying decisions with confidence.
-', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:50.056Z', '2026-07-28T04:18:50.056Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Vallabh Vidyanagar, Anand | Buy 2, 3 & 4 BHK Flats & Villas', 'Explore verified properties for sale in Vallabh Vidyanagar, Anand. Compare 2 BHK & 3 BHK flats, luxury villas, residential plots, price trends (₹4,200/sq.ft), and legal guides.', '2026-07-28T04:18:50.056Z', '2026-07-28T04:18:50.056Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (110, '2bhk under 50 lakh ahmedabad', '2bhk-under-50-lakh-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -22715,7 +21459,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:06.159Z', '2026-07-28T04:22:06.159Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:06.159Z', '2026-07-28T04:22:06.159Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (111, 'Flat under 50 lakh in ahmedabad', 'flat-under-50-lakh-in-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -22883,7 +21627,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:07.151Z', '2026-07-28T04:22:07.151Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:07.151Z', '2026-07-28T04:22:07.151Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (112, 'Flats under 50 lakh ahmedabad', 'flats-under-50-lakh-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -23051,7 +21795,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:08.143Z', '2026-07-28T04:22:08.143Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:08.143Z', '2026-07-28T04:22:08.143Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (113, '2bhk flat under 40 lakh ahmedabad', '2bhk-flat-under-40-lakh-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -23219,7 +21963,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:09.133Z', '2026-07-28T04:22:09.133Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:09.133Z', '2026-07-28T04:22:09.133Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (114, '2bhk flat under 60 lakh ahmedabad', '2bhk-flat-under-60-lakh-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -23387,7 +22131,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:10.124Z', '2026-07-28T04:22:10.124Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:10.124Z', '2026-07-28T04:22:10.124Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (117, 'Ready to move 2bhk flats ahmedabad', 'ready-to-move-2bhk-flats-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -23555,7 +22299,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:13.111Z', '2026-07-28T04:22:13.111Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:13.111Z', '2026-07-28T04:22:13.111Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (118, 'Rera approved 2bhk flats ahmedabad', 'rera-approved-2bhk-flats-ahmedabad', '# 2 BHK Flat Under ₹50 Lakh in Ahmedabad
 
 Buying a 2 BHK flat under ₹50 lakh in Ahmedabad is still achievable for first-time homebuyers, salaried professionals, young families, and investors. Ahmedabad continues to be one of India''s more affordable metropolitan real estate markets, with several developing locations offering quality apartments, good infrastructure, and modern amenities within this budget.
@@ -23723,7 +22467,7 @@ PropertysDeal provides 100% verified budget flat listings in Ahmedabad with HD p
 A **2 BHK Flat Under ₹50 Lakh in Ahmedabad** is an excellent choice for first-time homebuyers, young professionals, and investors seeking affordable homeownership with long-term value. Localities such as Chandkheda, Gota, Zundal, Naroda, Hanspura, Lambha, Kathwada, and Sanand offer modern apartments with good connectivity, essential amenities, and promising appreciation potential.
 
 With PropertysDeal, you can browse verified listings, compare projects, connect with trusted builders and owners, and confidently find a home that matches your lifestyle and budget.
-', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:14.099Z', '2026-07-28T04:22:14.099Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', '2 BHK Flat Under ₹50 Lakh in Ahmedabad | Buy Affordable 2 BHK', 'Explore verified 2 BHK flats under ₹50 lakh in Ahmedabad across Chandkheda, Gota, Zundal, Naroda & Hanspura. Compare ready-to-move & new RERA projects, price trends, and loan guides.', '2026-07-28T04:22:14.099Z', '2026-07-28T04:22:14.099Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (120, 'Ready to move flats in surat', 'ready-to-move-flats-in-surat', '# Ready to Move Flats in Surat
 
 Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
@@ -23889,7 +22633,7 @@ PropertysDeal provides 100% verified ready possession listings in Surat with HD 
 A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
 
 With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:50.164Z', '2026-07-28T04:25:50.164Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:50.164Z', '2026-07-28T04:25:50.164Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (121, 'Ready possession flats in surat', 'ready-possession-flats-in-surat', '# Ready to Move Flats in Surat
 
 Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
@@ -24055,7 +22799,7 @@ PropertysDeal provides 100% verified ready possession listings in Surat with HD 
 A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
 
 With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:51.164Z', '2026-07-28T04:25:51.164Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:51.164Z', '2026-07-28T04:25:51.164Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (122, 'Ready to move 2bhk flats surat', 'ready-to-move-2bhk-flats-surat', '# Ready to Move Flats in Surat
 
 Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
@@ -24221,173 +22965,7 @@ PropertysDeal provides 100% verified ready possession listings in Surat with HD 
 A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
 
 With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:52.148Z', '2026-07-28T04:25:52.148Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (119, 'Ready to move flats surat', 'ready-to-move-flats-surat', '# Ready to Move Flats in Surat
-
-Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
-
-Whether you are a first-time buyer, an investor, or upgrading to a larger home, ready-to-move flats eliminate construction delays and provide immediate usability.
-
----
-
-## Why Buy a Ready-to-Move Flat in Surat?
-
-Ready possession apartments offer several practical advantages over under-construction options.
-
-### Key Benefits
-- **Immediate possession & zero waiting period**
-- **No construction delay risks**
-- **Inspect the actual apartment & construction quality before buying**
-- **Existing residential community & ready civic infrastructure**
-- **Faster home loan processing & disbursement**
-- **Immediate rental income generation for investors**
-- **No double financial burden (paying rent and pre-EMI simultaneously)**
-
-These advantages make ready homes attractive for families as well as investors.
-
----
-
-## Best Areas for Ready-to-Move Flats in Surat
-
-### 1. Vesu
-Vesu is among Surat''s most premium residential destinations.
-- **Highlights**: Wide roads, premium gated communities, international schools, hospitals, shopping malls, airport connectivity.
-- **Property Types**: Ready 3 BHK, 4 BHK apartments & penthouses.
-
-### 2. Adajan
-Adajan remains one of Surat''s most established residential locations.
-- **Highlights**: Mature infrastructure, schools, markets, hospitals, strong resale demand, family-friendly environment.
-- **Property Types**: Affordable & premium ready 2 BHK and 3 BHK flats.
-
-### 3. Pal
-Pal has become one of the fastest-growing residential hubs in Surat.
-- **Highlights**: Modern apartment projects, excellent road connectivity, peaceful surroundings, educational institutions.
-- **Property Types**: Ready-to-move 2 BHK & 3 BHK apartments.
-
-### 4. Althan
-Althan has experienced significant residential development over the last few years.
-- **Highlights**: Premium residential projects, good connectivity, parks, metro accessibility improvements.
-- **Property Types**: Completed 3 BHK & 4 BHK luxury residences.
-
-### 5. Dindoli & Jahangirpura
-Popular among budget-conscious buyers and first-time homeowners.
-- **Highlights**: Budget-friendly apartments, growing infrastructure, strong rental demand.
-- **Property Types**: Completed 1 BHK, 2 BHK, and 3 BHK flats at competitive prices.
-
----
-
-## Ready Flat Configurations: 1 BHK, 2 BHK & 3 BHK
-
-Surat offers a wide range of completed apartment configurations:
-- **1 BHK Ready Flats**: Ideal for working professionals, students, small families, and investors.
-- **2 BHK Ready Flats**: Perfect for first-time buyers, young couples, and small-to-medium families.
-- **3 BHK & 4 BHK Luxury Flats**: Designed for growing families, business owners, and luxury home seekers.
-
----
-
-## Property Price Trends for Ready Flats in Surat
-
-The market for ready-to-move flats in Surat continues to remain active as buyers prioritize immediate possession.
-
-### Estimated Price Summary by Locality
-
-| Locality | Price Segment | Typical Price Range |
-| --- | --- | --- |
-| **Vesu & City Light** | Luxury / Premium | ₹75 Lakhs – ₹3.50 Crore+ |
-| **Adajan & Pal** | Mid-Range to Premium | ₹50 Lakhs – ₹1.20 Crore |
-| **Althan & Palanpur** | Mid-Range | ₹45 Lakhs – ₹90 Lakhs |
-| **Dindoli & Jahangirpura** | Budget / Affordable | ₹25 Lakhs – ₹50 Lakhs |
-
----
-
-## Home Loan Guide for Ready Possession Properties
-
-Buying a ready possession apartment is easier to finance because banks can conduct immediate physical valuation.
-
-### Benefits
-- **Higher LTV approval**: Up to 80-90% of total property value.
-- **Immediate tax benefits**: Tax deductions on interest (Section 24) and principal (Section 80C) begin immediately upon possession.
-
-### Documents Required
-- Aadhaar Card & PAN Card
-- Passport-size Photographs
-- Address Proof & Salary Slips (3 Months)
-- Bank Statements (6 Months) & 3-Year ITR
-- Original Sale Deed, Occupancy Certificate (OC), & Builder NOC
-
----
-
-## Legal Verification Checklist
-
-Always complete legal verification before purchasing a ready-to-move apartment:
-- **Sale Deed & Title Deed**: Verifies clear seller ownership without encumbrance.
-- **Occupancy Certificate (OC) & Completion Certificate (CC)**: Mandatory municipal certificate authorizing legal occupancy.
-- **Approved Building Layout Plan**: Confirms building adheres to SMC municipal guidelines.
-- **Property Tax Receipts & Utility Bill Records**: Confirms zero pending municipal dues.
-- **Society Share Certificate & NOC**: Required for resale properties in established societies.
-
----
-
-## Smart Home Features & Sustainable Living
-
-Modern ready possession projects in Surat incorporate tech and eco-friendly features:
-- Digital Door Locks, Video Intercom & Mobile App Controls
-- Rainwater Harvesting, Solar Power for Common Areas & EV Charging Stations
-- Waste Management Systems, High-Speed Elevators & 24/7 CCTV Security
-
----
-
-## Property Management & Rental Income Potential
-
-Ready-to-move apartments begin generating rental returns immediately after purchase.
-
-### Strong Rental Demand Driven By:
-- Diamond & Textile Industry Executives
-- Healthcare Professionals & IT Workforce
-- Corporate Tenants & Relocating Families
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Why should I buy a ready-to-move flat in Surat?
-Ready-to-move flats provide immediate possession, eliminate construction delay risks, allow physical inspection of carpet area and quality, and enable immediate rental income.
-
-### 2. Which are the best areas for ready possession flats in Surat?
-Vesu, Adajan, Pal, Althan, and City Light lead the premium segment, while Dindoli, Palanpur, and Jahangirpura offer top affordable ready-to-move options.
-
-### 3. What legal documents should I check before buying a ready-to-move flat in Surat?
-Verify the Title Clearance Certificate, Occupancy Certificate (OC), Building Use (BU) permission, Encumbrance Certificate, tax paid receipts, and Society NOC.
-
-### 4. Can I get a home loan for a ready-to-move flat in Surat?
-Yes. Almost all leading banks (SBI, HDFC, ICICI, Bank of Baroda) offer pre-approved home loans up to 80-90% for completed properties with OC.
-
-### 5. Is a ready-to-move flat more expensive than an under-construction flat in Surat?
-Ready flats can be 5-10% higher in upfront cost, but they eliminate GST (no 5% GST on ready homes with OC) and save monthly rent, making them cost-effective overall.
-
-### 6. Do NRIs prefer ready-to-move apartments in Surat?
-Yes. NRIs prefer ready possession homes to avoid remote construction monitoring and to start receiving immediate rental yield.
-
-### 7. What amenities are available in luxury ready possession societies in Surat?
-Grand clubhouse, swimming pool, gymnasium, children''s play area, landscaped gardens, indoor games, 24/7 security, power backup, covered parking, and EV charging stations.
-
-### 8. How quickly can I move in after buying a ready flat in Surat?
-You can move in immediately after executing the sale deed registration at the Sub-Registrar office and obtaining society possession letters (typically 7-15 days).
-
-### 9. Are 2 BHK and 3 BHK ready flats available in Pal and Vesu?
-Yes. Pal and Vesu offer extensive inventories of ready 2 BHK and 3 BHK apartments in modern gated societies.
-
-### 10. Why search for ready-to-move flats in Surat on PropertysDeal?
-PropertysDeal provides 100% verified ready possession listings in Surat with HD photos, OC confirmation, direct seller contact details, and complete legal assistance.
-
----
-
-## Conclusion & Next Steps
-
-A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
-
-With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:49.174Z', '2026-07-29T06:57:43.790Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:52.148Z', '2026-07-28T04:25:52.148Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (116, 'Budget apartments in ahmedabad', 'budget-apartments-in-ahmedabad', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -24536,156 +23114,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:22:12.106Z', '2026-07-28T04:22:12.106Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
-INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (115, 'Affordable Flats Ahmedabad', 'affordable-flats-ahmedabad', '# Affordable Flats in Ahmedabad
-
-Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
-
-Whether you''re looking for an entry-level 1 BHK, a budget-friendly 2 BHK family flat, or a spacious 3 BHK apartment, Ahmedabad offers extensive options across North, East, South, and emerging West Ahmedabad corridors.
-
----
-
-## Why Buy an Affordable Flat in Ahmedabad?
-
-Affordable housing in Ahmedabad provides a balance between cost-effective living, strategic connectivity, and long-term capital appreciation.
-
-### Key Advantages
-- **Lowest EMI-to-income ratio among tier-1 Indian metros**
-- **First-time homebuyer subsidies (PMAY & Tax deductions)**
-- **Lower down payment and manageable EMI options**
-- **Multiple choice between ready-to-move and under-construction RERA towers**
-- **Modern gated communities with clubhouse and security**
-- **High rental yields driven by IT & industrial workforce**
-- **Excellent long-term resale potential**
-
----
-
-## Top Micro-Markets for Affordable Housing in Ahmedabad
-
-### 1. Gota & Chandkheda (North West Corridor)
-- **Highlights**: Direct SG Highway & Metro connectivity, close to Gandhinagar and GIFT City influence zone.
-- **Budget Segment**: 1 BHK & 2 BHK flats from ₹35 Lakhs to ₹50 Lakhs.
-
-### 2. South Bopal & Shela (West Growth Hub)
-- **Highlights**: Modern township communities, international schools, rapid infrastructure development.
-- **Budget Segment**: 2 BHK & 3 BHK flats from ₹45 Lakhs to ₹65 Lakhs.
-
-### 3. Nikol, Vastral & Nava Naroda (East Industrial Belt)
-- **Highlights**: Proximity to GIDC industrial employment hubs, Metro Phase 1, highly affordable pricing.
-- **Budget Segment**: 1 BHK & 2 BHK flats from ₹25 Lakhs to ₹42 Lakhs.
-
-### 4. Zundal & Sughad (Gandhinagar Border)
-- **Highlights**: Clean green environment, wide planned roads, close to Nirma University and GIFT City.
-- **Budget Segment**: 2 BHK flats from ₹40 Lakhs to ₹52 Lakhs.
-
----
-
-## Apartment Configurations: 1 BHK, 2 BHK & 3 BHK
-
-- **1 BHK Compact Flats**: Ideal for working professionals, students, small couples, and rental investors.
-- **2 BHK Family Flats**: Most popular choice for first-time homebuyers and nuclear families.
-- **3 BHK Budget Apartments**: Designed for growing families seeking extra space within an affordable budget.
-
----
-
-## Property Price Trends for Affordable Flats
-
-| Locality Corridor | Typical Price Range | EMI Estimate (8.5% for 20 Yrs) |
-| --- | --- | --- |
-| **Nikol / Vastral / Naroda** | ₹25 Lakhs – ₹42 Lakhs | ₹21,500 – ₹36,000 / mo |
-| **Chandkheda / Gota** | ₹38 Lakhs – ₹55 Lakhs | ₹32,800 – ₹47,500 / mo |
-| **South Bopal / Shela** | ₹48 Lakhs – ₹68 Lakhs | ₹41,500 – ₹58,700 / mo |
-| **Zundal / Vaishno Devi** | ₹42 Lakhs – ₹58 Lakhs | ₹36,200 – ₹50,000 / mo |
-
----
-
-## Home Loan Guide & Subsidies
-
-Most affordable housing projects in Ahmedabad are pre-approved by leading banks (SBI, HDFC, ICICI, Bank of Baroda).
-
-### Financial Benefits
-- Tax deductions up to ₹2 Lakh on interest paid (Section 24).
-- Tax deductions up to ₹1.5 Lakh on principal repayment (Section 80C).
-
-### Required Documents
-- Aadhaar Card & PAN Card
-- Passport-size Photographs
-- Address Proof & Salary Slips (3 Months)
-- Bank Statements (6 Months) & 3-Year ITR
-- Property Documents & GUJRERA Certificate
-
----
-
-## Legal Verification & RERA Checklist
-
-Before booking an affordable flat in Ahmedabad, ensure thorough legal due diligence:
-- Verify GUJRERA Registration Number on the official RERA portal.
-- Check Title Search Report for 30 years clear ownership.
-- Inspect Occupancy Certificate (OC) / Building Use (BU) permission for completed projects.
-- Confirm Encumbrance Certificate & Municipal Tax paid status.
-
----
-
-## Smart Home Features & Sustainable Amenities
-
-Modern budget housing communities in Ahmedabad increasingly incorporate modern tech and green features:
-- Digital Door Locks, Video Intercom & App Controls
-- Rainwater Harvesting, Solar Power for Common Areas & Waste Segregation
-- High-Speed Elevators, Covered Parking, CCTV & 24/7 Security
-
----
-
-## Property Management & Rental Income Potential
-
-Affordable apartments generate consistent rental yields due to steady demand from IT professionals, industrial employees, and university students.
-
-### Average Monthly Rent
-- **1 BHK Flat**: ₹8,000 – ₹12,000 / month
-- **2 BHK Flat**: ₹14,000 – ₹20,000 / month
-- **3 BHK Flat**: ₹20,000 – ₹28,000 / month
-
----
-
-## Frequently Asked Questions (FAQs)
-
-### 1. Why should I buy an affordable flat in Ahmedabad?
-Ahmedabad offers one of the lowest EMI-to-income ratios among major Indian metros, excellent metro infrastructure, modern gated amenities, and strong long-term capital growth.
-
-### 2. Which are the best areas for affordable flats in Ahmedabad?
-Gota, Chandkheda, South Bopal, Shela, Nikol, Vastral, Nava Naroda, and Zundal are top-rated locations for budget-friendly apartments.
-
-### 3. What is the price range for 2 BHK affordable flats in Ahmedabad?
-Budget 2 BHK flats range between ₹25 Lakhs (in East Ahmedabad) to ₹55 Lakhs (in North-West Ahmedabad).
-
-### 4. Can I get a bank home loan for affordable flats in Ahmedabad?
-Yes. Major nationalized and private banks provide home loans up to 80-90% for eligible RERA-approved affordable housing projects.
-
-### 5. What legal documents should I verify before purchasing?
-Verify the GUJRERA registration, Title Search Report, Occupancy Certificate (OC), BU Permission, Approved Building Layout Plan, and Encumbrance Certificate.
-
-### 6. Are 1 BHK, 2 BHK, and 3 BHK affordable flats available in ready-to-move status?
-Yes. Buyers can choose between ready-to-move completed flats with OC and under-construction RERA towers.
-
-### 7. What amenities are provided in affordable gated societies?
-Clubhouse, gymnasium, children''s play area, landscaped gardens, CCTV security, 24/7 water/power backup, elevators, and community hall.
-
-### 8. Can NRIs buy affordable flats in Ahmedabad?
-Yes. NRIs can freely purchase residential property in India according to RBI and FEMA regulations.
-
-### 9. What additional costs apply beyond the apartment price?
-Budget for Gujarat Stamp Duty (4.9%), Registration Fee (1%), GST (1% for affordable housing), society maintenance deposit, and interior setup.
-
-### 10. Why search for affordable flats in Ahmedabad on PropertysDeal?
-PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos, direct seller contacts, RERA numbers, and complete home loan assistance.
-
----
-
-## Conclusion & Next Steps
-
-**Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
-
-With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:22:11.111Z', '2026-07-29T06:57:44.792Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:22:12.106Z', '2026-07-28T04:22:12.106Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (124, 'Luxury ready possession flats surat', 'luxury-ready-possession-flats-surat', '# Ready to Move Flats in Surat
 
 Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
@@ -24851,7 +23280,7 @@ PropertysDeal provides 100% verified ready possession listings in Surat with HD 
 A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
 
 With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:54.129Z', '2026-07-28T04:25:54.129Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:54.129Z', '2026-07-28T04:25:54.129Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (125, 'Immediate possession flats surat', 'immediate-possession-flats-surat', '# Ready to Move Flats in Surat
 
 Buying a ready-to-move flat in Surat is one of the most convenient ways to own a home. Unlike under-construction properties, ready possession apartments allow buyers to inspect the completed home, verify construction quality, and move in immediately after registration. Surat offers thousands of ready-to-move apartments across different budgets, ranging from affordable 1 BHK homes to premium luxury residences.
@@ -25017,7 +23446,7 @@ PropertysDeal provides 100% verified ready possession listings in Surat with HD 
 A **Ready to Move Flat in Surat** offers the convenience of immediate possession, completed infrastructure, and confidence in the quality of the finished property. Whether you''re searching for an affordable apartment in Dindoli or a luxury residence in Vesu, Adajan, Pal, Althan, or City Light, Surat provides a diverse range of ready possession homes for every budget and lifestyle.
 
 With PropertysDeal, you can browse verified listings, compare residential projects, connect directly with trusted builders and property owners, and make informed buying decisions with complete confidence.
-', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:55.121Z', '2026-07-28T04:25:55.121Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Ready to Move Flats in Surat | Buy Ready Possession Apartments', 'Explore verified ready-to-move flats in Surat across Vesu, Adajan, Pal & Althan. Find completed 2 BHK, 3 BHK & 4 BHK apartments with immediate possession, price trends, and loan guides.', '2026-07-28T04:25:55.121Z', '2026-07-28T04:25:55.121Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (129, 'New Projects in Bopal Ahmedabad', 'property-in-bopal', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -25169,7 +23598,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:12.553Z', '2026-07-28T04:32:12.553Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:12.553Z', '2026-07-28T04:32:12.553Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (130, 'New Projects in Bopal Ahmedabad', 'flat-for-sale-in-bopal-ahmedabad', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -25321,7 +23750,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:13.537Z', '2026-07-28T04:32:13.537Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:13.537Z', '2026-07-28T04:32:13.537Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (131, 'New Projects in Bopal Ahmedabad', 'flats-in-bopal-ahmedabad', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -25473,7 +23902,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:14.526Z', '2026-07-28T04:32:14.526Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:14.526Z', '2026-07-28T04:32:14.526Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (132, '2 BHK Flat in Bopal | Real Estate Gujarat', '2bhk-flat-in-bopal', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -25625,7 +24054,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:15.516Z', '2026-07-28T04:32:15.516Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:15.516Z', '2026-07-28T04:32:15.516Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (133, 'New Projects in Bopal Ahmedabad', '3bhk-flat-in-bopal', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -25777,7 +24206,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:16.503Z', '2026-07-28T04:32:16.503Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:16.503Z', '2026-07-28T04:32:16.503Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (135, 'New Projects in Bopal Ahmedabad', 'new-projects-in-south-bopal', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -25929,7 +24358,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:18.481Z', '2026-07-28T04:32:18.481Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:18.481Z', '2026-07-28T04:32:18.481Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (136, 'New Projects in Bopal Ahmedabad', 'rera-projects-in-bopal', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -26081,7 +24510,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:19.469Z', '2026-07-28T04:32:19.469Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:19.469Z', '2026-07-28T04:32:19.469Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (137, 'New Projects in Bopal Ahmedabad', 'under-construction-flats-in-bopal', '# New Projects in Bopal, Ahmedabad
 
 Bopal has become one of the fastest-growing residential destinations in Ahmedabad, attracting homebuyers because of its excellent connectivity, modern infrastructure, and wide range of residential developments. Whether you''re looking for an affordable 2 BHK apartment, a spacious 3 BHK family home, or a premium luxury residence, Bopal offers numerous new and under-construction projects from reputed developers. Recent listings show dozens of active and upcoming developments with possession schedules extending through 2026–2030.
@@ -26233,7 +24662,7 @@ PropertysDeal offers verified new project listings in Bopal with HD photos, RERA
 **New Projects in Bopal, Ahmedabad** provide excellent opportunities for homebuyers seeking modern apartments, premium amenities, and long-term investment potential. With a broad range of 2 BHK, 3 BHK, and 4 BHK apartments, strong connectivity to SG Highway, and numerous RERA-registered developments, Bopal remains one of Ahmedabad''s most desirable residential destinations.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect directly with trusted builders and property owners, and confidently choose the right home for your family.
-', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:20.456Z', '2026-07-28T04:32:20.456Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'New Projects in Bopal, Ahmedabad | Buy 2, 3 & 4 BHK Flats', 'Explore verified new & under-construction projects in Bopal, Ahmedabad. Compare RERA-registered 2 BHK, 3 BHK & 4 BHK apartments, price trends, amenities, and legal guides.', '2026-07-28T04:32:20.456Z', '2026-07-28T04:32:20.456Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (140, 'Affordable flats Ahmedabad', 'budget-flats-in-ahmedabad', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -26382,7 +24811,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:19.214Z', '2026-07-28T04:34:19.214Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:19.214Z', '2026-07-28T04:34:19.214Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (142, 'Affordable flats Ahmedabad', 'affordable-2bhk-flats-in-ahmedabad', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -26531,7 +24960,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:21.238Z', '2026-07-28T04:34:21.238Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:21.238Z', '2026-07-28T04:34:21.238Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (143, 'Affordable flats Ahmedabad', 'affordable-3bhk-apartments-in-ahmedabad', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -26680,7 +25109,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:22.252Z', '2026-07-28T04:34:22.252Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:22.252Z', '2026-07-28T04:34:22.252Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (144, 'Affordable flats Ahmedabad', 'budget-flats-in-gota', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -26829,7 +25258,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:23.258Z', '2026-07-28T04:34:23.258Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:23.258Z', '2026-07-28T04:34:23.258Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (145, 'Affordable flats Ahmedabad', 'budget-flats-in-chandkheda', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -26978,7 +25407,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:24.291Z', '2026-07-28T04:34:24.291Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:24.291Z', '2026-07-28T04:34:24.291Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (146, 'Affordable flats Ahmedabad', 'affordable-flats-in-south-bopal', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -27127,7 +25556,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:25.293Z', '2026-07-28T04:34:25.293Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:25.293Z', '2026-07-28T04:34:25.293Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (147, 'Affordable flats Ahmedabad', 'affordable-flats-in-shela', '# Affordable Flats in Ahmedabad
 
 Ahmedabad continues to be one of India''s most affordable major housing markets. According to recent affordability studies, the city has one of the lowest EMI-to-income ratios among large Indian metropolitan cities, making homeownership accessible for first-time buyers, salaried professionals, young families, and long-term investors.
@@ -27276,7 +25705,7 @@ PropertysDeal provides verified budget flat listings in Ahmedabad with HD photos
 **Affordable Flats in Ahmedabad** provide an excellent opportunity for first-time buyers, growing families, and investors looking for quality homes at competitive prices. With options ranging from 1 BHK to 3 BHK apartments across Gota, Chandkheda, Nikol, Vastral, South Bopal, Shela, Nava Naroda, and Zundal, buyers can choose homes that suit both their lifestyle and budget.
 
 With PropertysDeal, you can explore verified listings, compare residential projects, connect with trusted builders and property owners, and confidently find your ideal home in Ahmedabad.
-', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:26.295Z', '2026-07-28T04:34:26.295Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Affordable Flats in Ahmedabad | Buy Budget 1, 2 & 3 BHK', 'Explore verified affordable flats in Ahmedabad across Gota, Chandkheda, South Bopal, Shela & Nikol. Find budget 1 BHK, 2 BHK & 3 BHK apartments with price trends, loan guides, and RERA details.', '2026-07-28T04:34:26.295Z', '2026-07-28T04:34:26.295Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (148, 'Plot for Sale Gujarat', 'residential-plot-for-sale-in-gujarat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -27417,7 +25846,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:19.677Z', '2026-07-28T04:36:19.677Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:19.677Z', '2026-07-28T04:36:19.677Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (150, 'Plot for Sale Gujarat', 'plots-for-sale-in-gujarat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -27558,7 +25987,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:21.158Z', '2026-07-28T04:36:21.158Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:21.158Z', '2026-07-28T04:36:21.158Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (151, 'Plot for Sale Gujarat', 'na-plots-in-gujarat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -27699,7 +26128,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:21.901Z', '2026-07-28T04:36:21.901Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:21.901Z', '2026-07-28T04:36:21.901Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (152, 'Plot for Sale Gujarat', 'gated-plotting-projects-in-gujarat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -27840,7 +26269,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:22.650Z', '2026-07-28T04:36:22.650Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:22.650Z', '2026-07-28T04:36:22.650Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (153, 'Plot for Sale Gujarat', 'villa-plots-in-gujarat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -27981,7 +26410,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:23.387Z', '2026-07-28T04:36:23.387Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:23.387Z', '2026-07-28T04:36:23.387Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (154, 'Plot for Sale Gujarat', 'residential-plots-in-ahmedabad', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -28122,7 +26551,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:24.134Z', '2026-07-28T04:36:24.134Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:24.134Z', '2026-07-28T04:36:24.134Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (155, 'Plot for Sale Gujarat', 'residential-plots-in-surat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -28263,7 +26692,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:24.871Z', '2026-07-28T04:36:24.871Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:24.871Z', '2026-07-28T04:36:24.871Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (156, 'Plot for Sale Gujarat', 'plots-near-gift-city', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -28404,7 +26833,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:25.606Z', '2026-07-28T04:36:25.606Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:25.606Z', '2026-07-28T04:36:25.606Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (157, 'Plot for Sale Gujarat', 'plots-near-dholera-sir', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -28545,7 +26974,7 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:26.343Z', '2026-07-28T04:36:26.343Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:26.343Z', '2026-07-28T04:36:26.343Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (158, 'Villa for Sale Vadodara', 'villa-for-sale-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -28690,7 +27119,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:47.479Z', '2026-07-28T04:38:47.479Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:47.479Z', '2026-07-28T04:38:47.479Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (160, 'Villa for Sale Vadodara', 'luxury-villas-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -28835,7 +27264,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:49.489Z', '2026-07-28T04:38:49.489Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:49.489Z', '2026-07-28T04:38:49.489Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (161, 'Villa for Sale Vadodara', '3bhk-villa-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -28980,7 +27409,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:50.491Z', '2026-07-28T04:38:50.491Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:50.491Z', '2026-07-28T04:38:50.491Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (162, 'Villa for Sale Vadodara', '4bhk-villa-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -29125,7 +27554,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:51.507Z', '2026-07-28T04:38:51.507Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:51.507Z', '2026-07-28T04:38:51.507Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (163, 'Villa for Sale Vadodara', 'independent-house-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -29270,7 +27699,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:52.514Z', '2026-07-28T04:38:52.514Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:52.514Z', '2026-07-28T04:38:52.514Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (164, 'Villa for Sale Vadodara', 'ready-to-move-villas-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -29415,7 +27844,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:53.526Z', '2026-07-28T04:38:53.526Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:53.526Z', '2026-07-28T04:38:53.526Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (165, 'Villa for Sale Vadodara', 'gated-community-villas-in-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -29560,7 +27989,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:54.534Z', '2026-07-28T04:38:54.534Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:54.534Z', '2026-07-28T04:38:54.534Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (166, 'Villa for Sale Vadodara', 'villas-in-bhayli-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -29705,7 +28134,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:55.565Z', '2026-07-28T04:38:55.565Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:55.565Z', '2026-07-28T04:38:55.565Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (167, 'Villa for Sale Vadodara', 'villas-in-sevasi-vadodara', '# Villa for Sale in Vadodara
 
 Vadodara has emerged as one of Gujarat''s most preferred cities for villa buyers, offering a combination of affordability, modern infrastructure, and a high quality of life. Whether you''re looking for a luxury villa, a gated community home, or a spacious independent bungalow, the city provides premium options for families, professionals, and investors.
@@ -29850,7 +28279,7 @@ PropertysDeal offers verified villa listings in Vadodara with HD photos, direct 
 **Villa for Sale in Vadodara** offers an excellent opportunity for buyers seeking luxury, comfort, and long-term value. Whether you are looking for a 3 BHK, 4 BHK, 5 BHK, ready-to-move villa, or a gated community home, Vadodara provides options across premium locations such as Bhayli, Sevasi, Atladra, Kalali, Bill, Waghodia Road, Gotri, and New Alkapuri.
 
 With PropertysDeal, you can explore verified villa listings, compare projects, connect directly with trusted builders and property owners, and confidently choose a home that matches your lifestyle and investment goals.
-', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:56.568Z', '2026-07-28T04:38:56.568Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Villa for Sale in Vadodara | Buy 3, 4 & 5 BHK Luxury Villas', 'Explore verified villas for sale in Vadodara across Bhayli, Sevasi, Atladra & New Alkapuri. Compare ready 3 BHK & 4 BHK gated community villas, price trends, and legal guides.', '2026-07-28T04:38:56.568Z', '2026-07-28T04:38:56.568Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (168, 'Rental Flats in Vesu Surat', 'rental-flats-in-vesu-surat', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -29998,7 +28427,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:40:59.195Z', '2026-07-28T04:40:59.195Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:40:59.195Z', '2026-07-28T04:40:59.195Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (169, 'Rental Flats in Vesu Surat', 'flat-for-rent-in-vesu-surat', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -30146,7 +28575,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:00.482Z', '2026-07-28T04:41:00.482Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:00.482Z', '2026-07-28T04:41:00.482Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (170, 'Rental Flats in Vesu Surat', 'flats-for-rent-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -30294,7 +28723,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:01.761Z', '2026-07-28T04:41:01.761Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:01.761Z', '2026-07-28T04:41:01.761Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (171, 'Rental Flats in Vesu Surat', '2bhk-flat-for-rent-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -30442,7 +28871,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:03.047Z', '2026-07-28T04:41:03.047Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:03.047Z', '2026-07-28T04:41:03.047Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (173, 'Rental Flats in Vesu Surat', 'luxury-rental-flats-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -30590,7 +29019,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:05.597Z', '2026-07-28T04:41:05.597Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:05.597Z', '2026-07-28T04:41:05.597Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (174, 'Rental Flats in Vesu Surat', 'fully-furnished-flats-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -30738,7 +29167,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:06.892Z', '2026-07-28T04:41:06.892Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:06.892Z', '2026-07-28T04:41:06.892Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (175, 'Rental Flats in Vesu Surat', 'semi-furnished-flats-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -30886,7 +29315,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:08.183Z', '2026-07-28T04:41:08.183Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:08.183Z', '2026-07-28T04:41:08.183Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (176, 'Rental Flats in Vesu Surat', 'rental-apartments-near-vip-road', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -31034,7 +29463,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:09.473Z', '2026-07-28T04:41:09.473Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:09.473Z', '2026-07-28T04:41:09.473Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (177, 'Rental Flats in Vesu Surat', 'flat-for-rent-in-vesu', '# Rental Flats in Vesu, Surat
 
 Vesu is one of Surat''s most sought-after residential neighborhoods for tenants looking for modern apartments, premium amenities, and excellent connectivity. The locality is popular among professionals, business owners, families, students, and NRIs because of its well-planned infrastructure and proximity to commercial hubs.
@@ -31182,7 +29611,7 @@ PropertysDeal provides 100% verified rental flat listings in Vesu with direct ow
 **Rental Flats in Vesu, Surat** offer an excellent combination of convenience, comfort, and premium urban living. Whether you''re searching for a 1 BHK, 2 BHK, 3 BHK, or luxury 4 BHK apartment, Vesu provides modern homes with quality amenities, excellent connectivity, and a vibrant community.
 
 With PropertysDeal, you can explore verified rental listings, compare apartments, connect directly with owners and agents, and confidently choose the right rental home for your needs.
-', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:10.762Z', '2026-07-28T04:41:10.762Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Rental Flats in Vesu, Surat | 1, 2, 3 & 4 BHK Apartments for Rent', 'Explore verified rental flats in Vesu, Surat. Compare fully furnished & semi-furnished 1 BHK, 2 BHK & 3 BHK apartments for rent, price trends, lease guides, and owner contacts.', '2026-07-28T04:41:10.762Z', '2026-07-28T04:41:10.762Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (178, 'Office Space for Rent Ahmedabad', 'office-space-for-rent-in-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -31320,7 +29749,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:23.962Z', '2026-07-28T04:43:23.962Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:23.962Z', '2026-07-28T04:43:23.962Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (179, 'Office Space for Rent Ahmedabad', 'commercial-office-for-rent-in-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -31458,7 +29887,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:24.968Z', '2026-07-28T04:43:24.968Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:24.968Z', '2026-07-28T04:43:24.968Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (180, 'Office Space for Rent Ahmedabad', 'office-for-rent-in-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -31596,7 +30025,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:25.971Z', '2026-07-28T04:43:25.971Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:25.971Z', '2026-07-28T04:43:25.971Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (181, 'Office Space for Rent Ahmedabad', 'office-space-on-sg-highway', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -31734,7 +30163,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:26.970Z', '2026-07-28T04:43:26.970Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:26.970Z', '2026-07-28T04:43:26.970Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (182, 'Office Space for Rent Ahmedabad', 'office-space-in-prahlad-nagar', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -31872,7 +30301,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:27.965Z', '2026-07-28T04:43:27.965Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:27.965Z', '2026-07-28T04:43:27.965Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (183, 'Office Space for Rent Ahmedabad', 'office-space-on-sindhu-bhavan-road', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -32010,7 +30439,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:28.968Z', '2026-07-28T04:43:28.968Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:28.968Z', '2026-07-28T04:43:28.968Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (184, 'Office Space for Rent Ahmedabad', 'coworking-space-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -32148,7 +30577,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:29.953Z', '2026-07-28T04:43:29.953Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:29.953Z', '2026-07-28T04:43:29.953Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (185, 'Office Space for Rent Ahmedabad', 'managed-office-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -32286,7 +30715,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:30.940Z', '2026-07-28T04:43:30.940Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:30.940Z', '2026-07-28T04:43:30.940Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (186, 'Office Space for Rent Ahmedabad', 'furnished-office-space-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -32424,7 +30853,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:31.925Z', '2026-07-28T04:43:31.925Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:31.925Z', '2026-07-28T04:43:31.925Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (187, 'Office Space for Rent Ahmedabad', 'commercial-property-for-rent-in-ahmedabad', '# Office Space for Rent in Ahmedabad
 
 Ahmedabad has become one of India''s fastest-growing commercial destinations, attracting IT companies, Global Capability Centres (GCCs), financial institutions, consulting firms, healthcare corporate offices, and multinational corporations. The city offers a wide range of office spaces—from compact startup offices and coworking spaces to premium Grade A corporate towers.
@@ -32562,7 +30991,7 @@ PropertysDeal provides 100% verified commercial office listings in Ahmedabad wit
 **Office Space for Rent in Ahmedabad** provides businesses with flexible workspace solutions in one of Gujarat''s leading commercial cities. Whether you''re searching for a startup office, coworking space, fully furnished office, managed workspace, or Grade A corporate office, Ahmedabad offers modern commercial infrastructure across SG Highway, Prahlad Nagar, Sindhu Bhavan Road, Bodakdev, Satellite, Navrangpura, and Ashram Road.
 
 With PropertysDeal, businesses can explore verified commercial office listings, compare properties, connect directly with owners and brokers, and secure the right workspace to support long-term growth.
-', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:32.912Z', '2026-07-28T04:43:32.912Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Office Space for Rent in Ahmedabad | Rent Furnished & Corporate Offices', 'Explore verified office spaces for rent in Ahmedabad across SG Highway, Prahlad Nagar & Sindhu Bhavan Road. Compare fully furnished, coworking, managed & bare shell offices with price trends and lease guides.', '2026-07-28T04:43:32.912Z', '2026-07-28T04:43:32.912Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (188, 'Shop for Sale Surat', 'shop-for-sale-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -32699,7 +31128,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:18.970Z', '2026-07-28T04:45:18.970Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:18.970Z', '2026-07-28T04:45:18.970Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (189, 'Shop for Sale Surat', 'commercial-shop-for-sale-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -32836,7 +31265,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:19.981Z', '2026-07-28T04:45:19.981Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:19.981Z', '2026-07-28T04:45:19.981Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (190, 'Shop for Sale Surat', 'shops-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -32973,7 +31402,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:20.984Z', '2026-07-28T04:45:20.984Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:20.984Z', '2026-07-28T04:45:20.984Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (191, 'Shop for Sale Surat', 'retail-shop-for-sale-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33110,7 +31539,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:21.987Z', '2026-07-28T04:45:21.987Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:21.987Z', '2026-07-28T04:45:21.987Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (192, 'Shop for Sale Surat', 'showroom-for-sale-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33247,7 +31676,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:22.987Z', '2026-07-28T04:45:22.987Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:22.987Z', '2026-07-28T04:45:22.987Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (193, 'Shop for Sale Surat', 'investment-shops-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33384,7 +31813,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:23.992Z', '2026-07-28T04:45:23.992Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:23.992Z', '2026-07-28T04:45:23.992Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (194, 'Shop for Sale Surat', 'shop-for-sale-in-vesu', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33521,7 +31950,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:24.998Z', '2026-07-28T04:45:24.998Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:24.998Z', '2026-07-28T04:45:24.998Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (195, 'Shop for Sale Surat', 'commercial-shops-in-adajan', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33658,7 +32087,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:25.999Z', '2026-07-28T04:45:25.999Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:25.999Z', '2026-07-28T04:45:25.999Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (196, 'Shop for Sale Surat', 'retail-shop-for-sale-in-pal', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33795,7 +32224,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:27.000Z', '2026-07-28T04:45:27.000Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:27.000Z', '2026-07-28T04:45:27.000Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (197, 'Shop for Sale Surat', 'commercial-property-for-sale-in-surat', '# Shop for Sale in Surat
 
 Surat is one of Gujarat''s fastest-growing commercial cities and offers excellent opportunities for entrepreneurs and investors looking to purchase retail shops. The city''s strong textile, diamond, manufacturing, healthcare, food & beverage, and retail sectors generate consistent demand for commercial spaces, making shop ownership a valuable long-term investment.
@@ -33932,7 +32361,7 @@ PropertysDeal provides 100% verified commercial shop listings in Surat with HD p
 **Shop for Sale in Surat** offers excellent opportunities for business owners and investors seeking commercial property in one of Gujarat''s fastest-growing cities. Whether you''re searching for a retail shop, showroom, high-street unit, shopping mall shop, or investment property, commercial locations such as Vesu, Adajan, Pal, Dindoli, Ghod Dod Road, Ring Road, and Varachha provide options across different budgets and business categories.
 
 With PropertysDeal, you can explore verified commercial shop listings, compare investment opportunities, connect directly with property owners and developers, and confidently invest in one of Gujarat''s fastest-growing commercial markets.
-', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:28.001Z', '2026-07-28T04:45:28.001Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Shop for Sale in Surat | Buy Commercial Shops & Showrooms', 'Explore verified commercial shops for sale in Surat across Vesu, Adajan, Pal, Ghod Dod Road & Ring Road. Find retail shops, showrooms, pre-leased properties, price trends, and loan guides.', '2026-07-28T04:45:28.001Z', '2026-07-28T04:45:28.001Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (198, 'GIDC Shed for Sale | Real Estate Gujarat', 'gidc-shed-for-sale', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34069,7 +32498,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:43.413Z', '2026-07-28T04:49:43.413Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:43.413Z', '2026-07-28T04:49:43.413Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (200, 'GIDC Shed for Sale | Real Estate Gujarat', 'factory-shed-for-sale-in-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34206,7 +32635,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:44.912Z', '2026-07-28T04:49:44.912Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:44.912Z', '2026-07-28T04:49:44.912Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (201, 'GIDC Shed for Sale | Real Estate Gujarat', 'industrial-shed-in-sanand-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34343,7 +32772,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:45.657Z', '2026-07-28T04:49:45.657Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:45.657Z', '2026-07-28T04:49:45.657Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (202, 'GIDC Shed for Sale | Real Estate Gujarat', 'industrial-shed-in-vatva-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34480,7 +32909,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:46.397Z', '2026-07-28T04:49:46.397Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:46.397Z', '2026-07-28T04:49:46.397Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (203, 'GIDC Shed for Sale | Real Estate Gujarat', 'industrial-shed-in-naroda-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34617,7 +33046,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:47.137Z', '2026-07-28T04:49:47.137Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:47.137Z', '2026-07-28T04:49:47.137Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (204, 'GIDC Shed for Sale | Real Estate Gujarat', 'factory-for-sale-in-ankleshwar-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34754,7 +33183,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:47.879Z', '2026-07-28T04:49:47.879Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:47.879Z', '2026-07-28T04:49:47.879Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (205, 'GIDC Shed for Sale | Real Estate Gujarat', 'industrial-shed-in-vapi-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -34891,7 +33320,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:48.623Z', '2026-07-28T04:49:48.623Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:48.623Z', '2026-07-28T04:49:48.623Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (206, 'GIDC Shed for Sale | Real Estate Gujarat', 'manufacturing-unit-for-sale-in-sachin-gidc', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -35028,7 +33457,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:49.672Z', '2026-07-28T04:49:49.672Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:49.672Z', '2026-07-28T04:49:49.672Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (207, 'GIDC Shed for Sale | Real Estate Gujarat', 'industrial-property-for-sale-in-gujarat', '# GIDC Shed for Sale in Gujarat
 
 Gujarat is one of India''s leading industrial states, and the Gujarat Industrial Development Corporation (GIDC) has developed an extensive network of industrial estates supporting manufacturing, logistics, engineering, chemicals, pharmaceuticals, food processing, textiles, automobiles, and MSMEs. GIDC currently operates 239 industrial estates across the state, providing planned industrial infrastructure for businesses of different sizes.
@@ -35165,7 +33594,7 @@ PropertysDeal provides 100% verified industrial shed listings across GIDC estate
 **GIDC Shed for Sale in Gujarat** offers an excellent opportunity for manufacturers, logistics companies, exporters, warehouses, and industrial investors looking to establish or expand operations in Gujarat. With established industrial estates such as Sanand, Vatva, Naroda, Kathwada, Changodar, Chhatral, Ankleshwar, Vapi, Sachin, and Makarpura, businesses benefit from developed infrastructure, industrial ecosystems, and strong connectivity.
 
 With PropertysDeal, you can discover verified industrial properties, compare opportunities, connect directly with sellers, and make informed industrial real estate decisions.
-', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:50.421Z', '2026-07-28T04:49:50.421Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'GIDC Shed for Sale in Gujarat | Factory & Warehouse Units', 'Explore verified GIDC industrial sheds for sale in Gujarat across Sanand, Vatva, Naroda, Ankleshwar & Vapi. Find PEB & RCC factory sheds, manufacturing units, price trends, and transfer guides.', '2026-07-28T04:49:50.421Z', '2026-07-28T04:49:50.421Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (208, 'Agricultural Land for Sale Gujarat', 'agricultural-land-for-sale-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -35298,7 +33727,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:54.106Z', '2026-07-28T04:51:54.106Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:54.106Z', '2026-07-28T04:51:54.106Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (209, 'Agricultural Land Gujarat', 'agricultural-land-in-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -35431,7 +33860,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:54.872Z', '2026-07-28T04:51:54.872Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:54.872Z', '2026-07-28T04:51:54.872Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (210, 'Agricultural Land Gujarat', 'farm-land-for-sale-in-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -35564,7 +33993,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:55.644Z', '2026-07-28T04:51:55.644Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:55.644Z', '2026-07-28T04:51:55.644Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (211, 'Agricultural Land Gujarat', 'cultivable-land-for-sale-in-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -35697,7 +34126,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:56.412Z', '2026-07-28T04:51:56.412Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:56.412Z', '2026-07-28T04:51:56.412Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (213, 'Agricultural Land Gujarat', 'orchard-land-for-sale-in-anand', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -35830,7 +34259,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:58.265Z', '2026-07-28T04:51:58.265Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:58.265Z', '2026-07-28T04:51:58.265Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (214, 'Agricultural Land Gujarat', 'agricultural-land-for-sale-in-ahmedabad', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -35963,7 +34392,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:59.029Z', '2026-07-28T04:51:59.029Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:51:59.029Z', '2026-07-28T04:51:59.029Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (215, 'Agricultural Land Gujarat', 'farm-land-for-sale-in-rajkot', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -36096,7 +34525,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:52:00.112Z', '2026-07-28T04:52:00.112Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:52:00.112Z', '2026-07-28T04:52:00.112Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (216, 'Agricultural Land Gujarat', 'agricultural-land-for-sale-in-surat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -36229,7 +34658,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:52:00.875Z', '2026-07-28T04:52:00.875Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:52:00.875Z', '2026-07-28T04:52:00.875Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (217, 'Agricultural Land Gujarat', 'organic-farming-land-in-gujarat', '# Agricultural Land for Sale Gujarat
 
 Gujarat is one of India''s leading agricultural states, offering diverse opportunities for farming, horticulture, dairy, organic cultivation, and agri-business investments. With eight agro-climatic zones, extensive cultivable land, and major irrigation initiatives (Narmada canal network, drip irrigation, check dams), the state supports cash crops and food grains such as cotton, groundnut, wheat, cumin, castor, banana, mango, onion, vegetables, and sugarcane.
@@ -36362,7 +34791,7 @@ PropertysDeal provides 100% verified agricultural land listings in Gujarat with 
 **Agricultural Land for Sale in Gujarat** offers excellent opportunities for farmers, agribusiness owners, orchard developers, and long-term investors. Whether you are searching for cultivable farmland, irrigated agricultural land, orchard property, organic farming land, or commercial agricultural investment, Gujarat provides diverse options across Ahmedabad, Anand, Bharuch, Rajkot, Junagadh, Surat, Vadodara, Banaskantha, Mehsana, and Kutch.
 
 With PropertysDeal, buyers can explore verified agricultural properties, compare land options, connect directly with sellers, and confidently invest in one of India''s leading agricultural states.
-', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:52:01.640Z', '2026-07-28T04:52:01.640Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Agricultural Land for Sale in Gujarat | Buy Farmland & Orchards', 'Explore verified agricultural land for sale in Gujarat across Anand, Bharuch, Ahmedabad, Rajkot & Junagadh. Compare irrigated farmland, mango/banana orchards, AnyRoR 7/12 records, and legal guides.', '2026-07-28T04:52:01.640Z', '2026-07-28T04:52:01.640Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (218, 'NA Plot Gujarat', 'na-plot-gujarat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -36488,7 +34917,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:16.393Z', '2026-07-28T04:54:16.393Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:16.393Z', '2026-07-28T04:54:16.393Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (219, 'NA Plot Gujarat', 'na-plot-for-sale-ahmedabad', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -36614,7 +35043,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:17.172Z', '2026-07-28T04:54:17.172Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:17.172Z', '2026-07-28T04:54:17.172Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (220, 'NA Plot Gujarat', 'na-plot-gandhinagar', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -36740,7 +35169,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:17.948Z', '2026-07-28T04:54:17.948Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:17.948Z', '2026-07-28T04:54:17.948Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (221, 'NA Plot Gujarat', 'residential-plot-surat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -36866,7 +35295,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:18.728Z', '2026-07-28T04:54:18.728Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:18.728Z', '2026-07-28T04:54:18.728Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (222, 'NA Plot Gujarat', 'commercial-na-plot-vadodara', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -36992,7 +35421,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:19.504Z', '2026-07-28T04:54:19.504Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:19.504Z', '2026-07-28T04:54:19.504Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (223, 'NA Plot Gujarat', 'na-plot-rajkot', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -37118,7 +35547,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:20.534Z', '2026-07-28T04:54:20.534Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:20.534Z', '2026-07-28T04:54:20.534Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (224, 'NA Plot Gujarat', 'villa-plot-gujarat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -37244,7 +35673,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:21.315Z', '2026-07-28T04:54:21.315Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:21.315Z', '2026-07-28T04:54:21.315Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (225, 'NA Plot Gujarat', 'gated-community-plot-gujarat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -37370,7 +35799,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:22.085Z', '2026-07-28T04:54:22.085Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:22.085Z', '2026-07-28T04:54:22.085Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (226, 'NA Plot Gujarat', 'investment-plot-gujarat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -37496,7 +35925,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:22.864Z', '2026-07-28T04:54:22.864Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:22.864Z', '2026-07-28T04:54:22.864Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (227, 'NA Plot Gujarat', 'approved-na-plot-gujarat', '# NA Plot Gujarat
 
 Gujarat has become one of India''s fastest-growing real estate markets, with increasing demand for Non-Agricultural (NA) plots for residential, commercial, and investment purposes. Rapid urbanization, industrial growth, expressways, metro projects, and expanding town planning schemes have increased interest in NA plots across major cities such as Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, and Valsad.
@@ -37622,7 +36051,7 @@ PropertysDeal provides 100% verified NA plot listings in Gujarat with official P
 **NA Plot Gujarat** offers excellent opportunities for homebuyers, developers, and investors looking for legally approved residential or commercial land. Whether you''re searching in Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Bharuch, Navsari, Mehsana, or Valsad, verified NA plots provide the flexibility to build homes, develop commercial projects, or invest for long-term growth.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect directly with property owners, and make confident real estate investment decisions across Gujarat.
-', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:23.641Z', '2026-07-28T04:54:23.641Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'NA Plot Gujarat | Buy Approved Residential & Commercial Plots', 'Explore verified NA plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara & Rajkot. Compare Section 65 approved residential & commercial plots, price trends, Property Cards, and loan guides.', '2026-07-28T04:54:23.641Z', '2026-07-28T04:54:23.641Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (228, 'Industrial Land Gujarat', 'industrial-land-gujarat', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -37749,7 +36178,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:23.092Z', '2026-07-28T04:56:23.092Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:23.092Z', '2026-07-28T04:56:23.092Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (229, 'Industrial Land Gujarat', 'industrial-land-for-sale-ahmedabad', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -37876,7 +36305,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:23.842Z', '2026-07-28T04:56:23.842Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:23.842Z', '2026-07-28T04:56:23.842Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (230, 'Industrial Land Gujarat', 'industrial-plot-sanand', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38003,7 +36432,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:24.588Z', '2026-07-28T04:56:24.588Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:24.588Z', '2026-07-28T04:56:24.588Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (231, 'Industrial Land Gujarat', 'factory-land-vatva', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38130,7 +36559,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:25.340Z', '2026-07-28T04:56:25.340Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:25.340Z', '2026-07-28T04:56:25.340Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (233, 'Industrial Land Gujarat', 'warehouse-land-vapi', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38257,7 +36686,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:27.385Z', '2026-07-28T04:56:27.385Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:27.385Z', '2026-07-28T04:56:27.385Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (234, 'Industrial Land Gujarat', 'industrial-plot-dahej', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38384,7 +36813,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:28.131Z', '2026-07-28T04:56:28.131Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:28.131Z', '2026-07-28T04:56:28.131Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (235, 'Industrial Land Gujarat', 'industrial-land-hazira', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38511,7 +36940,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:28.879Z', '2026-07-28T04:56:28.879Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:28.879Z', '2026-07-28T04:56:28.879Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (236, 'Industrial Land Gujarat', 'manufacturing-land-gujarat', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38638,7 +37067,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:29.625Z', '2026-07-28T04:56:29.625Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:29.625Z', '2026-07-28T04:56:29.625Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (237, 'Industrial Land Gujarat', 'warehouse-land-for-sale-gujarat', '# Industrial Land Gujarat
 
 Gujarat is one of India''s most industrialized states and a preferred destination for manufacturing, logistics, exports, and industrial investment. Its strategic location, long coastline, extensive road and rail connectivity, dedicated industrial corridors (DMIC / DFC), and investor-friendly policies make it a major global hub for domestic and international businesses. The Gujarat Industrial Development Corporation (GIDC) operates 239 industrial estates across the state, supporting industries ranging from automobiles and engineering to pharmaceuticals, chemicals, textiles, and electronics.
@@ -38765,7 +37194,7 @@ PropertysDeal provides 100% verified industrial land listings across Gujarat wit
 **Industrial Land Gujarat** offers outstanding opportunities for manufacturers, exporters, logistics companies, warehouses, and long-term investors. Whether you''re seeking factory land, warehouse plots, logistics park sites, or manufacturing land, industrial hubs such as Sanand, Vatva, Naroda, Changodar, Ankleshwar, Vapi, Dahej, Hazira, Halol, and Sachin provide excellent infrastructure and business potential.
 
 With PropertysDeal, businesses can explore verified industrial land listings, compare locations, connect directly with sellers, and make confident investment decisions in one of India''s strongest industrial economies.
-', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:30.371Z', '2026-07-28T04:56:30.371Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Industrial Land Gujarat | Buy Factory & Warehouse Plots', 'Explore verified industrial land for sale in Gujarat across Sanand, Vatva, Ankleshwar, Vapi & Dahej. Compare GIDC & private industrial plots, factory land, price trends, and GPCB legal guides.', '2026-07-28T04:56:30.371Z', '2026-07-28T04:56:30.371Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (239, 'How to Buy Property in Gujarat', 'how-to-buy-a-house-in-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -38882,7 +37311,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:24.125Z', '2026-07-28T04:58:24.125Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:24.125Z', '2026-07-28T04:58:24.125Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (240, 'How to Buy Property in Gujarat', 'how-to-buy-a-flat-in-ahmedabad', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -38999,7 +37428,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:24.625Z', '2026-07-28T04:58:24.625Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:24.625Z', '2026-07-28T04:58:24.625Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (241, 'How to Buy Property in Gujarat', 'property-registration-process-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39116,7 +37545,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:25.133Z', '2026-07-28T04:58:25.133Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:25.133Z', '2026-07-28T04:58:25.133Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (242, 'How to Buy Property in Gujarat', 'first-time-home-buyer-guide-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39233,7 +37662,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:25.629Z', '2026-07-28T04:58:25.629Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:25.629Z', '2026-07-28T04:58:25.629Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (243, 'How to Buy Property in Gujarat', 'how-to-buy-land-in-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39350,7 +37779,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:26.125Z', '2026-07-28T04:58:26.125Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:26.125Z', '2026-07-28T04:58:26.125Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (244, 'How to Buy Property in Gujarat', 'property-investment-guide-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39467,7 +37896,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:26.625Z', '2026-07-28T04:58:26.625Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:26.625Z', '2026-07-28T04:58:26.625Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (245, 'How to Buy Property in Gujarat', 'home-loan-guide-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39584,7 +38013,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:27.135Z', '2026-07-28T04:58:27.135Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:27.135Z', '2026-07-28T04:58:27.135Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (246, 'How to Buy Property in Gujarat', 'residential-property-buying-guide-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39701,7 +38130,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:27.634Z', '2026-07-28T04:58:27.634Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:27.634Z', '2026-07-28T04:58:27.634Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (247, 'How to Buy Property in Gujarat', 'real-estate-buying-checklist-gujarat', '# Complete Guide: How to Buy Property in Gujarat
 
 Buying property is one of the most significant financial decisions you will make. Whether you''re purchasing your first residential flat, a luxury villa, a residential NA plot, a commercial office, or an industrial factory shed, taking a structured approach reduces legal risks and protects your financial investment.
@@ -39818,7 +38247,7 @@ PropertysDeal provides 100% verified residential, commercial, industrial, and pl
 Buying property in Gujarat is a rewarding long-term investment when approached with careful planning and proper due diligence. Whether you''re purchasing your first home, a residential plot, a commercial property, or an investment property, following a structured buying process helps reduce risk and improves confidence.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:28.132Z', '2026-07-28T04:58:28.132Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Buy Property in Gujarat | Legal & Step-by-Step Buying Guide', 'Complete 10-step guide to buying property in Gujarat. Learn about property verification, 4.9% stamp duty & Jantri rates, GUJRERA checks, home loans, and registration processes in Ahmedabad, Surat & Vadodara.', '2026-07-28T04:58:28.132Z', '2026-07-28T04:58:28.132Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (249, 'Stamp Duty in Gujarat', 'stamp-duty-calculator-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -39921,7 +38350,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:00:59.996Z', '2026-07-28T05:00:59.996Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:00:59.996Z', '2026-07-28T05:00:59.996Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (250, 'Stamp Duty in Gujarat', 'jantri-rate-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40024,7 +38453,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:00.518Z', '2026-07-28T05:01:00.518Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:00.518Z', '2026-07-28T05:01:00.518Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (251, 'Stamp Duty in Gujarat', 'property-registration-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40127,7 +38556,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:01.040Z', '2026-07-28T05:01:01.040Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:01.040Z', '2026-07-28T05:01:01.040Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (252, 'Stamp Duty in Gujarat', 'registration-charges-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40230,7 +38659,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:01.565Z', '2026-07-28T05:01:01.565Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:01.565Z', '2026-07-28T05:01:01.565Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (253, 'Stamp Duty in Gujarat', 'stamp-duty-on-flat-in-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40333,7 +38762,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:02.086Z', '2026-07-28T05:01:02.086Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:02.086Z', '2026-07-28T05:01:02.086Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (255, 'Stamp Duty in Gujarat', 'commercial-property-stamp-duty-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40436,7 +38865,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:03.124Z', '2026-07-28T05:01:03.124Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:03.124Z', '2026-07-28T05:01:03.124Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (256, 'Stamp Duty in Gujarat', 'industrial-property-registration-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40539,7 +38968,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:03.646Z', '2026-07-28T05:01:03.646Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:03.646Z', '2026-07-28T05:01:03.646Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (257, 'Stamp Duty in Gujarat', 'property-registration-cost-gujarat', '# Stamp Duty in Gujarat: Complete Guide, Rates & Jantri Calculator
 
 Paying stamp duty and property registration charges is a mandatory legal requirement when purchasing real estate in Gujarat. Stamp duty is a state government tax levied on property conveyances (sale deeds, gift deeds, lease agreements), while registration fees cover the official government recording of the transaction under the Sub-Registrar of Assurances.
@@ -40642,7 +39071,7 @@ PropertysDeal provides transparent property pricing, verified Jantri valuation t
 Understanding Stamp Duty in Gujarat is an essential part of purchasing any property. Buyers should calculate costs using the higher of the transaction value or Jantri value, verify all legal documents, understand applicable registration charges, and complete registration in accordance with state requirements.
 
 With PropertysDeal, buyers can explore verified property listings across Gujarat, compare options, connect directly with sellers, and access transparent information that supports informed real estate decisions.
-', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:04.165Z', '2026-07-28T05:01:04.165Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Stamp Duty in Gujarat | Rates, Jantri & Registration Charges', 'Complete guide to stamp duty in Gujarat. Learn about effective 4.9% stamp duty, 1% registration fee, Jantri rates calculation, GARVI portal e-stamps, female concessions, and legal registration workflows.', '2026-07-28T05:01:04.165Z', '2026-07-28T05:01:04.165Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (259, 'RERA Registered Properties Gujarat', 'rera-approved-projects-ahmedabad', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -40747,7 +39176,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:50.291Z', '2026-07-28T05:02:50.291Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:50.291Z', '2026-07-28T05:02:50.291Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (261, 'RERA Registered Properties Gujarat', 'gujrera-property-search', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -40852,7 +39281,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:51.301Z', '2026-07-28T05:02:51.301Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:51.301Z', '2026-07-28T05:02:51.301Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (262, 'RERA Registered Properties Gujarat', 'rera-projects-vadodara', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -40957,7 +39386,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:51.801Z', '2026-07-28T05:02:51.801Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:51.801Z', '2026-07-28T05:02:51.801Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (263, 'RERA Registered Properties Gujarat', 'rera-registered-villas-gujarat', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -41062,7 +39491,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:52.304Z', '2026-07-28T05:02:52.304Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:52.304Z', '2026-07-28T05:02:52.304Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (264, 'RERA Registered Properties Gujarat', 'commercial-rera-projects-gujarat', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -41167,7 +39596,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:53.047Z', '2026-07-28T05:02:53.047Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:53.047Z', '2026-07-28T05:02:53.047Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (265, 'RERA Registered Properties Gujarat', 'luxury-rera-projects-gujarat', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -41272,7 +39701,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:53.548Z', '2026-07-28T05:02:53.548Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:53.548Z', '2026-07-28T05:02:53.548Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (266, 'RERA Registered Properties Gujarat', 'under-construction-rera-projects-gujarat', '# RERA Registered Properties Gujarat: GujRERA Verification, Buyer Rights & Projects
 
 The Real Estate (Regulation and Development) Act, 2016 (RERA) was introduced to enforce transparency, financial discipline, standardized carpet area pricing, and buyer protection across the Indian real estate market. In Gujarat, the regulation is enforced by the **Gujarat Real Estate Regulatory Authority (GujRERA)**. GujRERA maintains an official public database of all registered residential and commercial projects, developers, and real estate agents.
@@ -41377,7 +39806,7 @@ PropertysDeal lists 100% verified RERA registered properties across Gujarat with
 Choosing RERA Registered Properties in Gujarat provides greater transparency, structural quality guarantees, and access to verified project information. By verifying the project''s registration, reviewing official disclosures, inspecting legal documents, and understanding your rights under the RERA framework, you can make a more informed and secure property purchase.
 
 With PropertysDeal, buyers can explore verified residential and commercial properties, compare projects, connect directly with sellers, and access information that supports a safer and more transparent property-buying experience.
-', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:54.048Z', '2026-07-28T05:02:54.048Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'RERA Registered Properties Gujarat | GujRERA Verified Projects', 'Explore verified RERA registered properties in Gujarat across Ahmedabad, Surat, Vadodara & Gandhinagar. Learn how to verify GujRERA numbers, buyer rights, carpet area rules, and delay penalties.', '2026-07-28T05:02:54.048Z', '2026-07-28T05:02:54.048Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (269, 'Best Areas to Buy Flat in Ahmedabad', 'best-areas-to-buy-villa-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -41484,7 +39913,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:49.024Z', '2026-07-28T05:05:49.024Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:49.024Z', '2026-07-28T05:05:49.024Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (138, 'Affordable flats Ahmedabad', 'affordable-flats-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -41591,7 +40020,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T04:34:17.162Z', '2026-07-28T04:34:17.162Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T04:34:17.162Z', '2026-07-28T04:34:17.162Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (271, 'Best Areas to Buy Flat in Ahmedabad', 'luxury-apartments-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -41698,7 +40127,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:51.041Z', '2026-07-28T05:05:51.041Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:51.041Z', '2026-07-28T05:05:51.041Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (272, 'Best Areas to Buy Flat in Ahmedabad', 'best-investment-areas-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -41805,7 +40234,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:52.062Z', '2026-07-28T05:05:52.062Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:52.062Z', '2026-07-28T05:05:52.062Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (273, 'Best Areas to Buy Flat in Ahmedabad', '2bhk-flats-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -41912,7 +40341,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:53.070Z', '2026-07-28T05:05:53.070Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:53.070Z', '2026-07-28T05:05:53.070Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (274, 'Best Areas to Buy Flat in Ahmedabad', '3bhk-flats-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -42019,7 +40448,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:54.076Z', '2026-07-28T05:05:54.076Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:54.076Z', '2026-07-28T05:05:54.076Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (275, 'Best Areas to Buy Flat in Ahmedabad', 'ready-to-move-flats-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -42126,7 +40555,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:55.083Z', '2026-07-28T05:05:55.083Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:55.083Z', '2026-07-28T05:05:55.083Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (276, 'Best Areas to Buy Flat in Ahmedabad', 'new-residential-projects-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -42233,7 +40662,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:56.086Z', '2026-07-28T05:05:56.086Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:56.086Z', '2026-07-28T05:05:56.086Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (277, 'Best Areas to Buy Flat in Ahmedabad', 'family-friendly-areas-in-ahmedabad', '# Best Areas to Buy a Flat in Ahmedabad: Top Localities, Prices & Investment Guide
 
 Ahmedabad has rapidly emerged as one of India''s most preferred residential real estate destinations. Driven by expanding Metro transit, major commercial expressways (SG Highway, SP Ring Road), modern townships, and high quality of life, the city offers property options across all budget segments—from affordable budget 2 BHKs to ultra-luxury 4 BHK penthouses.
@@ -42340,7 +40769,7 @@ PropertysDeal provides 100% verified flat listings in Ahmedabad with HD photos, 
 Ahmedabad offers residential opportunities for every type of buyer. Whether you prefer the affordability of Gota and Chandkheda, the balanced lifestyle of South Bopal and Shela, or the premium experience of Science City, Thaltej, Satellite, and Bodakdev, choosing the right locality depends on your budget, daily commute, family needs, and long-term investment objectives.
 
 Take time to compare projects, verify legal documents, review builder credibility, and evaluate future infrastructure plans before making your final decision. With PropertysDeal, you can explore verified listings across Ahmedabad and secure your ideal home with confidence.
-', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:57.090Z', '2026-07-28T05:05:57.090Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Best Areas to Buy a Flat in Ahmedabad | Top Localities & Prices', 'Comprehensive guide to the best areas to buy a flat in Ahmedabad. Compare South Bopal, Shela, Science City, Gota, Thaltej & Bodakdev on price trends, rental yields, metro access, and GUJRERA legal tips.', '2026-07-28T05:05:57.090Z', '2026-07-28T05:05:57.090Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (48, 'Flat for sale in alkapuri', 'flat-for-sale-in-alkapuri', '# Flat for Sale in Alkapuri, Vadodara
 
 Alkapuri is widely recognized as Vadodara''s most prestigious, affluent, and sought-after residential and commercial address. Located in the heart of Western Vadodara, Alkapuri is celebrated for its lush tree-lined avenues, heritage charm, premier commercial shopping corridors along RC Dutt Road, and high-end residential gated communities. Finding a **flat for sale in Alkapuri, Vadodara** offers homebuyers, corporate executives, and NRI investors an unmatchable luxury lifestyle paired with outstanding long-term property appreciation.
@@ -42500,7 +40929,7 @@ PropertysDeal provides 100% verified listings in Alkapuri with HD photos, transp
 A **Flat for Sale in Alkapuri, Vadodara** provides the ultimate combination of status, luxury, urban convenience, and long-term financial security. With its prime central location, top-tier schools and hospitals, vibrant retail ecosystem along RC Dutt Road, and strong resale liquidity, Alkapuri remains the premier residential choice for homebuyers and investors in Vadodara.
 
 Discover verified 2 BHK, 3 BHK, and luxury penthouse listings in Alkapuri on PropertysDeal today!
-', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:23.045Z', '2026-07-28T03:42:23.045Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in Alkapuri, Vadodara | Buy 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in Alkapuri, Vadodara. Find ready-to-move 2 BHK, 3 BHK & 4 BHK luxury apartments with modern amenities, price trends, and legal guides.', '2026-07-28T03:42:23.045Z', '2026-07-28T03:42:23.045Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (69, 'Independent house in adajan', 'independent-house-in-adajan', '# Property in Adajan, Surat
 
 Adajan is one of Surat''s most established and sought-after residential localities. Situated on the western side of the city near the Tapi River, it offers a balanced mix of apartments, independent houses, villas, and residential plots. Excellent connectivity, strong civic infrastructure, reputed schools, hospitals, shopping destinations, and a family-friendly environment make Adajan a preferred choice for both homebuyers and investors.
@@ -42746,7 +41175,7 @@ PropertysDeal provides verified property listings, AI-powered search, trusted bu
 **Property in Adajan, Surat** offers an ideal combination of convenience, connectivity, and long-term investment potential. Whether you''re looking for a modern apartment, an independent house, a villa, or a residential plot, Adajan provides options for every budget and lifestyle.
 
 With PropertysDeal, buyers can explore verified listings, compare projects, connect with trusted builders and property owners, and make informed decisions with confidence.
-', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:45.808Z', '2026-07-28T04:02:45.808Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property in Adajan, Surat | Buy 2, 3 & 4 BHK Flats, Villas & Plots', 'Explore verified properties for sale in Adajan, Surat. Compare 2 BHK, 3 BHK & 4 BHK luxury flats, independent houses, villas, plots, price trends (₹4,000–₹7,200/sq.ft), and legal guides.', '2026-07-28T04:02:45.808Z', '2026-07-28T04:02:45.808Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (88, 'Property in gift city gandhinagar', 'property-in-gift-city-gandhinagar', '# Flat for Sale in GIFT City, Gandhinagar
 
 GIFT City (Gujarat International Finance Tec-City) is India''s first operational smart city and International Financial Services Centre (IFSC). Located strategically between Ahmedabad and Gandhinagar, it has evolved into one of Gujarat''s most prestigious residential and business destinations. The city combines world-class infrastructure, smart urban planning, global business opportunities, and premium residential developments, making it highly attractive for professionals, entrepreneurs, NRIs, and investors.
@@ -42926,7 +41355,7 @@ PropertysDeal provides verified property listings, AI-powered property search, t
 A **Flat for Sale in GIFT City, Gandhinagar** offers the perfect combination of luxury living, smart-city infrastructure, excellent connectivity, and exceptional long-term investment potential. As India''s first operational smart financial city continues to expand, demand for quality residential properties is expected to remain strong.
 
 With PropertysDeal, you can explore verified apartment listings, compare projects, connect with trusted builders and property owners, and make informed decisions with complete confidence.
-', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:00.604Z', '2026-07-28T04:17:00.604Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Flat for Sale in GIFT City, Gandhinagar | Buy 1, 2, 3 & 4 BHK Apartments', 'Explore verified flats for sale in GIFT City, Gandhinagar. Find ready-to-move 1 BHK, 2 BHK, 3 BHK & 4 BHK luxury apartments with smart home features, price trends, and legal guides.', '2026-07-28T04:17:00.604Z', '2026-07-28T04:17:00.604Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (280, 'Property Rates Bopal 2026 | Real Estate Gujarat', 'property-rates-in-shela-2026', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43021,7 +41450,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:40.059Z', '2026-07-28T05:09:40.059Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:40.059Z', '2026-07-28T05:09:40.059Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (281, 'Property Rates Bopal 2026 | Real Estate Gujarat', 'flats-for-sale-in-bopal', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43116,7 +41545,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:41.339Z', '2026-07-28T05:09:41.339Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:41.339Z', '2026-07-28T05:09:41.339Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (282, 'Property Rates Bopal 2026 | Real Estate Gujarat', '2bhk-flats-in-bopal', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43211,7 +41640,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:42.603Z', '2026-07-28T05:09:42.603Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:42.603Z', '2026-07-28T05:09:42.603Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (134, 'New Projects in Bopal Ahmedabad', 'luxury-apartments-in-bopal', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43306,7 +41735,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T04:32:17.492Z', '2026-07-28T04:32:17.492Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T04:32:17.492Z', '2026-07-28T04:32:17.492Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (285, 'Property Rates Bopal 2026 | Real Estate Gujarat', 'villas-in-bopal', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43401,7 +41830,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:46.409Z', '2026-07-28T05:09:46.409Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:46.409Z', '2026-07-28T05:09:46.409Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (286, 'Property Rates Bopal 2026 | Real Estate Gujarat', 'residential-plots-in-bopal', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43496,7 +41925,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:47.678Z', '2026-07-28T05:09:47.678Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:47.678Z', '2026-07-28T05:09:47.678Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (287, 'Property Rates Bopal 2026 | Real Estate Gujarat', 'bopal-real-estate-market-report', '# Property Rates in Bopal, Ahmedabad (2026): Price Trends, Locality Report & Buyer Guide
 
 Bopal has developed into one of the most sought-after residential micro-markets in West Ahmedabad. Located strategically along the SP Ring Road and adjacent to South Bopal, Shela, Shilaj, and Ambli Road, Bopal attracts homebuyers, young IT professionals, families, and long-term real estate investors.
@@ -43591,7 +42020,7 @@ PropertysDeal provides 100% verified property listings in Bopal with HD photos, 
 Bopal continues to be one of West Ahmedabad''s strongest residential micro-markets. Apartment prices remain competitive compared to several premium localities, while infrastructure, connectivity, and strong housing demand support long-term growth. Whether you''re buying your first apartment, upgrading to a larger family home, or investing for rental income, Bopal offers options across affordable, mid-segment, and premium categories.
 
 Take time to compare projects, verify legal documents, review builder credibility, and inspect site drainage before making your final decision. With PropertysDeal, you can explore verified listings across Bopal and secure your ideal property with confidence.
-', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:48.945Z', '2026-07-28T05:09:48.945Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Property Rates in Bopal 2026 | Price Trends & Market Report', 'Comprehensive 2026 property rates guide for Bopal, Ahmedabad. Compare apartment prices (₹5,270–₹6,639/sq.ft), plot rates, rental yields, South Bopal vs Shela comparison, and GUJRERA legal tips.', '2026-07-28T05:09:48.945Z', '2026-07-28T05:09:48.945Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (289, 'How to Verify Property in Gujarat', 'property-verification-in-ahmedabad', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -43693,7 +42122,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:11:59.276Z', '2026-07-28T05:11:59.276Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:11:59.276Z', '2026-07-28T05:11:59.276Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (290, 'How to Verify Property in Gujarat', 'property-verification-in-surat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -43795,7 +42224,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:11:59.781Z', '2026-07-28T05:11:59.781Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:11:59.781Z', '2026-07-28T05:11:59.781Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (291, 'How to Verify Property in Gujarat', 'land-record-verification-gujarat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -43897,7 +42326,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:00.290Z', '2026-07-28T05:12:00.290Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:00.290Z', '2026-07-28T05:12:00.290Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (267, 'RERA Registered Properties Gujarat', 'rera-property-verification-gujarat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -43999,7 +42428,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:02:54.551Z', '2026-07-28T05:02:54.551Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:02:54.551Z', '2026-07-28T05:02:54.551Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (293, 'How to Verify Property in Gujarat', 'title-search-guide-gujarat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -44101,7 +42530,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:01.303Z', '2026-07-28T05:12:01.303Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:01.303Z', '2026-07-28T05:12:01.303Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (294, 'How to Verify Property in Gujarat', 'apartment-verification-checklist', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -44203,7 +42632,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:01.802Z', '2026-07-28T05:12:01.802Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:01.802Z', '2026-07-28T05:12:01.802Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (295, 'How to Verify Property in Gujarat', 'plot-verification-guide-gujarat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -44305,7 +42734,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:02.300Z', '2026-07-28T05:12:02.300Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:02.300Z', '2026-07-28T05:12:02.300Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (296, 'How to Verify Property in Gujarat', 'commercial-property-verification', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -44407,7 +42836,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:02.801Z', '2026-07-28T05:12:02.801Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:02.801Z', '2026-07-28T05:12:02.801Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (297, 'How to Verify Property in Gujarat', 'property-legal-checklist-gujarat', '# How to Verify Property in Gujarat: Legal Due Diligence, Land Records & Title Search Guide
 
 Purchasing real estate—whether a residential flat in Ahmedabad, a villa in Surat, an NA plot in Gandhinagar, a commercial office, or agricultural farmland—requires rigorous legal verification. Conducting thorough legal due diligence before paying booking advances prevents property fraud, boundary disputes, hidden mortgages, and illegal construction risks.
@@ -44509,7 +42938,7 @@ PropertysDeal provides 100% verified property listings across Gujarat with verif
 Verifying a property in Gujarat involves much more than checking a single document. A thorough review of ownership records, title history, government land records, approvals, tax status, encumbrances, and the property''s physical condition can significantly reduce legal and financial risks.
 
 Combining official record verification with independent legal advice provides a stronger foundation for a secure property purchase. With PropertysDeal, you can explore verified listings across Gujarat and proceed with your real estate investment with complete peace of mind.
-', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:03.302Z', '2026-07-28T05:12:03.302Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'How to Verify Property in Gujarat | Legal & Title Search Guide', 'Complete 10-step property verification guide in Gujarat. Learn about AnyRoR 7/12 extracts, Property Cards, 30-year title searches, Collector NA orders, EC certificates, and GUJRERA checks.', '2026-07-28T05:12:03.302Z', '2026-07-28T05:12:03.302Z') ON CONFLICT DO NOTHING;
 INSERT INTO blogs (id, title, slug, content, meta_title, meta_description, created_at, updated_at) VALUES (149, 'Plot for Sale Gujarat', 'residential-plots-in-gujarat', '# Residential Plot for Sale in Gujarat
 
 Gujarat has become one of India''s leading destinations for residential plot investment due to its strong infrastructure, industrial growth, expanding urban centres, and planned developments. Whether you want to build your dream home, invest for long-term capital appreciation, or purchase land in a gated plotting scheme, the state offers numerous opportunities across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot, Anand, Mehsana, Bharuch, and Dholera Special Investment Region (SIR).
@@ -44650,5 +43079,5 @@ PropertysDeal provides verified NA plot listings in Gujarat with clear title cer
 **Residential Plots for Sale in Gujarat** provide excellent opportunities for homebuyers and long-term investors. Whether you are planning to build your own home or invest in land for future appreciation, Gujarat provides a wide range of NA residential plots, villa plots, and gated plotting schemes suited to different budgets and investment goals.
 
 With PropertysDeal, buyers can explore verified plot listings, compare locations, connect directly with trusted property owners and developers, and confidently make informed land-purchase decisions.
-', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:20.418Z', '2026-07-28T04:36:20.418Z') ON CONFLICT (id) DO UPDATE SET content = EXCLUDED.content, title = EXCLUDED.title, updated_at = NOW();
+', 'Residential Plot for Sale in Gujarat | Buy NA Plots & Villa Land', 'Explore verified residential plots for sale in Gujarat across Ahmedabad, Gandhinagar, Surat, Vadodara, Rajkot & Dholera. Find NA gated plotting schemes, price trends, and legal guides.', '2026-07-28T04:36:20.418Z', '2026-07-28T04:36:20.418Z') ON CONFLICT DO NOTHING;
 
