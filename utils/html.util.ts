@@ -33,7 +33,18 @@ export function sanitizeHtml(html: string): string {
 export function parseMarkdownToHtml(markdown: string): string {
   if (!markdown) return '';
 
-  const normalized = markdown.replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+  let normalized = (markdown || '')
+    .replace(/\\r\\n/g, '\n')
+    .replace(/\\n/g, '\n')
+    .replace(/\\r/g, '\n')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n');
+
+  // Second pass to ensure any double-escaped literal slash-n strings are converted to newlines
+  while (normalized.includes('\\n') || normalized.includes('\\r')) {
+    normalized = normalized.replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+  }
+
   const lines = normalized.split('\n');
   const result: string[] = [];
   let inList = false;

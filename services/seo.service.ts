@@ -222,6 +222,9 @@ export class SeoService implements ISeoService {
       meta_description = blog.meta_description || blog.metaDescription || blog.title;
       h1 = blog.title;
       content = (blog.content || '').replace(/\\r\\n/g, '\n').replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+      while (content.includes('\\n') || content.includes('\\r')) {
+        content = content.replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+      }
 
       // Extract H2 headings from the custom markdown content
       const lines = content.split('\n');
