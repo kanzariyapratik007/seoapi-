@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v43:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v44:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -333,11 +333,12 @@ New residential and commercial project launches across Ahmedabad, Surat, Vadodar
 ## Find the Right Property in Gujarat
 Partnering with experienced, RERA-registered real estate specialists ensures transparent price negotiations, legal verification, and smooth property registration execution.`;
       } else {
-        title = seoTemplate.title;
-        meta_title = seoTemplate.meta_title;
-        meta_description = seoTemplate.meta_description;
-        h1 = seoTemplate.h1;
-        h2 = seoTemplate.h2;
+        const cityOrState = (variables.city && variables.city.trim() !== '') ? variables.city : 'Gujarat';
+        title = seoTemplate.title.replace(/\bin\s*(?=[,)]|\s*-|\s*\(2026\)|$)/gi, `in ${cityOrState}`).replace(/\s{2,}/g, ' ');
+        meta_title = seoTemplate.meta_title.replace(/\bin\s*(?=[,)]|\s*-|\s*\(2026\)|$)/gi, `in ${cityOrState}`).replace(/\s{2,}/g, ' ');
+        meta_description = seoTemplate.meta_description.replace(/\bin\s*(?=[,)]|\s*-|\s*\(2026\)|$)/gi, `in ${cityOrState}`).replace(/\s{2,}/g, ' ');
+        h1 = seoTemplate.h1.replace(/\bin\s*(?=[,)]|\s*-|\s*\(2026\)|$)/gi, `in ${cityOrState}`).replace(/\s{2,}/g, ' ');
+        h2 = seoTemplate.h2.map(heading => heading.replace(/\bin\s*(?=[,)]|\s*-|\s*\(2026\)|$)/gi, `in ${cityOrState}`).replace(/under in\b/gi, 'in Gujarat').replace(/\s{2,}/g, ' '));
 
         // Build category-specific deep multi-paragraph content hitting word count targets
         const locStr = variables.locality ? `${variables.locality}, ${variables.city}` : (variables.city || 'Gujarat');
@@ -514,6 +515,55 @@ Follow this structured checklist to ensure a secure property transaction in Ahme
 3. Conduct Legal Due Diligence: Hire an independent legal advocate for title search and document verification.
 4. Review Sale Agreement: Check payment schedule, possession date, penalty clauses, and amenity specifications.
 5. Execute Property Registration: Pay applicable Gujarat Stamp Duty and Registration Fees at the Sub-Registrar Office.`;
+    }
+
+    // Explicit Deep Overrides for 'stamp-duty-in-gujarat'
+    if (normSlugCheck === 'stamp-duty-in-gujarat') {
+      title = 'Stamp Duty in Gujarat (2026) | Registration Charges & Property Tax Guide';
+      meta_title = 'Stamp Duty Rates in Gujarat (2026) | Property Registration Cost';
+      meta_description = 'Complete guide on Gujarat stamp duty rates (4.9%), registration fee (1%), female buyer concessions, e-stamping online payment, Jantri rate calculation, and legal property registration in Gujarat for 2026.';
+      h1 = 'Stamp Duty and Registration Charges in Gujarat (2026)';
+      h2 = [
+        'Current Stamp Duty Rates in Gujarat (2026)',
+        'Property Registration Charges Breakdown',
+        'Stamp Duty Concessions for Female Buyers in Gujarat',
+        'How to Calculate Stamp Duty & Jantri Rate in Gujarat',
+        'Online E-Stamping Procedure in Gujarat',
+        'Documents Required for Property Registration',
+        'Legal Checklist Before Paying Stamp Duty in Gujarat'
+      ];
+
+      content = `Planning to buy property in Gujarat? Understanding stamp duty and property registration charges is essential for home buyers, real estate investors, and commercial property purchasers. In Gujarat, stamp duty and registration fees are calculated based on the agreement value or the official government Jantri rate, whichever is higher.
+
+## Current Stamp Duty Rates in Gujarat (2026)
+The standard stamp duty rate in Gujarat is 4.9% of the property's market value or Jantri rate. Additionally, a registration fee of 1% is applicable, bringing the total legal property transfer cost to 5.9%.
+
+## Property Registration Charges Breakdown
+- Stamp Duty: 4.9% of property value or Jantri benchmark rate.
+- Registration Fee: 1% of total transaction value.
+- Total Legal Transfer Fee: 5.9% standard rate.
+
+## Stamp Duty Concessions for Female Buyers in Gujarat
+To promote female property ownership, the Government of Gujarat provides a 1% concession on stamp duty when the property is registered solely in a woman's name or as a primary co-owner. This reduces the effective stamp duty to 3.9% for eligible female buyers.
+
+## How to Calculate Stamp Duty & Jantri Rate in Gujarat
+Stamp duty is calculated using the following formula:
+Stamp Duty = (Higher of Sale Agreement Price OR Government Jantri Rate) x 4.9%
+Buyers can check the latest Jantri rates on the official Garvi Gujarat or AnyRoR web portal before executing sale deeds.
+
+## Online E-Stamping Procedure in Gujarat
+Property buyers in Gujarat can complete stamp duty payments electronically via approved e-stamping centers, authorized nationalized banks, or the official Stock Holding Corporation of India Limited (SHCIL) portal.
+
+## Documents Required for Property Registration
+1. Original Sale Deed / Agreement to Sell.
+2. Seller and Buyer Identity Proofs (Aadhaar Card, PAN Card).
+3. 7/12 & 8-A Land Extract Records (for land / plots).
+4. Non-Agricultural (NA) Permission & Title Clearance Certificate.
+5. Approved Building Plan & BU Permission (for apartments).
+6. E-Stamping Receipt & Payment Proof.
+
+## Legal Checklist Before Paying Stamp Duty in Gujarat
+Ensure developer RERA registration, verify clear marketable title with an advocate, confirm non-encumbrance status, and verify Jantri benchmark values before initiating registration.`;
     }
 
     // Explicit Deep Overrides for 'flats-for-sale-in-ahmedabad'
