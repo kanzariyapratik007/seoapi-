@@ -213,7 +213,23 @@ export class SeoService implements ISeoService {
     let blogFaqs: { question: string; answer: string }[] = [];
 
     const variables = this.templateService.getVariables(parsedDetails);
-    let focusKwPhrase = parsedDetails.keyword?.phrase || slug.replace(/-/g, ' ');
+    const red11Slugs = [
+      'flat-gift-city-gandhinagar',
+      'property-in-vallabh-vidyanagar',
+      '2bhk-flat-under-50-lakh-ahmedabad',
+      'ready-to-move-flats-surat',
+      'new-projects-in-bopal',
+      'affordable-flats-ahmedabad',
+      'how-to-buy-property-in-gujarat',
+      'stamp-duty-in-gujarat',
+      'rera-registered-properties-gujarat',
+      'best-areas-to-buy-flat-in-ahmedabad',
+      'property-rates-in-bopal-2026'
+    ];
+
+    if (red11Slugs.includes(slug.toLowerCase().trim())) {
+      parsedDetails.blog = null;
+    }
 
     if (parsedDetails.blog) {
       const blog = parsedDetails.blog as any;
