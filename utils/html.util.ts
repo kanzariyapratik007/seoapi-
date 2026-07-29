@@ -34,15 +34,14 @@ export function parseMarkdownToHtml(markdown: string): string {
   if (!markdown) return '';
 
   let normalized = (markdown || '')
-    .replace(/\\r\\n/g, '\n')
-    .replace(/\\n/g, '\n')
-    .replace(/\\r/g, '\n')
+    .replace(/\\+r\\+n/g, '\n')
+    .replace(/\\+n/g, '\n')
+    .replace(/\\+r/g, '\n')
     .replace(/\r\n/g, '\n')
     .replace(/\r/g, '\n');
 
-  // Second pass to ensure any double-escaped literal slash-n strings are converted to newlines
   while (normalized.includes('\\n') || normalized.includes('\\r')) {
-    normalized = normalized.replace(/\\n/g, '\n').replace(/\\r/g, '\n');
+    normalized = normalized.replace(/\\+n/g, '\n').replace(/\\+r/g, '\n');
   }
 
   const lines = normalized.split('\n');
