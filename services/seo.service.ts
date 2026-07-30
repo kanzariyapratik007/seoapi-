@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v44:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v45:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -564,6 +564,78 @@ Property buyers in Gujarat can complete stamp duty payments electronically via a
 
 ## Legal Checklist Before Paying Stamp Duty in Gujarat
 Ensure developer RERA registration, verify clear marketable title with an advocate, confirm non-encumbrance status, and verify Jantri benchmark values before initiating registration.`;
+    }
+
+    // Explicit Deep Overrides for 'flat-gift-city-gandhinagar'
+    if (normSlugCheck === 'flat-gift-city-gandhinagar') {
+      title = 'Buy Verified Flats in GIFT City Gandhinagar | 2/3 BHK Apartments 2026';
+      meta_title = 'Flats in GIFT City Gandhinagar - RERA Approved 2 & 3 BHK Apartments';
+      meta_description = 'Find verified 2 & 3 BHK flats in GIFT City Gandhinagar. Check RERA-approved projects, price trends, stamp duty, amenities & ROI. Expert legal guidance for buyers.';
+      h1 = 'Buy Verified Flats in GIFT City Gandhinagar – 2026 Property Guide';
+      h2 = [
+        'Why Invest in Flats in GIFT City Gandhinagar?',
+        'Infrastructure & Connectivity at GIFT City',
+        'Amenities in GIFT City Residential Projects',
+        'Legal Compliance & RERA Verification for Flats in GIFT City',
+        'Stamp Duty & Registration Charges in Gujarat',
+        'ROI Potential & Future Appreciation in GIFT City',
+        'Documents Required to Buy a Flat in GIFT City'
+      ];
+
+      content = `Searching for verified flats in GIFT City Gandhinagar? You have landed at the most trusted real estate resource in Gujarat. As a premier property advisory platform, we curate RERA-approved residential, commercial, and industrial properties across Gujarat. This comprehensive guide covers market trends, connectivity benefits, legal compliance, ROI projections, and step-by-step buyer checklists for purchasing a flat in GIFT City, Gandhinagar, in 2026.
+
+GIFT City (Gujarat International Finance Tec-City) is India's first operational smart city and International Financial Services Centre (IFSC). Located on the banks of the Sabarmati River between Ahmedabad and Gandhinagar, GIFT City has emerged as a premium residential and commercial real estate destination. Flats in GIFT City offer a unique blend of luxury living, world-class infrastructure, and strategic proximity to Gujarat's administrative and financial hubs.
+
+## Why Invest in Flats in GIFT City Gandhinagar?
+Investing in a flat in GIFT City provides distinct advantages for both end-users and long-term investors. The residential towers in GIFT City offer the perfect balance of space, affordability, and modern community living. Rapid urban infrastructure growth, the Ahmedabad Metro rail network, and the multi-lane SG Highway expressway connect this prime residential pocket with major business districts, educational institutions, healthcare facilities, and entertainment zones.
+
+## Infrastructure & Connectivity at GIFT City
+The GIFT City residential ecosystem is designed to provide a high quality of life while ensuring long-term asset appreciation. With the Gujarat government's continued focus on developing GIFT City as a global financial and IT hub, property values in this micro-market are projected to appreciate at 10–15% annually over the next 5–7 years. Rental yields for 2BHK and 3BHK flats in GIFT City currently range between 4.5% and 6%, making it a lucrative investment for both residents and buy-to-let investors.
+
+Beyond the immediate amenities, the social and physical infrastructure surrounding GIFT City makes it a highly desirable residential location. Families with school-going children have access to premier CBSE and ICSE schools like Delhi Public School, JKG International School, and Udgam School within 5–10 kilometers. Healthcare needs are catered to by multi-specialty hospitals such as Sterling Hospital, Apollo Hospital, and HCG Hospital in nearby Ahmedabad. For shopping and entertainment, residents can access Palladium Mall, Ahmedabad One Mall, and Himalaya Mall in under 20 minutes.
+
+### Metro Rail & Expressway Connectivity
+The Gujarat Metro Rail Corporation has proposed Metro Phase 2 connectivity that will extend directly into GIFT City, further enhancing commute convenience. The proximity to Sardar Vallabhbhai Patel International Airport (approximately 18 kilometers) and the Ahmedabad-Vadodara Expressway also makes GIFT City a preferred residential address for frequent travelers and business professionals.
+
+## Amenities in GIFT City Residential Projects
+Property developments in GIFT City are constructed with premium lifestyle amenities that cater to modern urban living standards. These include 24/7 CCTV surveillance with security personnel, dedicated covered parking slots, 100% power backup, rainwater harvesting systems, landscaped gardens with walking tracks, children's play areas, senior citizen zones, clubhouses with gymnasiums and swimming pools, and EV charging stations for electric vehicles.
+
+## Legal Compliance & RERA Verification for Flats in GIFT City
+When purchasing a flat in GIFT City, legal verification is non-negotiable. Each flat listing on our platform is thoroughly verified against the official GUJRERA (Gujarat Real Estate Regulatory Authority) database to ensure clear documentation and compliance with regulatory requirements. Buyers must independently verify the following critical legal documents before finalizing any property transaction in GIFT City.
+
+### RERA Registration & Title Clearance
+First, confirm that the land on which the residential project is constructed has a valid Non-Agricultural (NA) land conversion certificate issued by the Gujarat Revenue Department. This certificate confirms that the land has been legally converted from agricultural to non-agricultural use, which is mandatory for any residential construction.
+
+### NA Land & 7/12 Land Extract Verification
+Second, obtain and review the 7/12 land extract and 8-A records from the city survey office. These official revenue records contain details about land ownership, survey numbers, area, and any encumbrances or disputes. Property title must be clear, marketable, and free from legal challenges.
+
+Third, ensure that the builder has obtained approved building plans from the Gandhinagar Urban Development Authority (GUDA) or the competent local planning authority. Approved plans confirm that the construction complies with zoning regulations, building bylaws, floor space index (FSI) norms, fire safety requirements, and structural engineering standards.
+
+Fourth, verify the Building Use (BU) permission certificate. BU permission is issued by the municipal authority after the building is fully constructed and confirms that the building is legally fit and safe for occupation. Without a valid BU certificate, occupancy is illegal.
+
+Fifth, check the GUJRERA registration number of the project. Under the RERA Act, all real estate projects with more than 8 units or any project area exceeding 500 square meters must be registered with GUJRERA. RERA registration provides buyers with legal protection, fixed possession timelines, structural warranty (5 years), and mandatory deposit of 70% of the project funds in an escrow account.
+
+Sixth, obtain an encumbrance certificate for the property. The encumbrance certificate, typically valid for the last 30 years, confirms that the property is free from any mortgages, legal charges, or pending disputes. It serves as a clean title guarantee.
+
+## Stamp Duty & Registration Charges in Gujarat
+Stamp duty and registration charges form a significant portion of the total property acquisition cost in Gujarat. As of 2026, the applicable stamp duty rate in Gujarat is 4.9% of the property's market value or the government Jantri rate, whichever is higher. Female buyers receive a 1% concession, making the effective stamp duty rate 3.9% for women. In addition, a registration fee of 1% is payable to the Sub-Registrar's office. The total upfront cost for stamp duty and registration, therefore, ranges from 5.9% (for male buyers) to 4.9% (for female buyers).
+
+### Gujarat Stamp Duty Rates 2026
+Buyers should also budget for additional costs such as legal fees (0.5–1%), brokerage fees (1–2% if applicable), goods and services tax (GST) at 5% for under-construction flats, and ongoing maintenance charges. For ready-to-move flats, GST is not applicable, but buyers must pay annual property tax to the local municipal corporation.
+
+## ROI Potential & Future Appreciation in GIFT City
+The long-term capital appreciation potential in GIFT City is exceptionally strong. The International Financial Services Centre (IFSC) is already operational, hosting leading global banks, insurance companies, asset management firms, and technology companies. The Gujarat government's continued incentives for fintech, IT, and banking sectors ensure sustained employment generation and housing demand. Infrastructure upgrades such as the proposed high-speed bullet train corridor connecting Mumbai and Ahmedabad, with a station near GIFT City, are expected to further drive property values upward.
+
+### Rental Yield & Capital Growth Projections
+For Non-Resident Indians (NRIs), buying a flat in GIFT City is permitted under RBI and FEMA regulations. NRIs can purchase residential and commercial properties freely without prior government approval. However, agricultural land cannot be acquired by NRIs. Payment must be made through inward remittance or NRE/NRO accounts. Rental income from the property can be credited to the NRI's NRO account and repatriated with applicable tax deductions.
+
+Home loan availability for flats in GIFT City is excellent, with all major public and private sector banks offering attractive interest rates starting from 8.5% per annum. Most banks finance up to 80–90% of the property value, subject to the buyer's income, credit score, and repayment capacity. The loan tenure can extend up to 30 years for eligible applicants.
+
+## Documents Required to Buy a Flat in GIFT City
+Propertysdeal provides end-to-end advisory and documentation support for property purchases in GIFT City. Our services include property verification, legal title search, RERA validation, document drafting, stamp duty calculation, registration assistance, and post-purchase handholding. We also provide comparative analysis of multiple projects, builder reputation checks, and negotiation support to secure the best price.
+
+### Builder Agreement & Sale Deed Checklist
+Whether you are a first-time homebuyer, an investor seeking high rental yields, or an NRI looking to repatriate earnings, a flat in GIFT City Gandhinagar is a smart, future-ready investment. With world-class infrastructure, a dynamic business ecosystem, and strong legal protections, GIFT City is poised to become one of India's premier residential addresses. Connect with our expert advisors today to explore verified listings, schedule site visits, and make a confident, legally secure property investment in GIFT City.`;
     }
 
     // Explicit Deep Overrides for 'flats-for-sale-in-ahmedabad'
