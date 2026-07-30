@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v47:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v48:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -519,51 +519,168 @@ Follow this structured checklist to ensure a secure property transaction in Ahme
 
     // Explicit Deep Overrides for 'stamp-duty-in-gujarat'
     if (normSlugCheck === 'stamp-duty-in-gujarat') {
-      title = 'Stamp Duty in Gujarat (2026) | Registration Charges & Property Tax Guide';
-      meta_title = 'Stamp Duty Rates in Gujarat (2026) | Property Registration Cost';
-      meta_description = 'Complete guide on Gujarat stamp duty rates (4.9%), registration fee (1%), female buyer concessions, e-stamping online payment, Jantri rate calculation, and legal property registration in Gujarat for 2026.';
-      h1 = 'Stamp Duty and Registration Charges in Gujarat (2026)';
+      title = 'Stamp Duty in Gujarat 2026 - Rates, Registration Charges & Calculator';
+      meta_title = 'Stamp Duty in Gujarat 2026 - 4.9% Rates, Registration Fee 1%, Women Concession';
+      meta_description = 'Complete guide to stamp duty in Gujarat 2026. Learn about 4.9% stamp duty rates, 1% registration charges, women concession (3.9%), online payment via gARVI portal, and calculation examples. Expert advisory for property buyers.';
+      h1 = 'Stamp Duty in Gujarat 2026 – Rates, Registration Charges & Complete Guide';
       h2 = [
-        'Current Stamp Duty Rates in Gujarat (2026)',
-        'Property Registration Charges Breakdown',
-        'Stamp Duty Concessions for Female Buyers in Gujarat',
-        'How to Calculate Stamp Duty & Jantri Rate in Gujarat',
-        'Online E-Stamping Procedure in Gujarat',
-        'Documents Required for Property Registration',
-        'Legal Checklist Before Paying Stamp Duty in Gujarat'
+        'What is Stamp Duty in Gujarat?',
+        'Stamp Duty Rates in Gujarat 2026',
+        'Registration Charges in Gujarat',
+        'Gender-Based Concessions for Women Buyers',
+        'How to Calculate Stamp Duty in Gujarat',
+        'How to Pay Stamp Duty Online via gARVI Portal',
+        'Documents Required for Stamp Duty Payment',
+        'Stamp Duty for Different Deeds in Gujarat',
+        'Recent Stamp Duty Reforms in Gujarat',
+        'Common Mistakes to Avoid',
+        'Key Takeaways'
       ];
 
-      content = `Planning to buy property in Gujarat? Understanding stamp duty and property registration charges is essential for home buyers, real estate investors, and commercial property purchasers. In Gujarat, stamp duty and registration fees are calculated based on the agreement value or the official government Jantri rate, whichever is higher.
+      content = `Stamp duty in Gujarat is a mandatory tax levied by the state government on property transactions to legally validate the transfer of ownership. Any person purchasing a property must pay the stamp duty and registration charges in Gujarat. These charges are a form of indirect tax that must be paid by the buyer for registering the property in his/her name. Without payment of stamp duty and registration charges, your property deal is not legally valid, you won't be able to resell or mortgage the property, and it may result in penalties or legal disputes later.
 
-## Current Stamp Duty Rates in Gujarat (2026)
-The standard stamp duty rate in Gujarat is 4.9% of the property's market value or Jantri rate. Additionally, a registration fee of 1% is applicable, bringing the total legal property transfer cost to 5.9%.
+## What is Stamp Duty in Gujarat?
+Stamp duty is a statutory tax payable on all property legal documents under the Gujarat Stamp Act, 1958. It serves as evidence of ownership and ensures that property transactions are legally enforceable in court.
 
-## Property Registration Charges Breakdown
-- Stamp Duty: 4.9% of property value or Jantri benchmark rate.
-- Registration Fee: 1% of total transaction value.
-- Total Legal Transfer Fee: 5.9% standard rate.
+## Stamp Duty Rates in Gujarat 2026
+The stamp duty in Gujarat varies from 3% to 5% for purchase of a property, depending on the property type and location. The registration charges in Gujarat is 1% for the purchase of a property.
 
-## Stamp Duty Concessions for Female Buyers in Gujarat
-To promote female property ownership, the Government of Gujarat provides a 1% concession on stamp duty when the property is registered solely in a woman's name or as a primary co-owner. This reduces the effective stamp duty to 3.9% for eligible female buyers.
+Overview of Gujarat Stamp Duty and Registration Charges 2026:
 
-## How to Calculate Stamp Duty & Jantri Rate in Gujarat
-Stamp duty is calculated using the following formula:
-Stamp Duty = (Higher of Sale Agreement Price OR Government Jantri Rate) x 4.9%
-Buyers can check the latest Jantri rates on the official Garvi Gujarat or AnyRoR web portal before executing sale deeds.
+| Location/Type | Stamp Duty | Registration Fee |
+|---------------|------------|------------------|
+| Urban Residential | 4.9% | 1% |
+| Rural Residential | 4.9% | 1% |
+| Agricultural | 3% | 1% |
+| Commercial | 5% | 1% |
 
-## Online E-Stamping Procedure in Gujarat
-Property buyers in Gujarat can complete stamp duty payments electronically via approved e-stamping centers, authorized nationalized banks, or the official Stock Holding Corporation of India Limited (SHCIL) portal.
+The current stamp duty rate in Gujarat is 4.9% of the property's market value, inclusive of the basic rate of stamp duty (3.5%) and surcharge at 40% on the basic rate (1.4%). This surcharge is also referred to as municipal tax in some contexts.
 
-## Documents Required for Property Registration
-1. Original Sale Deed / Agreement to Sell.
-2. Seller and Buyer Identity Proofs (Aadhaar Card, PAN Card).
-3. 7/12 & 8-A Land Extract Records (for land / plots).
-4. Non-Agricultural (NA) Permission & Title Clearance Certificate.
-5. Approved Building Plan & BU Permission (for apartments).
-6. E-Stamping Receipt & Payment Proof.
+### Urban Residential Properties
+Urban residential properties attract 4.9% stamp duty (3.5% basic + 1.4% surcharge) and 1% registration fee.
 
-## Legal Checklist Before Paying Stamp Duty in Gujarat
-Ensure developer RERA registration, verify clear marketable title with an advocate, confirm non-encumbrance status, and verify Jantri benchmark values before initiating registration.`;
+### Rural Residential Properties
+Rural residential properties attract 4.9% stamp duty (3.5% basic + 1.4% surcharge) and 1% registration fee.
+
+### Agricultural Properties
+Agricultural land transactions attract 3% stamp duty and 1% registration fee.
+
+### Commercial Properties
+Commercial properties (offices, retail shops, showrooms) attract 5% stamp duty and 1% registration fee.
+
+## Registration Charges in Gujarat
+In addition to stamp duty, buyers must pay a registration fee to record the property transaction in the registry of the government. This process is governed by the Registration Act, 1908. The Gujarat property registration charges are calculated as follows:
+
+- **Standard Fee:** The registration fee is generally 1% of the market value of the property or transaction value, whichever is higher.
+- **Calculation Basis:** Similar to stamp duty, this fee is based on the 'Jantri' rates (circle rates) or the actual consideration paid for the property.
+- **Gender Factor:** Gujarat charges the standard 1% registration fee, though women may get a waiver on stamp duty and full exemption from registration fee.
+
+## Gender-Based Concessions for Women Buyers
+Stamp duty on property in Gujarat for female buyers is charged at a concessional rate of 3.9 percent. Registration charges are waived entirely for female buyers. This concession applies only when the property is registered solely in the name of a woman. The concession of stamp duty for ladies in Gujarat is 1 percent lower than the standard stamp duty rate.
+
+Key Concessions:
+- Women buyers get a 1% concession on stamp duty and exemption from the full 1% registration fee.
+- In Gujarat, the entire registration fee of 1% is waived for purchase of property in the name of women.
+- This benefit is offered by the state government to promote women's participation in property ownership and is not applicable in joint ownership unless specifically notified.
+
+### Registration Fee Waiver for Women
+Women buyers enjoy 100% exemption from the 1% registration fee when purchasing property solely in their name.
+
+## How to Calculate Stamp Duty in Gujarat
+The calculation of stamp duty in Gujarat depends on the property type and value. A flat stamp duty rate of 4.9% needs to be paid for male buyers while female buyers get a concession on stamp duty. This percentage is based on the whole value of the property.
+
+### Stamp Duty Breakdown: Basic Rate + Surcharge
+- Basic Stamp Duty: 3.5% of property value
+- Surcharge: 1.4% of property value (40% of basic rate)
+- Total Stamp Duty: 4.9%
+- Registration Charges: 1% of property value
+
+### Step-by-Step Calculation Example
+For a property valued at ₹60,00,000:
+
+| Component | Male Buyer | Female Buyer |
+|-----------|------------|--------------|
+| Stamp Duty (4.9% / 3.9%) | ₹2,94,000 | ₹2,34,000 |
+| Registration Fee (1% / 0%) | ₹60,000 | ₹0 |
+| Total | ₹3,54,000 | ₹2,34,000 |
+
+## How to Pay Stamp Duty Online via gARVI Portal
+The Gujarat government offers an easy online process via its GARVI portal (Gujarat Revenue Department).
+
+### Online Payment Process
+1. Visit the official Gujarat Revenue Department's website (https://garvi.gujarat.gov.in)
+2. Register or log in using your credentials
+3. Select stamp duty and registration charges payment
+4. Enter details such as property specifics and transaction value
+5. Attach all required supporting documents
+6. Proceed to pay through net banking, debit/credit cards, or UPI
+7. Once payment is done, download the payment receipt and acknowledgement
+
+This certificate must be submitted at the Sub-Registrar Office during registration.
+
+## Documents Required for Stamp Duty Payment
+- Title deed
+- Proof of identity of buyers and sellers
+- Address proofs
+- If document is under Section 32A of Gujarat Stamps Act, 1958 - Application Form No. 1
+- Power of attorney (if applicable)
+
+## Stamp Duty for Different Deeds in Gujarat
+| Type of Deed | Stamp Duty Charges |
+|--------------|-------------------|
+| Gift Deed | 1% for blood relatives, 4.9% for others |
+| Share Certificate | Rs. 1 for every Rs. 1,000 of share value |
+| Rent Agreement | 1% of annual rent or deposit amount |
+| Lease Agreement | 2% of total value |
+| LLP Agreement | Rs. 1,000 for capital contribution up to Rs. 1 lakh |
+| General Affidavit | Rs. 50 |
+
+### Gift Deed Stamp Duty
+Gift deeds executed in favor of blood relatives attract 1% stamp duty. For non-relatives, standard 4.9% stamp duty applies.
+
+### Rent Agreement Stamp Duty
+Residential and commercial rent agreements attract 1% stamp duty based on annual rent or security deposit.
+
+### Lease Agreement Stamp Duty
+Long-term property lease deeds in Gujarat attract 2% stamp duty on total transaction value.
+
+## Recent Stamp Duty Reforms in Gujarat
+### Farm Inheritance Stamp Duty Reform 2026
+The Gujarat government has announced a major cut in stamp duty on inheritance-related agricultural land transactions. The state government has decided to levy a token stamp duty of Rs 300 in specified cases involving inherited agricultural land, granting relief from the prevailing jantri-based stamp duty provisions.
+
+Key Provisions:
+- Internal land transactions among heirs, including direct line heirs and, in their absence, collateral heirs.
+- Relinquishment of rights, entry of names, and partition of inherited property.
+- The decision applies where one or more heirs among joint holders recorded through inheritance entries relinquish their rights in favour of one or more other heirs.
+
+Impact of the Reform:
+- Easier property division among family members will reduce disputes and court cases.
+- Encourage formal documentation of transactions that often remain unregistered due to high stamp duty.
+- Improve legal clarity and record of rights.
+- Greater ease in such transactions would contribute to improving the ease of doing business.
+
+Government Revenue Context:
+The Gujarat government's income from stamp duty and registration fee surged 60% in 2023-24 over the past year, with a revenue of Rs 13,731.63 crore in the form of stamp duty and registration fees. The number of property documents registered during 2023-24 stood at 18.26 lakh, 35% higher than the previous year. The 60% hike in revenue from stamp duty and registration fees was attributed to an increase in the jantri rate, which came into force from April 15, 2023.
+
+Proposed Reductions:
+Taking a cue from the Centre's recommendation in the recent Union budget asking states to examine the possibility of reducing stamp duty and registration fee on property transactions, the state revenue and finance departments have taken up an exercise to rationalise the stamp duty and registration fee rates locally. The proposed slashing of stamp duty and registration fee is expected to offset the rise in property prices because of the doubling of the jantri rate, which came into force from April 2023.
+
+## Common Mistakes to Avoid
+1. Not verifying the Jantri Rate: Stamp duty is calculated on the higher of market value or Jantri rate. Always check the current Jantri rate for your area.
+2. Missing the registration deadline: Property must be registered within 4 months of sale deed execution.
+3. Ignoring gender concessions: Female buyers should ensure they claim the 1% stamp duty concession and registration fee waiver.
+4. Incorrect property classification: Different rates apply for residential, commercial, and agricultural properties.
+5. Forgetting additional costs: Factor in legal fees, brokerage, and GST for under-construction properties.
+
+## Key Takeaways
+- Stamp duty in Gujarat is 4.9% (male) or 3.9% (female) of property value, plus 1% registration fee (waived for women).
+- Commercial properties attract 5% stamp duty; agricultural land attracts 3%.
+- Women buyers receive 1% stamp duty concession and 100% registration fee waiver when property is solely in their name.
+- Pay stamp duty online via the gARVI portal (https://garvi.gujarat.gov.in) for instant receipt and hassle-free processing.
+- Recent farm inheritance reforms (March 2026) reduced stamp duty to Rs 300 for internal family land transactions.
+- Always verify the Jantri rate and property classification before calculating stamp duty.
+
+Propertysdeal provides end-to-end advisory and documentation support for property purchases in Gujarat. Our services include stamp duty calculation, registration assistance, legal document verification, and post-purchase handholding. Contact our expert advisors today for a transparent, hassle-free property buying experience.`;
     }
 
     // Explicit Deep Overrides for 'flat-gift-city-gandhinagar'
