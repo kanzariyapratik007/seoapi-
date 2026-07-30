@@ -636,6 +636,8 @@ Propertysdeal provides end-to-end advisory and documentation support for propert
 
 ### Builder Agreement & Sale Deed Checklist
 Whether you are a first-time homebuyer, an investor seeking high rental yields, or an NRI looking to repatriate earnings, a flat in GIFT City Gandhinagar is a smart, future-ready investment. With world-class infrastructure, a dynamic business ecosystem, and strong legal protections, GIFT City is poised to become one of India's premier residential addresses. Connect with our expert advisors today to explore verified listings, schedule site visits, and make a confident, legally secure property investment in GIFT City.`;
+    }
+
     // Explicit Deep Overrides for 'ready-to-move-flats-surat'
     if (normSlugCheck === 'ready-to-move-flats-surat') {
       title = 'Ready to Move Flats in Surat - 2/3 BHK Apartments for Immediate Possession';
