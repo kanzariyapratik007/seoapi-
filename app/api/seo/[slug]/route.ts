@@ -70,8 +70,8 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  // Get client IP for rate limiting
-  const ip = request.headers.get('x-forwarded-for') || request.ip || '127.0.0.1';
+  // Get client IP for rate limiting safely without NextRequest.ip crash
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || request.headers.get('x-real-ip') || '127.0.0.1';
 
   try {
     // 2. Enforce Rate Limiting
@@ -169,6 +169,7 @@ ${xmlUrls}
       },
     });
   } catch (error) {
+    console.error(`❌ API /api/seo/[slug] ERROR for IP ${ip}:`, error);
     logger.error(`Unhandled exception in GET /api/seo/${ip}`, error);
     return NextResponse.json(
       { error: 'Internal Server Error' },
