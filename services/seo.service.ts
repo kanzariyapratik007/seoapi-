@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v46:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v47:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -714,6 +714,111 @@ For Non-Resident Indians (NRIs), purchasing a ready to move flat in Surat is per
 Propertysdeal provides end-to-end advisory and documentation support for purchasing ready to move flats in Surat. Our services include property verification, legal title search, RERA validation, document drafting, stamp duty calculation, registration assistance, and post-purchase handholding. We also provide comparative analysis of multiple projects, builder reputation checks, and negotiation support to secure the best price. Our team of experienced advisors ensures a transparent, hassle-free property buying experience.
 
 Surat's real estate market is poised for continued growth. The city's economic dynamism, modern infrastructure, and affordable housing options make it an attractive destination for homebuyers and investors. Whether you are a first-time buyer, a growing family seeking a spacious home, or an investor looking for high rental yields, ready to move flats in Surat offer a secure and rewarding investment opportunity. Contact our expert advisors today to explore verified listings, schedule site visits, and make a confident property purchase in Surat.`;
+    }
+
+    // Explicit Deep Overrides for 'how-to-buy-property-in-gujarat'
+    if (normSlugCheck === 'how-to-buy-property-in-gujarat') {
+      title = 'How to Buy Property in Gujarat 2026 - Step by Step Guide for Buyers';
+      meta_title = 'How to Buy Property in Gujarat - Complete Guide 2026 | RERA, Stamp Duty, Registration';
+      meta_description = 'Complete step-by-step guide on how to buy property in Gujarat 2026. Learn about RERA verification, stamp duty (4.9%), registration, 7/12 land records, NA conversion, title clearance & legal documents. Expert advisory for NRIs & first-time buyers.';
+      h1 = 'How to Buy Property in Gujarat – Complete Step-by-Step Guide 2026';
+      h2 = [
+        'Conduct Thorough Due Diligence',
+        'Verify Land Records via AnyROR & e-Dhara',
+        'Understand Old Tenure vs New Tenure Land',
+        'Obtain Encumbrance Certificate & Title Clearance',
+        'Verify RERA Registration for New Projects',
+        'Essential Documentation Checklist',
+        'Calculate Stamp Duty & Registration Charges',
+        'Execute Sale Agreement',
+        'Register the Property at Sub-Registrar\'s Office',
+        'Update Revenue Records (Mutation)',
+        'Special Considerations for NRIs',
+        'Under-Construction vs Ready-to-Move Properties',
+        'Common Pitfalls to Avoid'
+      ];
+
+      content = `Buying property in Gujarat involves several legal, financial, and documentation steps. This comprehensive guide walks you through the entire process, from due diligence to registration, ensuring a smooth and legally secure transaction. Whether you are a first-time homebuyer, an NRI, or an investor, understanding Gujarat's property laws, stamp duty rates, RERA compliance, and land record verification procedures is essential for a safe and profitable investment.
+
+Gujarat's real estate market is one of India's most dynamic and investor-friendly. The state offers robust infrastructure, transparent regulatory frameworks, and a high quality of life. However, property transactions require careful attention to legal and financial details. This guide provides a complete overview of the property buying process in Gujarat, covering everything from initial due diligence to final registration and mutation.
+
+## Conduct Thorough Due Diligence
+Due diligence is the most critical step in any property purchase. It protects you from legal disputes, fraudulent transactions, and financial losses. The Gujarat government provides online portals for land record verification, making the process more accessible than ever.
+
+## Verify Land Records via AnyROR & e-Dhara
+The Gujarat government provides AnyROR (Any Record of Rights) portal for online land record access. This digital initiative has simplified property verification across the state.
+
+### How to Check 7/12 Extract & 8-A Records
+Visit https://anyror.gujarat.gov.in and select 'View Land Record' (choose rural or urban area). Choose the record type from VF-6, VF-7, VF-8A, or 135D. Enter the District, Taluka, Village, and Survey/Block Number. Click 'Get Record Detail' to view and download the records.
+
+- **7/12 Extract:** Shows ownership details, survey number, area, and cultivation rights. This is the primary document for proving land ownership.
+- **8-A Record:** Contains land classification and tenure details. It helps identify whether the land is old tenure or new tenure.
+- **Mutation Entry (Dakhla):** Records changes in ownership over time. A complete mutation history confirms a clean chain of title.
+
+## Understand Old Tenure vs New Tenure Land
+This is a critical Gujarat-specific check that many buyers overlook. Old Tenure (OT) or Freehold Land is freely transferable; no government permission is needed for sale. New Tenure (NT) or Restricted Tenure Land cannot be sold without Collector's permission and may require premium payment for conversion.
+
+### New Tenure Land Rules in Gujarat
+Banks generally do not finance New Tenure land purchases. Selling without permission is illegal and can lead to land resumption. Conversion to Old Tenure requires application to the Collector and premium payment, typically 20–50% of Jantri value. Always verify the tenure status before proceeding with any transaction.
+
+## Obtain Encumbrance Certificate & Title Clearance
+The Encumbrance Certificate confirms that the property is free from legal dues, loans, or mortgages. Obtain this from the Sub-Registrar's office. The certificate should cover at least the last 30 years to ensure a clean title history. Verifies no pending court cases or financial liabilities against the property.
+
+Always hire a qualified property lawyer to conduct a title search and provide a Title Clearance Certificate. This confirms an uninterrupted chain of ownership, ensures the seller has an undisputed right to sell, and confirms no legal defects in the title.
+
+## Verify RERA Registration for New Projects
+RERA (Real Estate Regulation and Development Act) provides essential buyer protection in Gujarat. Under GUJRERA, projects must register if the total land area exceeds 500 square metres, OR the number of units exceeds 8 units. Projects that had not received completion certificate before RERA came into force must also register.
+
+### GUJRERA Online Verification Process
+Visit https://gujrera.gujarat.gov.in and navigate to 'Registered Projects' section. Enter the project name, developer name, or registration number. Review the approval status, completion timeline, and quarterly progress updates.
+
+### Key RERA Protections for Buyers
+70% of buyer payments must be deposited in an escrow account, preventing fund diversion. Builders must sell on carpet area, not super built-up area. Buyers receive interest if possession is delayed. Changes to sanctioned plans require consent of two-thirds of allottees. A 5-year structural warranty applies to all RERA-registered projects.
+
+## Essential Documentation Checklist
+Before signing any agreement, verify these documents: Title Deed/Sale Deed (proves ownership chain), 7/12 Extract (land ownership records via AnyROR), 8-A Record (land classification via AnyROR), Encumbrance Certificate (no liens/loans for 30 years), RERA Registration Certificate (project compliance for new projects), Approved Building Plan (construction legality), BU Permission/Occupancy Certificate (building fit for occupation), Property Tax Receipts (no municipal dues), and NA Order (land converted to non-agricultural).
+
+## Calculate Stamp Duty & Registration Charges
+Current rates for Gujarat (2026) are as follows: Urban Residential stamp duty is 4.9% with registration fee 1%. Rural Residential stamp duty is 4.9% with registration fee 1%. Agricultural land stamp duty is 3% with registration fee 1%. Commercial property stamp duty is 5% with registration fee 1%.
+
+### Gujarat Stamp Duty Rates 2026
+Male buyers pay 4.9% stamp duty and 1% registration fee.
+
+### Gender-Based Concessions
+Female buyers receive a 1% stamp duty concession (paying 3.9%) and 0% registration fee (exempted). Joint ownership with Male + Female attracts 4.9% stamp duty and 0% registration fee. Joint ownership with Female + Female attracts 3.9% stamp duty and 0% registration fee.
+
+For a property valued at ₹60,00,000, a male buyer pays 4.9% stamp duty (₹2,94,000) plus 1% registration fee (₹60,000) = ₹3,54,000 total. A female buyer pays 3.9% stamp duty (₹2,34,000) with 0% registration fee = ₹2,34,000 total.
+
+### How to Pay Stamp Duty via gARVI Portal
+Visit the gARVI portal at https://garvi.gujarat.gov.in. Register and log in to your account. Choose 'Stamp Duty Calculator' or 'Registration Fee Calculator'. Upload property details and documents. Pay via net banking, debit/credit card, or UPI. Download the payment receipt for future reference.
+
+## Execute Sale Agreement
+Key elements to check in the agreement: Total consideration and payment schedule, carpet area (mandatory under RERA), car parking allocation, amenities list, possession date, penalty clause for delay, and defects liability period. For properties above ₹50 lakhs, TDS at 1% is applicable under Section 194-IA of the Income Tax Act.
+
+## Register the Property at Sub-Registrar's Office
+### Documents Required for Registration
+Sale deed with signatures of both parties, identity proof of buyer and seller (Aadhaar, PAN), address proof of buyer and seller, Application Form No. 1 (under Section 32A of Gujarat Stamps Act), original Power of Attorney (if applicable), stamp duty payment receipt, and registration fee payment receipt.
+
+Property must be registered within 4 months of sale deed execution. Visit the local Sub-Registrar's office. Submit all required documents. Pay registration fee (if not exempted). Complete biometric verification. Collect registered sale deed and receipt.
+
+## Update Revenue Records (Mutation)
+After registration, you must update ownership records under the Gujarat Land Revenue Code.
+
+### Mutation Process Under Gujarat Land Revenue Code
+Submit mutation application at e-Dhara Kendra or Taluka office. Attach registered sale deed copy. Pay applicable mutation fee. Verification by revenue officials. Entry in land records confirming new ownership. Use https://e-dhara.gujarat.gov.in to track mutation status.
+
+## Special Considerations for NRIs
+### NRI Property Buying Guidelines
+NRIs can freely purchase residential and commercial properties in Gujarat. However, they cannot purchase agricultural land or farmhouses without special permission from the government. Must execute a Power of Attorney (POA) registered at Sub-Registrar's office if buying through a representative. All transactions must be in Indian Rupees (INR). Payments via NRE/NRO accounts or inward remittance.
+
+### TDS on Property Transactions above ₹50 Lakhs
+Under Section 194-IA of the Income Tax Act, buyers must deduct 1% TDS on property transactions valued above ₹50 lakhs.
+
+## Under-Construction vs Ready-to-Move Properties
+Under-construction properties have 5% GST applicable, require RERA registration, have a future possession date, and carry construction delay risks. Ready-to-move properties have no GST, the project should have been RERA registered, offer immediate possession, and carry minimal risk.
+
+## Common Pitfalls to Avoid
+Skipping title verification - always get Title Clear Certificate from a lawyer. Not checking New Tenure status - verify 7/12 extract and 8-A records. Evading stamp duty - penalties up to 10x shortfall; government audits detect evasion. Buying without RERA check - verify on GUJRERA portal before payment. Forgetting TDS on properties over ₹50 lakhs - apply 1% TDS under Section 194-IA.`;
     }
 
     // Explicit Deep Overrides for 'flats-for-sale-in-ahmedabad'
