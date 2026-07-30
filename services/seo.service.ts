@@ -176,7 +176,7 @@ export class SeoService implements ISeoService {
   ) {}
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
-    const cacheKey = `seo:v45:${slug.toLowerCase()}`;
+    const cacheKey = `seo:v46:${slug.toLowerCase()}`;
     
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
@@ -636,6 +636,84 @@ Propertysdeal provides end-to-end advisory and documentation support for propert
 
 ### Builder Agreement & Sale Deed Checklist
 Whether you are a first-time homebuyer, an investor seeking high rental yields, or an NRI looking to repatriate earnings, a flat in GIFT City Gandhinagar is a smart, future-ready investment. With world-class infrastructure, a dynamic business ecosystem, and strong legal protections, GIFT City is poised to become one of India's premier residential addresses. Connect with our expert advisors today to explore verified listings, schedule site visits, and make a confident, legally secure property investment in GIFT City.`;
+    // Explicit Deep Overrides for 'ready-to-move-flats-surat'
+    if (normSlugCheck === 'ready-to-move-flats-surat') {
+      title = 'Ready to Move Flats in Surat - 2/3 BHK Apartments for Immediate Possession';
+      meta_title = 'Ready to Move Flats in Surat - 100+ Verified 2 & 3 BHK Apartments 2026';
+      meta_description = 'Find ready to move flats in Surat - 2 & 3 BHK apartments with immediate possession. RERA-approved projects in Vesu, Adajan, Althan, Pal. Check prices, amenities, floor plans & legal verification.';
+      h1 = 'Ready to Move Flats in Surat – 2 & 3 BHK Apartments for Immediate Possession 2026';
+      h2 = [
+        'Why Choose Ready to Move Flats in Surat?',
+        'Top Localities for Ready to Move Flats in Surat',
+        'Amenities in Ready to Move Flats in Surat',
+        'Legal Verification for Ready to Move Flats in Surat',
+        'Stamp Duty & Registration Charges for Surat Properties',
+        'ROI Potential of Ready to Move Flats in Surat',
+        'Home Loan Options for Ready to Move Flats in Surat'
+      ];
+
+      content = `Searching for ready to move flats in Surat? You have arrived at the most trusted real estate portal in Gujarat. We curate verified 2BHK and 3BHK apartments with immediate possession across Surat's prime residential localities including Vesu, Adajan, Althan, Pal, and more. This comprehensive guide covers market trends, locality insights, legal compliance, stamp duty calculations, ROI projections, and a complete buyer checklist for purchasing ready to move flats in Surat in 2026.
+
+Surat, known as India's diamond and textile hub, has emerged as one of the fastest-growing real estate markets in Gujarat. The city offers a unique blend of economic prosperity, world-class infrastructure, and a high quality of life. Ready to move flats in Surat are particularly attractive because they provide immediate possession, transparent construction quality, and the opportunity to physically inspect the property before purchase. Buyers avoid the risks associated with under-construction projects such as construction delays, quality compromises, and unexpected cost escalations.
+
+## Why Choose Ready to Move Flats in Surat?
+Investing in a ready to move flat in Surat provides distinct advantages for both end-users and long-term investors. The city's robust industrial ecosystem, expanding IT and finance sectors, and excellent connectivity via the Surat-Delhi Golden Corridor, Surat-Dahisar Expressway, and the upcoming Mumbai-Ahmedabad Bullet Train project make it a highly desirable residential destination. Surat's real estate market is characterized by competitive pricing, modern construction standards, and a growing demand for premium housing.
+
+## Top Localities for Ready to Move Flats in Surat
+Surat's residential landscape has evolved significantly in the past decade. Areas that were once agricultural lands now boast high-rise apartment complexes, gated communities, and integrated townships. The city's urban planning, wide roads, and excellent drainage systems ensure a comfortable living experience. Ready to move flats in Surat cater to diverse budget segments, from affordable 2BHK units starting at ₹35 lakhs to luxury 3BHK penthouses priced above ₹2 crores.
+
+### Vesu – Premium Ready to Move Flats
+Let's explore the top localities where you can find ready to move flats in Surat. Vesu is arguably Surat's most premium residential address. Located in the southwestern part of the city, Vesu offers wide tree-lined avenues, excellent social infrastructure, and proximity to the Surat-Dumas Road. Ready to move flats in Vesu range from compact 2BHK units in 1,000 square feet to expansive 3BHK apartments exceeding 2,500 square feet. The locality is home to top schools like Delhi Public School, S.D. Jain School, and L.P. Savani Academy, along with multi-specialty hospitals like Kiran Hospital, Mahavir Hospital, and Apple Hospital.
+
+### Adajan – Family-Friendly Apartments
+Adajan is another highly sought-after residential locality in Surat. Located on the western side of the Tapi River, Adajan is well-connected to the city center via the Nehru Bridge and Sardar Bridge. Ready to move flats in Adajan are popular among families due to the locality's peaceful environment, excellent schools, hospitals, and shopping malls. Adajan offers a mix of affordable and mid-segment apartments, with 2BHK units priced between ₹45 lakhs and ₹75 lakhs, and 3BHK units ranging from ₹70 lakhs to ₹1.2 crores. The locality is well-served by banks, ATMs, grocery stores, restaurants, and entertainment zones.
+
+### Althan – Affordable Ready to Move Flats
+Althan is one of Surat's rapidly developing residential corridors. Strategically located near the Surat-Hazira Road and the upcoming Surat Metro Rail corridor, Althan offers ready to move flats at comparatively affordable prices. The locality is ideal for young professionals, first-time homebuyers, and investors seeking high rental yields. Ready to move flats in Althan are priced between ₹30 lakhs and ₹60 lakhs for 2BHK units, with 3BHK options available in the ₹50 lakhs to ₹85 lakhs range. The locality boasts easy access to the Surat Railway Station, Surat International Airport, and major IT parks.
+
+### Pal – Developing Residential Hub
+Pal is an emerging residential destination on Surat's western periphery. While Pal is still developing, its real estate market offers excellent growth potential. Ready to move flats in Pal are attractively priced, with 2BHK units available for ₹25 lakhs to ₹45 lakhs, and 3BHK units ranging from ₹40 lakhs to ₹70 lakhs. Pal's strategic location, affordable pricing, and ongoing infrastructure development make it a promising investment destination for long-term capital appreciation.
+
+## Legal Verification for Ready to Move Flats in Surat
+When purchasing a ready to move flat in Surat, legal verification is non-negotiable. Although ready to move flats are already constructed, buyers must still verify all legal documentation to ensure a clear, marketable title. Start by checking the property's title deed and chain of ownership. The title must be clear, unencumbered, and free from any legal disputes. Engage a qualified real estate lawyer to conduct a comprehensive title search and verify all ownership records.
+
+### RERA Registration & Title Clearance
+Next, verify the Non-Agricultural (NA) land conversion certificate. This document confirms that the land on which the residential project stands has been legally converted from agricultural to non-agricultural use. Without valid NA conversion, the construction is deemed illegal, and the property cannot be legally occupied.
+
+Second, obtain and review the 7/12 land extract and 8-A records from the Surat City Survey Office. These official revenue records contain details about land ownership, survey numbers, area, and any encumbrances or government charges. The 7/12 extract must clearly show the property owner's name and details of all transactions.
+
+### Building Use (BU) Permission Verification
+Fourth, verify the Building Use (BU) permission certificate issued by the Surat Municipal Corporation. BU permission confirms that the building has been constructed in compliance with approved building plans, structural engineering standards, and fire safety regulations. Without BU permission, the property cannot be legally occupied, and municipal authorities may impose penalties or order demolition.
+
+Fifth, check the GUJRERA registration number of the project. Even for ready to move flats, the project must have been registered with GUJRERA at the time of construction. RERA registration provides buyers with legal protection, structural warranty, and transparency in builder-buyer dealings. You can verify the RERA registration status on the official GUJRERA portal.
+
+Sixth, obtain an encumbrance certificate for the property for the last 30 years. This certificate confirms that the property is free from mortgages, legal charges, liens, or pending disputes. A clean encumbrance certificate is essential for securing home loans and ensuring marketable title.
+
+Finally, thoroughly review the builder-buyer agreement, sale deed, and all related documents. Ensure that the agreement clearly mentions the total consideration, carpet area, super built-up area, car parking allocation, amenities list, and payment terms. For ready to move flats, the possession certificate and occupancy certificate issued by the municipal authority are also mandatory.
+
+## Stamp Duty & Registration Charges for Surat Properties
+Stamp duty and registration charges form a significant portion of the total property acquisition cost in Surat. As of 2026, the applicable stamp duty rate in Surat (and across Gujarat) is 4.9% of the property's market value or the government Jantri rate, whichever is higher. Female buyers receive a 1% concession, reducing the stamp duty to 3.9%. In addition, a registration fee of 1% is payable to the Sub-Registrar's office. The total upfront cost for stamp duty and registration therefore ranges from 5.9% (for male buyers) to 4.9% (for female buyers).
+
+### Surat Stamp Duty Rates 2026
+Buyers should also budget for additional costs such as legal fees (0.5–1%), brokerage fees (1–2% if applicable), registration of society (₹1,000–₹5,000), and annual property tax to the Surat Municipal Corporation. For ready to move flats, GST is not applicable, making them more cost-effective compared to under-construction properties.
+
+## ROI Potential of Ready to Move Flats in Surat
+The long-term capital appreciation potential in Surat is exceptionally strong. Surat's diversified economy, driven by diamonds, textiles, petrochemicals, and IT, ensures sustained employment generation and housing demand. The Surat-Delhi Golden Corridor, Surat-Dahisar Expressway, and the upcoming Mumbai-Ahmedabad Bullet Train project with a station at Surat are expected to significantly enhance connectivity and drive property values upward. Over the past decade, Surat's residential property prices have appreciated at an average of 8–10% annually, with premium localities like Vesu and Adajan outperforming the market.
+
+### Rental Yield & Capital Growth in Surat
+Rental yields for ready to move flats in Surat are among the highest in Gujarat. 2BHK flats in Vesu and Adajan command monthly rents of ₹15,000–₹25,000, translating to rental yields of 4–5.5% per annum. Althan and Pal offer even higher yields of 5–6.5% due to their affordability and strong rental demand from industrial and IT professionals. Investors looking for regular rental income and long-term capital growth should prioritize ready to move flats in high-demand localities.
+
+For first-time homebuyers, ready to move flats in Surat offer immediate possession, tax benefits, and the satisfaction of moving into a fully constructed home. Under Section 80C of the Income Tax Act, buyers can claim deductions on principal repayment up to ₹1.5 lakhs annually. Additionally, Section 24(b) permits a deduction of up to ₹2 lakhs on the interest portion of the home loan. Stamp duty registration charges and other incidental costs can also be claimed as deductions over the lifetime of the property.
+
+## Home Loan Options for Ready to Move Flats in Surat
+Home loan availability for ready to move flats in Surat is excellent. All major public sector banks, private banks, and housing finance companies offer attractive interest rates starting from 8.5% per annum for salaried individuals. Most banks finance up to 80–90% of the property value, subject to the buyer's income, credit score, employment stability, and repayment capacity. The loan tenure can extend up to 30 years for eligible applicants. The documentation process for ready to move flats is simpler and faster compared to under-construction projects, as physical inspection and valuation can be completed immediately.
+
+### Bank Loan Eligibility & Documentation
+For Non-Resident Indians (NRIs), purchasing a ready to move flat in Surat is permitted under RBI and FEMA regulations. NRIs can buy residential properties freely without prior government approval. Payment must be made through inward remittance or NRE/NRO accounts. Rental income can be credited to the NRI's NRO account and repatriated with applicable tax deductions. NRIs can also avail of home loans from Indian banks to finance the purchase, subject to RBI guidelines.
+
+Propertysdeal provides end-to-end advisory and documentation support for purchasing ready to move flats in Surat. Our services include property verification, legal title search, RERA validation, document drafting, stamp duty calculation, registration assistance, and post-purchase handholding. We also provide comparative analysis of multiple projects, builder reputation checks, and negotiation support to secure the best price. Our team of experienced advisors ensures a transparent, hassle-free property buying experience.
+
+Surat's real estate market is poised for continued growth. The city's economic dynamism, modern infrastructure, and affordable housing options make it an attractive destination for homebuyers and investors. Whether you are a first-time buyer, a growing family seeking a spacious home, or an investor looking for high rental yields, ready to move flats in Surat offer a secure and rewarding investment opportunity. Contact our expert advisors today to explore verified listings, schedule site visits, and make a confident property purchase in Surat.`;
     }
 
     // Explicit Deep Overrides for 'flats-for-sale-in-ahmedabad'
