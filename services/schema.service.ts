@@ -93,7 +93,7 @@ export class SchemaService implements ISchemaService {
       '@type': 'ListItem',
       position: position++,
       name: 'Gujarat',
-      item: 'https://propertysdeal.in/property-in-gujarat',
+      item: 'https://propertysdeal.in/propertys-details/property-in-gujarat',
     });
 
     // Add city breadcrumb if applicable
@@ -102,7 +102,7 @@ export class SchemaService implements ISchemaService {
         '@type': 'ListItem',
         position: position++,
         name: variables.city,
-        item: `https://propertysdeal.in/property-in-${details.city.slug}`,
+        item: `https://propertysdeal.in/propertys-details/property-in-${details.city.slug}`,
       });
     }
 
@@ -112,7 +112,7 @@ export class SchemaService implements ISchemaService {
         '@type': 'ListItem',
         position: position++,
         name: variables.locality,
-        item: `https://propertysdeal.in/property-in-${details.locality.slug}`,
+        item: `https://propertysdeal.in/propertys-details/property-in-${details.locality.slug}`,
       });
     }
 
@@ -140,7 +140,7 @@ export class SchemaService implements ISchemaService {
 
   private generateBlogPostingSchema(blog: any, slug?: string) {
     const safeSlug = (slug || blog?.slug || '').toLowerCase();
-    const canonical = `https://propertysdeal.in/${safeSlug}`;
+    const canonical = `https://propertysdeal.in/propertys-details/${safeSlug}`;
     return {
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',

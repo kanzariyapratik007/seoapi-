@@ -173,11 +173,11 @@ export class SeoService implements ISeoService {
     private faqService: IFaqService,
     private schemaService: ISchemaService,
     private keywordRepo?: IKeywordRepository
-  ) {}
+  ) { }
 
   async getSeoData(slug: string): Promise<SeoResponsePayload | null> {
     const cacheKey = `seo:v48:${slug.toLowerCase()}`;
-    
+
     // 1. Try to read from cache first in production
     if (process.env.NODE_ENV === 'production') {
       const cachedData = await cache.get<SeoResponsePayload>(cacheKey);
@@ -343,9 +343,9 @@ Partnering with experienced, RERA-registered real estate specialists ensures tra
         // Build category-specific deep multi-paragraph content hitting word count targets
         const locStr = variables.locality ? `${variables.locality}, ${variables.city}` : (variables.city || 'Gujarat');
         const propStr = variables.propertyTypePlural || 'Properties';
-        
+
         const p1 = `Searching for verified ${focusKwPhrase.toLowerCase()} options? ${seoTemplate.introduction} As one of the premier real estate portals in Gujarat, we curate high-value residential, commercial, and industrial property options. Whether you are looking for ready-to-move flats, gated township plots, commercial showrooms, or industrial sheds, this comprehensive guide explores market trends, connectivity benefits, legal compliance, and buyer checklists across ${locStr}.`;
-        
+
         const p2 = `Investing in ${focusKwPhrase.toLowerCase()} provides distinct advantages for both end-users and long-term investors. ${seoTemplate.benefits} Rapid urban infrastructure growth, expanding metro rail networks, and multi-lane expressways connect prime residential pockets with major business hubs. Property developments in this sector are built with modern lifestyle amenities including 24/7 security surveillance, dedicated parking slots, power backup, landscaped gardens, and EV charging stations.`;
 
         const p3 = `${seoTemplate.content} Before finalizing your purchase, buyers should verify all essential legal clearance documents. Ensure the property possesses a valid Non-Agricultural (NA) land title certificate, approved building plans from local urban planning authorities (AMC, SUDA, VDMA), and a 7/12 land extract record. Confirming builder registration numbers on the official GUJRERA (Gujarat Real Estate Regulatory Authority) web portal ensures structural warranty, transparent funding, and timely possession.`;
@@ -2503,7 +2503,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
       'circle rate', 'gated society', 'possession timeline', 'capital appreciation',
       'rental yield', 'flat for sale', 'commercial shop', 'luxury villa'
     ];
-    const lsi_keywords = lsiCandidates.filter(candidate => 
+    const lsi_keywords = lsiCandidates.filter(candidate =>
       candidate !== focusKeyword && normContent.includes(candidate)
     );
 
@@ -2541,7 +2541,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
       faqs
     );
 
-    const canonical = `https://propertysdeal.in/${slug.toLowerCase()}`;
+    const canonical = `https://propertysdeal.in/propertys-details/${slug.toLowerCase()}`;
 
     // Additional Specialized Schemas
     const organization_schema = this.schemaService.generateOrganizationSchema();
@@ -2604,7 +2604,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Real Estate Gujarat",
-        "url": "https://propertysdeal.in/real-estate-gujarat",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Find residential and commercial properties across Gujarat."
       };
       schema.collectionpage = {
@@ -2627,7 +2627,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Real Estate Gujarat",
-            "item": "https://propertysdeal.in/real-estate-gujarat"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -2754,7 +2754,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Flats for Sale in Ahmedabad",
-        "url": "https://propertysdeal.in/flats-for-sale-in-ahmedabad",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified flats for sale in Ahmedabad."
       };
       schema.collectionpage = {
@@ -2777,13 +2777,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Ahmedabad",
-            "item": "https://propertysdeal.in/property-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Flats for Sale in Ahmedabad",
-            "item": "https://propertysdeal.in/flats-for-sale-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -2904,7 +2904,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Property for Sale in Ahmedabad",
-        "url": "https://propertysdeal.in/property-for-sale-in-ahmedabad",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified residential and commercial properties for sale in Ahmedabad."
       };
       schema.collectionpage = {
@@ -2927,13 +2927,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Ahmedabad",
-            "item": "https://propertysdeal.in/property-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Property for Sale in Ahmedabad",
-            "item": "https://propertysdeal.in/property-for-sale-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -3054,7 +3054,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "2BHK Flat in Ahmedabad",
-        "url": "https://propertysdeal.in/2bhk-flat-in-ahmedabad",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified 2BHK flats for sale in Ahmedabad."
       };
       schema.collectionpage = {
@@ -3077,13 +3077,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Ahmedabad",
-            "item": "https://propertysdeal.in/property-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "2BHK Flat in Ahmedabad",
-            "item": "https://propertysdeal.in/2bhk-flat-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -3204,7 +3204,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "3BHK Flat in Surat",
-        "url": "https://propertysdeal.in/3bhk-flat-in-surat",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified 3BHK flats for sale in Surat."
       };
       schema.collectionpage = {
@@ -3227,13 +3227,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Surat",
-            "item": "https://propertysdeal.in/property-in-surat"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "3BHK Flat in Surat",
-            "item": "https://propertysdeal.in/3bhk-flat-in-surat"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -3354,7 +3354,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Plot for Sale in Vadodara",
-        "url": "https://propertysdeal.in/plot-for-sale-in-vadodara",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified plots for sale in Vadodara."
       };
       schema.collectionpage = {
@@ -3377,13 +3377,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Vadodara",
-            "item": "https://propertysdeal.in/property-in-vadodara"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Plot for Sale in Vadodara",
-            "item": "https://propertysdeal.in/plot-for-sale-in-vadodara"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -3504,7 +3504,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Property Dealer in Gujarat",
-        "url": "https://propertysdeal.in/property-dealer-in-gujarat",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Find verified property dealers and real estate agents in Gujarat."
       };
       schema.collectionpage = {
@@ -3527,13 +3527,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Gujarat",
-            "item": "https://propertysdeal.in/property-in-gujarat"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Property Dealer in Gujarat",
-            "item": "https://propertysdeal.in/property-dealer-in-gujarat"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -3677,7 +3677,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Gujarat",
-            "item": "https://propertysdeal.in/property-in-gujarat"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
@@ -3804,7 +3804,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Ahmedabad Real Estate",
-        "url": "https://propertysdeal.in/ahmedabad-real-estate",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Explore real estate in Ahmedabad."
       };
       schema.collectionpage = {
@@ -3827,13 +3827,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Ahmedabad",
-            "item": "https://propertysdeal.in/property-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Ahmedabad Real Estate",
-            "item": "https://propertysdeal.in/ahmedabad-real-estate"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -3954,7 +3954,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Flat for Sale in SG Highway",
-        "url": "https://propertysdeal.in/flat-for-sale-in-sg-highway",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified flats for sale in SG Highway."
       };
       schema.collectionpage = {
@@ -3977,13 +3977,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Ahmedabad",
-            "item": "https://propertysdeal.in/property-in-ahmedabad"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Flat for Sale in SG Highway",
-            "item": "https://propertysdeal.in/flat-for-sale-in-sg-highway"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -4104,7 +4104,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "2 BHK Flat in Bopal, Ahmedabad",
-        "url": "https://propertysdeal.in/2bhk-flat-in-bopal",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified 2 BHK flats for sale in Bopal, Ahmedabad."
       };
       schema.collectionpage = {
@@ -4127,13 +4127,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Bopal",
-            "item": "https://propertysdeal.in/property-in-bopal"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "2 BHK Flat in Bopal",
-            "item": "https://propertysdeal.in/2bhk-flat-in-bopal"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -4254,7 +4254,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Property in Prahlad Nagar, Ahmedabad",
-        "url": "https://propertysdeal.in/property-in-prahlad-nagar",
+        "url": "https://propertysdeal.in/propertys-details/",
         "description": "Browse verified properties for sale in Prahlad Nagar, Ahmedabad."
       };
       schema.collectionpage = {
@@ -4277,13 +4277,13 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
             "@type": "ListItem",
             "position": 2,
             "name": "Prahlad Nagar",
-            "item": "https://propertysdeal.in/property-in-prahlad-nagar"
+            "item": "https://propertysdeal.in/propertys-details/"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "Property in Prahlad Nagar",
-            "item": "https://propertysdeal.in/property-in-prahlad-nagar"
+            "item": "https://propertysdeal.in/propertys-details/"
           }
         ]
       };
@@ -4378,20 +4378,20 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
     // 9. Format canonical & breadcrumbs for response
     const breadcrumbs = [
       { name: 'Home', url: 'https://propertysdeal.in' },
-      { name: 'Gujarat', url: 'https://propertysdeal.in/property-in-gujarat' },
+      { name: 'Gujarat', url: 'https://propertysdeal.in/propertys-details/' },
     ];
 
     if (parsedDetails.city) {
       breadcrumbs.push({
         name: variables.city,
-        url: `https://propertysdeal.in/property-in-${parsedDetails.city.slug}`,
+        url: `https://propertysdeal.in/propertys-details/${parsedDetails.city.slug}`,
       });
     }
 
     if (parsedDetails.locality) {
       breadcrumbs.push({
         name: variables.locality,
-        url: `https://propertysdeal.in/property-in-${parsedDetails.locality.slug}`,
+        url: `https://propertysdeal.in/propertys-details/${parsedDetails.locality.slug}`,
       });
     }
 
@@ -4455,7 +4455,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
     const intelligentRelatedLinks: IntelligentRelatedLink[] = mergedLinksSource.map((item, index) => ({
       anchor: `Explore ${item.title}`,
       slug: item.slug,
-      url: `https://propertysdeal.in/property-seo/${item.slug}/`,
+      url: `https://propertysdeal.in/propertys-details/${item.slug}`,
       relevance_score: Math.max(70, 98 - (index * 1)),
     }));
 
@@ -4662,7 +4662,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
     // Explicit Part 3 & 4 metadata override for 'flats-for-sale-in-ahmedabad'
     if (slug.toLowerCase().trim() === 'flats-for-sale-in-ahmedabad' || slug.toLowerCase().trim() === 'flats-in-ahmedabad') {
       ai_summary = "Find verified flats for sale in Ahmedabad, including 1 BHK, 2 BHK, 3 BHK, and 4 BHK apartments across top residential areas such as Gota, Shela, South Bopal, Science City, SG Highway, Satellite, Thaltej, Chandkheda, Nikol, and Vastrapur. Compare prices, amenities, builders, legal documents, and home loan options before purchasing your ideal apartment.";
-      
+
       key_takeaways.length = 0;
       key_takeaways.push(
         "Verified residential apartments",

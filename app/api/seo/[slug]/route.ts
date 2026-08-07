@@ -110,7 +110,7 @@ export async function GET(
       const xmlUrls = allSlugsRes.rows
         .map(
           (u) => `  <url>
-    <loc>${domain}/property-seo/${u.slug}/</loc>
+    <loc>${domain}/propertys-details/${u.slug}</loc>
     <lastmod>${new Date(u.updated_at || Date.now()).toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

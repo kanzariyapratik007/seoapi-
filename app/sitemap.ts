@@ -23,7 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
     client.release();
 
-    const baseUrl = 'https://propertysdeal.in/property-seo';
+    const baseUrl = 'https://propertysdeal.in/propertys-details';
 
     const entries: MetadataRoute.Sitemap = [
       {
@@ -33,7 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 1.0,
       },
       ...allSlugsRes.rows.map((row) => ({
-        url: `${baseUrl}/${row.slug}/`,
+        url: `${baseUrl}/${row.slug}`,
         lastModified: new Date(row.updated_at || Date.now()),
         changeFrequency: 'weekly' as const,
         priority: 0.9,

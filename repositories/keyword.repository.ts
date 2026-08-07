@@ -101,7 +101,7 @@ export class KeywordRepository implements IKeywordRepository {
     return res.rows.map((row) => ({
       title: row.title,
       slug: row.slug,
-      url: `https://propertysdeal.in/property-seo/${row.slug}/`,
+      url: `https://propertysdeal.in/propertys-details/${row.slug}`,
     }));
   }
 }
