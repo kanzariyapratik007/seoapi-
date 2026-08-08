@@ -24,7 +24,6 @@ export interface ISchemaService {
   generateWebPageSchema(title: string, canonicalUrl: string, description: string): Record<string, any>;
   generatePlaceSchema(variables: Record<string, string>): Record<string, any>;
   generateGeoCoordinatesSchema(): Record<string, any>;
-  generateDatasetSchema(): Record<string, any>;
 }
 
 export class SchemaService implements ISchemaService {
@@ -405,15 +404,6 @@ export class SchemaService implements ISchemaService {
       '@type': 'GeoCoordinates',
       latitude: '22.2587',
       longitude: '71.1924',
-    };
-  }
-
-  generateDatasetSchema(): Record<string, any> {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'Dataset',
-      name: 'Property in Gujarat Real Estate & Price Trends Market Data',
-      description: 'Comprehensive historical and current property valuation, stamp duty rates, and market analytics dataset for Gujarat real estate.',
     };
   }
 }

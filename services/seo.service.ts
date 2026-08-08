@@ -2557,7 +2557,6 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
     const webpage_schema = this.schemaService.generateWebPageSchema(title, canonical, meta_description);
     const place_schema = this.schemaService.generatePlaceSchema(variables);
     const geocoordinates_schema = this.schemaService.generateGeoCoordinatesSchema();
-    const dataset_schema = this.schemaService.generateDatasetSchema();
 
     // Attach specialized schemas into master schema payload
     schema.organization = organization_schema;
@@ -2573,7 +2572,6 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
     schema.webpage = webpage_schema;
     schema.place = place_schema;
     schema.geocoordinates = geocoordinates_schema;
-    schema.dataset = dataset_schema;
 
     // Explicit Part 4 15 Advanced JSON-LD Schemas Override for 'real-estate-gujarat'
     if (slug.toLowerCase().trim() === 'real-estate-gujarat' || slug.toLowerCase().trim().replace(/[^a-z0-9]/g, '') === 'realestategujarat') {
@@ -2717,12 +2715,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
         "target": "https://propertysdeal.in/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Real Estate Gujarat Dataset",
-        "description": "SEO dataset for Gujarat real estate listings."
-      };
+
     }
 
     // Explicit Part 4 15 Advanced JSON-LD Schemas Override for 'flats-for-sale-in-ahmedabad'
@@ -2848,12 +2841,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Ahmedabad Flats Dataset",
-        "description": "Verified flats and apartments for sale in Ahmedabad."
-      };
+
       schema.realestateagent = {
         "@context": "https://schema.org",
         "@type": "RealEstateAgent",
@@ -3011,12 +2999,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Property for Sale in Ahmedabad Dataset",
-        "description": "Verified residential and commercial property dataset for Ahmedabad."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -3161,12 +3144,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Ahmedabad 2BHK Flats Dataset",
-        "description": "Verified 2BHK residential apartments dataset for Ahmedabad."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -3311,12 +3289,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Surat 3BHK Flats Dataset",
-        "description": "Verified 3BHK residential apartments dataset for Surat."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -3461,12 +3434,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Vadodara Residential Plots Dataset",
-        "description": "Verified residential plot dataset for Vadodara."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -3611,12 +3579,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Gujarat Property Dealers Dataset",
-        "description": "Verified property dealers and agents dataset across Gujarat."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -3761,12 +3724,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Gujarat Real Estate Dataset",
-        "description": "Verified residential and commercial property dataset across Gujarat."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -3911,12 +3869,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Ahmedabad Real Estate Dataset",
-        "description": "Verified residential and commercial property dataset for Ahmedabad."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -4061,12 +4014,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "SG Highway Apartments Dataset",
-        "description": "Verified residential apartment dataset for SG Highway Ahmedabad."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -4211,12 +4159,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Bopal 2 BHK Apartments Dataset",
-        "description": "Verified 2 BHK residential apartments dataset for Bopal Ahmedabad."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
@@ -4361,12 +4304,7 @@ Investing in a plot for sale in Thaltej, Ahmedabad is an outstanding opportunity
           ]
         }
       };
-      schema.dataset = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Prahlad Nagar Real Estate Dataset",
-        "description": "Verified residential and commercial property dataset for Prahlad Nagar Ahmedabad."
-      };
+
       schema.searchaction = {
         "@context": "https://schema.org",
         "@type": "SearchAction",
